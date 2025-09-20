@@ -15,22 +15,36 @@ const Navbar = () => {
 
   const handleNavClick = (e, href) => {
     e.preventDefault();
-    // Close mobile menu first
+    const isMobile = window.innerWidth < 1024;
+    const navbarHeight = isMobile ? 64 : 80; // Smaller offset for mobile
+    
+    // Special handling for home link
+    if (href === '#home') {
+      setIsOpen(false);
+      setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }, isMobile ? 300 : 0);
+      return;
+    }
+    
+    // For other links
     setIsOpen(false);
     
-    // Wait for menu close animation
     setTimeout(() => {
       const element = document.querySelector(href);
       if (element) {
-        const navbarHeight = 80; // Height of the navbar
-        const targetPosition = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - navbarHeight;
         
         window.scrollTo({
-          top: targetPosition,
+          top: offsetPosition,
           behavior: 'smooth'
         });
       }
-    }, 300); // Wait for mobile menu animation to complete
+    }, isMobile ? 300 : 0);
   };
 
   useEffect(() => {
@@ -44,7 +58,7 @@ const Navbar = () => {
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
+    { name: 'Projects', href: '#services' },
     { name: 'Why Us', href: '#why-us' },
     { name: 'Careers', href: '#careers' },
     { name: 'Contact', href: '#contact' },
@@ -187,7 +201,7 @@ const Navbar = () => {
             opacity: isOpen ? 1 : 0,
           }}
           transition={{ duration: 0.3 }}
-          className="lg:hidden overflow-hidden z-50"
+          className="lg:hidden overflow-hidden z-[60]"
         >
           <motion.div
             initial={false}

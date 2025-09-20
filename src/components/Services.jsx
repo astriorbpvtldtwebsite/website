@@ -48,23 +48,23 @@ const Services = () => {
   useEffect(() => {
     const updateContainerSize = () => {
       if (techContainerRef.current) {
-        setContainerSize({
-          width: techContainerRef.current.offsetWidth,
-          height: techContainerRef.current.offsetHeight,
-        });
+        const width = techContainerRef.current.offsetWidth;
+        const height = techContainerRef.current.offsetHeight;
+        
+        setContainerSize({ width, height });
+        mouseX.set(width / 2);
+        mouseY.set(height / 2);
       }
     };
 
+    // Initial update
     updateContainerSize();
+    
+    // Update on resize
     window.addEventListener('resize', updateContainerSize);
 
-    if (techContainerRef.current) {
-        mouseX.set(techContainerRef.current.offsetWidth / 2);
-        mouseY.set(techContainerRef.current.offsetHeight / 2);
-    }
-
     return () => window.removeEventListener('resize', updateContainerSize);
-  }, []);
+  }, [mouseX, mouseY]);
 
   const handleMouseMove = (e) => {
     if (!techContainerRef.current || !isDesktop) return;

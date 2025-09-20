@@ -62,7 +62,15 @@ const Testimonials = () => {
               "{testimonial.quote}"
             </p>
             <div className="flex items-center mt-auto">
-              <img src={testimonial.avatar} alt={testimonial.author} className="w-12 h-12 rounded-full mr-4 border-2 border-cosmic-purple" />
+              <img 
+                src={testimonial.avatar} 
+                alt={testimonial.author} 
+                className="w-12 h-12 rounded-full mr-4 border-2 border-cosmic-purple"
+                loading="lazy"
+                decoding="async"
+                width="48"
+                height="48"
+              />
               <div>
                 <h4 className="font-semibold text-light-text dark:text-white">{testimonial.author}</h4>
                 <p className="text-sm text-light-subtext dark:text-gray-400">{testimonial.title}</p>
