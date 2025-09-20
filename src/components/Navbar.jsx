@@ -15,15 +15,22 @@ const Navbar = () => {
 
   const handleNavClick = (e, href) => {
     e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      const offsetTop = element.offsetTop;
-      window.scrollTo({
-        top: offsetTop - 80, // Adjust for navbar height
-        behavior: 'smooth'
-      });
-    }
-    setIsOpen(false); // Close mobile menu after clicking
+    // Close mobile menu first
+    setIsOpen(false);
+    
+    // Wait for menu close animation
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        const navbarHeight = 80; // Height of the navbar
+        const targetPosition = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 300); // Wait for mobile menu animation to complete
   };
 
   useEffect(() => {
@@ -37,7 +44,7 @@ const Navbar = () => {
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#services' },
+    { name: 'Services', href: '#services' },
     { name: 'Why Us', href: '#why-us' },
     { name: 'Careers', href: '#careers' },
     { name: 'Contact', href: '#contact' },
