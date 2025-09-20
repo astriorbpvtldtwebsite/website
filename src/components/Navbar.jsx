@@ -13,6 +13,19 @@ const Navbar = () => {
   const handleMouseEnter = () => document.dispatchEvent(new Event('cursor-enter'));
   const handleMouseLeave = () => document.dispatchEvent(new Event('cursor-leave'));
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      const offsetTop = element.offsetTop;
+      window.scrollTo({
+        top: offsetTop - 80, // Adjust for navbar height
+        behavior: 'smooth'
+      });
+    }
+    setIsOpen(false); // Close mobile menu after clicking
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -82,6 +95,7 @@ const Navbar = () => {
                   scale: 1.05,
                   color: theme === 'dark' ? '#00d4aa' : '#6366f1',
                 }}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className="text-light-subtext dark:text-gray-300 hover:text-cosmic-purple dark:hover:text-cosmic-neon transition-all duration-200 font-medium relative group whitespace-nowrap px-2 py-1"
               >
                 {item.name}
@@ -185,7 +199,7 @@ const Navbar = () => {
                 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 className="block py-3 text-light-subtext dark:text-gray-300 hover:text-cosmic-purple dark:hover:text-cosmic-neon transition-colors border-b border-black/5 dark:border-white/5 last:border-b-0"
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => handleNavClick(e, item.href)}
               >
                 {item.name}
               </motion.a>

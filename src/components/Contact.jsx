@@ -117,9 +117,9 @@ const Contact = () => {
     },
     {
       Icon: MapPin,
-      title: 'Headquarters',
-      info: 'Unavailabl',
-      link: '#',
+      title: 'Address',
+      info: 'Wbb office, panambilly, kochi',
+      link: 'https://maps.app.goo.gl/KhBfrumeBBxL1QpA7',
       gradient: 'from-orange-500 to-red-500',
     },
   ];
