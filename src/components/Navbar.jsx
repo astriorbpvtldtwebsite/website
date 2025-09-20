@@ -190,20 +190,23 @@ const Navbar = () => {
                 {item.name}
               </motion.a>
             ))}
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ 
-                opacity: isOpen ? 1 : 0,
-                y: isOpen ? 0 : 20,
-              }}
-              transition={{ duration: 0.3, delay: 0.4 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full mt-4 bg-gradient-purple text-white py-3 rounded-full font-medium flex items-center justify-center space-x-2"
-              onClick={() => setIsOpen(false)}
-            >
-              <Zap className="w-4 h-4" />
-              <span>Project:Tastory</span>
-            </motion.button>
+                          <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ 
+                  opacity: isOpen ? 1 : 0,
+                  y: isOpen ? 0 : 20,
+                }}
+                transition={{ duration: 0.3, delay: 0.4 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full mt-4 bg-gradient-purple text-white py-3 rounded-full font-medium flex items-center justify-center space-x-2"
+                onClick={() => {
+                  setIsOpen(false);  // Close mobile menu
+                  openProjectModal(); // Open project modal
+                }}
+              >
+                <Zap className="w-4 h-4" />
+                <span>Project:Tastory</span>
+              </motion.button>
           </motion.div>
         </motion.div>
       </div>
