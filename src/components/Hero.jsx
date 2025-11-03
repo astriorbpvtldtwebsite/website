@@ -17,7 +17,7 @@ const Hero = () => {
     { Icon: Smartphone, delay: 2.5, position: 'top-2/3 right-1/6' },
   ];
 
-  const techParticles = [...Array(20)].map((_, i) => ({
+  const techParticles = [...Array(10)].map((_, i) => ({
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,
@@ -27,7 +27,7 @@ const Hero = () => {
   }));
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-20">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-20" style={{ minHeight: 'calc(var(--vh, 1vh) * 100)' }}>
       {/* Enhanced Animated Background */}
       <div className="absolute inset-0 bg-light-bg dark:bg-gradient-cosmic">
         <div className="bg-particles">
@@ -122,7 +122,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-lg sm:text-xl md:text-2xl text-light-subtext dark:text-gray-300 font-light max-w-4xl mx-auto leading-relaxed px-4"
             >
-              Innovating Real-Life Solutions Through Technology
+              Where Ideas Orbit into Reality
             </motion.p>
 
             {/* Enhanced Description */}

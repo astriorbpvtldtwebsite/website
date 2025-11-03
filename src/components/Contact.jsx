@@ -2,10 +2,12 @@ import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Linkedin, MapPin, Send, MessageSquare, Headphones } from 'lucide-react';
 import { staggerContainer, fadeInUp, fadeInLeft, fadeInRight } from '../utils/animations';
+import { sanitizeFormData } from '../utils/sanitize';
+import { SUCCESS_MESSAGE_DURATION, EMAIL_CONFIG } from '../utils/constants';
 import emailjs from '@emailjs/browser';
 
-// Initialize EmailJS with public key
-emailjs.init("L_ymku3EKJjKxsg56"); // Public key for email service
+// Initialize EmailJS with public key from environment variables
+emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
 
 const Contact = () => {
   const handleMouseEnter = () => document.dispatchEvent(new Event('cursor-enter'));
@@ -29,15 +31,18 @@ const Contact = () => {
     setIsSubmitting(true);
     setError('');
 
+    // Sanitize form data before sending
+    const sanitizedData = sanitizeFormData(formData);
+
     const templateParams = {
-      to_name: 'Astriorb Team',
-      to_email: 'astriorbofficial@gmail.com',
-      from_name: formData.from_name,
-      from_email: formData.from_email,
-      company: formData.company || 'Not specified',
-      inquiry_type: formData.inquiry_type,
-      message: formData.message,
-      reply_to: formData.from_email,
+      to_name: `${EMAIL_CONFIG.companyName} Team`,
+      to_email: EMAIL_CONFIG.companyEmail,
+      from_name: sanitizedData.from_name,
+      from_email: sanitizedData.from_email,
+      company: sanitizedData.company || 'Not specified',
+      inquiry_type: sanitizedData.inquiry_type,
+      message: sanitizedData.message,
+      reply_to: sanitizedData.from_email,
       // Additional parameters for styling
       website_url: 'https://astriorb.com',
       company_logo: 'https://astriorb.com/logo.png', // Add your logo URL
@@ -47,13 +52,11 @@ const Contact = () => {
     };
 
     try {
-      console.log('Sending email with params:', templateParams);
       const response = await emailjs.send(
-        'service_nd7mt1f', // Email service ID
-        'template_ctmw1ye', // Email template ID
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         templateParams
       );
-      console.log('Email sent successfully:', response);
       // Show success message
       setIsSubmitted(true);
       
@@ -66,10 +69,10 @@ const Contact = () => {
         message: '',
       });
 
-      // Reset success message after 3 seconds
+      // Reset success message
       setTimeout(() => {
         setIsSubmitted(false);
-      }, 3000);
+      }, SUCCESS_MESSAGE_DURATION);
     } catch (error) {
       console.error('Failed to send email:', error);
       let errorMessage = 'Failed to send message. ';
@@ -118,7 +121,7 @@ const Contact = () => {
     {
       Icon: MapPin,
       title: 'Headquarters',
-      info: 'Unavailabl',
+      info: 'Remote-First • Coming Soon',
       link: '#',
       gradient: 'from-orange-500 to-red-500',
     },
@@ -140,7 +143,7 @@ const Contact = () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="absolute inset-0 opacity-10 dark:opacity-10">
+      <div className="absolute inset-0 -bottom-8 md:-bottom-12 opacity-10 dark:opacity-10">
         <motion.div
           animate={{ 
             backgroundPosition: ['0% 0%', '100% 100%'],

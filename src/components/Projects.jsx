@@ -54,7 +54,7 @@ const Careers = () => {
       onMouseLeave={handleMouseLeave}
     >
       <div className="absolute inset-0 opacity-5 dark:opacity-5">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(10)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-cosmic-neon rounded-full"

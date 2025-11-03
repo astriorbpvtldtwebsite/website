@@ -14,7 +14,7 @@ const useMediaQuery = (query) => {
     // Use the modern way to listen for changes
     try {
       media.addEventListener('change', listener);
-    } catch (e) {
+    } catch (_) {
       // Fallback for older browsers
       media.addListener(listener);
     }
@@ -23,7 +23,7 @@ const useMediaQuery = (query) => {
       window.removeEventListener('resize', listener);
       try {
         media.removeEventListener('change', listener);
-      } catch (e) {
+      } catch (_) {
         media.removeListener(listener);
       }
     };

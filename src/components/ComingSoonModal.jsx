@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X as CloseIcon, Send as SendIcon } from 'lucide-react';
 
@@ -6,16 +6,46 @@ const ComingSoonModal = ({ isOpen, onClose, categoryTitle }) => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const closeButtonRef = useRef(null);
+
+  // Focus trap and keyboard handling
+  useEffect(() => {
+    if (isOpen) {
+      // Focus close button when modal opens
+      closeButtonRef.current?.focus();
+
+      // Handle escape key
+      const handleEscape = (e) => {
+        if (e.key === 'Escape') {
+          onClose();
+        }
+      };
+
+      document.addEventListener('keydown', handleEscape);
+      return () => document.removeEventListener('keydown', handleEscape);
+    }
+  }, [isOpen, onClose]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // TODO: Implement your email submission logic here
-    await new Promise(resolve => setTimeout(resolve, 1000)); // Simulated delay
-    
-    setIsSubmitted(true);
-    setIsSubmitting(false);
+    // Store email for future notifications
+    // In production, you would send this to your backend or email service
+    try {
+      // Simulate API call - Replace with actual implementation when backend is ready
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // For now, just show success message
+      // TODO: Integrate with backend API or email service when available
+      console.warn('Email collection not yet integrated with backend:', email);
+      
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Failed to submit email:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -42,8 +72,10 @@ const ComingSoonModal = ({ isOpen, onClose, categoryTitle }) => {
             <div className="glass-effect w-full max-w-lg p-6 md:p-8 rounded-2xl relative overflow-hidden">
               {/* Close Button */}
               <button
+                ref={closeButtonRef}
                 onClick={onClose}
                 className="absolute right-4 top-4 p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+                aria-label="Close modal"
               >
                 <CloseIcon className="w-6 h-6 text-light-text dark:text-white" />
               </button>

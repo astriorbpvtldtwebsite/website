@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const SectionWrapper = ({ children, id, className }) => {
+const SectionWrapper = React.memo(({ children, id, className }) => {
   return (
     <motion.section
       id={id}
@@ -14,6 +14,8 @@ const SectionWrapper = ({ children, id, className }) => {
       {children}
     </motion.section>
   );
-};
+});
+
+SectionWrapper.displayName = 'SectionWrapper';
 
 export default SectionWrapper;

@@ -43,7 +43,8 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
-          <motion.div
+          <motion.a
+            href="#home"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             whileHover={{ scale: 1.05 }}
@@ -52,7 +53,7 @@ const Navbar = () => {
             <motion.div
               animate={{ rotate: scrolled ? 360 : 0 }}
               transition={{ duration: 0.6 }}
-              className="w-8 h-8 md:w-10 md:h-10 bg-gradient-neon rounded-lg flex items-center justify-center relative overflow-hidden"
+              className="w-8 h-8 md:w-10 md:h-10 bg-gradient-neon rounded-lg flex items-center justify-center relative overflow-hidden p-1"
             >
               <motion.div
                 animate={{ 
@@ -62,10 +63,14 @@ const Navbar = () => {
                 transition={{ duration: 2, repeat: Infinity }}
                 className="absolute inset-0 bg-gradient-to-r from-cosmic-purple to-cosmic-neon opacity-20"
               />
-              <span className="text-white font-bold text-lg md:text-xl relative z-10">A</span>
+              <img 
+                src="/logo.png" 
+                alt="AstriOrb Logo" 
+                className="w-full h-full object-contain relative z-10"
+              />
             </motion.div>
             <span className="text-xl md:text-2xl font-bold text-light-text dark:text-white">AstriOrb</span>
-          </motion.div>
+          </motion.a>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-4">
@@ -166,13 +171,13 @@ const Navbar = () => {
             opacity: isOpen ? 1 : 0,
           }}
           transition={{ duration: 0.3 }}
-          className="lg:hidden overflow-hidden z-50"
+          className="lg:hidden overflow-hidden relative z-50"
         >
           <motion.div
             initial={false}
             animate={{ y: isOpen ? 0 : -20 }}
             transition={{ duration: 0.3 }}
-            className="bg-light-card/95 dark:bg-space-800/95 backdrop-blur-lg rounded-lg mt-2 p-4 border border-black/10 dark:border-white/10"
+            className="bg-light-card/95 dark:bg-space-800/95 backdrop-blur-lg rounded-lg mt-2 p-4 border border-black/10 dark:border-white/10 relative z-50"
           >
             {navItems.map((item, index) => (
               <motion.a
@@ -185,7 +190,18 @@ const Navbar = () => {
                 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 className="block py-3 text-light-subtext dark:text-gray-300 hover:text-cosmic-purple dark:hover:text-cosmic-neon transition-colors border-b border-black/5 dark:border-white/5 last:border-b-0"
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const targetId = item.href.replace('#', '');
+                  const targetElement = document.getElementById(targetId);
+                  
+                  if (targetElement) {
+                    setIsOpen(false);
+                    setTimeout(() => {
+                      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 300);
+                  }
+                }}
               >
                 {item.name}
               </motion.a>

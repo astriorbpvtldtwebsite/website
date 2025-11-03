@@ -63,8 +63,11 @@ const DesktopView = ({ selected, setSelected }) => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onClick={() => setSelected(index)}
-            className={`p-4 rounded-lg transition-all duration-300 cursor-pointer relative ${selected === index ? 'bg-black/5 dark:bg-white/10' : 'bg-transparent'}`}
-            whileHover={{ backgroundColor: 'rgba(0, 0, 0, 0.03)', dark: { backgroundColor: 'rgba(255, 255, 255, 0.05)' } }}
+            className={`p-4 rounded-lg transition-all duration-300 cursor-pointer relative ${
+              selected === index 
+                ? 'bg-black/5 dark:bg-white/10' 
+                : 'bg-transparent hover:bg-black/[0.02] dark:hover:bg-white/[0.03]'
+            }`}
           >
             <div className="flex items-center space-x-4">
               <reason.Icon className={`w-6 h-6 transition-colors ${selected === index ? 'text-cosmic-purple dark:text-cosmic-neon' : 'text-light-subtext dark:text-gray-400'}`} />
@@ -168,7 +171,7 @@ const WhyChooseUs = () => {
       onMouseEnter={() => document.dispatchEvent(new Event('cursor-enter'))}
       onMouseLeave={() => document.dispatchEvent(new Event('cursor-leave'))}
     >
-      <div className="absolute inset-0 opacity-5 dark:opacity-5">
+      <div className="absolute inset-0 -bottom-8 md:-bottom-12 opacity-5 dark:opacity-5">
         <motion.div
           animate={{ backgroundPosition: ['0% 0%', '100% 100%'] }}
           transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse' }}

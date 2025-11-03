@@ -20,6 +20,7 @@ export const ProjectModalProvider = ({ children }) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useProjectModal = () => {
   const context = useContext(ProjectModalContext);
   if (!context) {

@@ -12,11 +12,12 @@ import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import SectionWrapper from './components/SectionWrapper';
 import Preloader from './components/Preloader';
+import SkipToContent from './components/SkipToContent';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { ProjectModalProvider } from './contexts/ProjectModalContext';
+import { PRELOADER_DURATION } from './utils/constants';
 
 function App() {
-  console.log('App component rendered');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -28,7 +29,7 @@ function App() {
     const timer = setTimeout(() => {
       setLoading(false);
       window.scrollTo(0, 0);
-    }, 2500); // Simulate loading time
+    }, PRELOADER_DURATION);
 
     return () => clearTimeout(timer);
   }, []);
@@ -36,7 +37,8 @@ function App() {
   return (
     <ThemeProvider>
       <ProjectModalProvider>
-        <div className="min-h-screen bg-light-bg text-light-text dark:bg-gradient-cosmic dark:text-white font-inter antialiased">
+        <SkipToContent />
+        <div className="min-h-screen bg-light-bg text-light-text dark:bg-gradient-cosmic dark:text-white font-inter antialiased" style={{ minHeight: 'calc(var(--vh, 1vh) * 100)' }}>
         <CustomCursor />
         <AnimatePresence>
           {loading ? (
@@ -50,6 +52,7 @@ function App() {
               transition={{ duration: 0.8 }}
             >
               <Navbar />
+              <main id="main-content">
               <Hero />
               <SectionWrapper id="about" className="py-16 md:py-24 bg-light-card dark:bg-gradient-to-b dark:from-space-900 dark:to-space-800">
                 <About />
@@ -67,6 +70,7 @@ function App() {
               <SectionWrapper id="contact" className="py-16 md:py-24 bg-light-bg dark:bg-gradient-to-b dark:from-space-900 dark:to-space-800 relative overflow-hidden">
                 <Contact />
               </SectionWrapper>
+              </main>
               <Footer />
             </motion.div>
           )}

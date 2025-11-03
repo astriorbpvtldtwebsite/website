@@ -69,14 +69,26 @@ const Footer = () => {
                 <motion.div
                   animate={{ rotate: [0, 360] }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="w-10 h-10 bg-gradient-neon rounded-lg flex items-center justify-center"
+                  className="w-10 h-10 bg-gradient-neon rounded-lg flex items-center justify-center relative overflow-hidden p-1"
                 >
-                  <span className="text-white font-bold text-xl">A</span>
+                  <motion.div
+                    animate={{ 
+                      scale: [1, 1.2, 1],
+                      opacity: [0.5, 1, 0.5],
+                    }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="absolute inset-0 bg-gradient-to-r from-cosmic-purple to-cosmic-neon opacity-20"
+                  />
+                  <img 
+                    src="/logo.png" 
+                    alt="AstriOrb Logo" 
+                    className="w-full h-full object-contain relative z-10"
+                  />
                 </motion.div>
                 <span className="text-2xl md:text-3xl font-bold text-light-text dark:text-white">AstriOrb</span>
               </div>
               <p className="text-light-subtext dark:text-gray-300 leading-relaxed max-w-md text-sm md:text-base">
-                Pioneering the future through innovative product development.
+                Where Ideas Orbit into Reality
               </p>
               <div className="flex space-x-3 md:space-x-4">
                 {socialLinks.map((social) => (

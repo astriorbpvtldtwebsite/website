@@ -42,7 +42,7 @@ const Preloader = () => {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="w-16 h-16 bg-gradient-neon rounded-lg flex items-center justify-center relative overflow-hidden mb-6"
+          className="w-16 h-16 bg-gradient-neon rounded-lg flex items-center justify-center relative overflow-hidden mb-6 p-2"
         >
           <motion.div
             animate={{
@@ -52,7 +52,11 @@ const Preloader = () => {
             transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
             className="absolute inset-0 bg-gradient-to-r from-cosmic-purple to-cosmic-neon opacity-20"
           />
-          <span className="text-white font-bold text-3xl relative z-10">A</span>
+          <img 
+            src="/logo.png" 
+            alt="AstriOrb Logo" 
+            className="w-full h-full object-contain relative z-10"
+          />
         </motion.div>
       </motion.div>
       <motion.div

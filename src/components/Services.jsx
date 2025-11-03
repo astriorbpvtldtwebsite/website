@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { Code2, Smartphone, Brain, Database, Cloud, Zap } from 'lucide-react';
+import { FaReact, FaNodeJs, FaPython, FaDocker } from 'react-icons/fa';
+import { SiFlutter, SiGo } from 'react-icons/si';
 import { staggerContainer, fadeInUp } from '../utils/animations';
 import useMediaQuery from '../hooks/useMediaQuery';
 import ComingSoonModal from './ComingSoonModal';
@@ -13,6 +15,7 @@ const TechIcon = ({ tech, mouseX, mouseY, containerWidth, containerHeight, isDes
   const y = useTransform(mouseY, [0, containerHeight], [10 * randomY, -10 * randomY]);
 
   const motionStyle = isDesktop ? { x, y } : {};
+  const IconComponent = tech.icon;
 
   return (
     <motion.div
@@ -21,7 +24,7 @@ const TechIcon = ({ tech, mouseX, mouseY, containerWidth, containerHeight, isDes
       whileHover={{ scale: 1.15, y: isDesktop ? -8 : 0 }}
       className="flex flex-col items-center justify-center space-y-2"
     >
-      <span className={`text-4xl md:text-5xl ${tech.className || ''}`}>{tech.icon}</span>
+      <IconComponent className={`text-4xl md:text-5xl ${tech.className || ''}`} />
       <span className="text-xs md:text-sm text-light-subtext dark:text-gray-300 font-medium">{tech.name}</span>
     </motion.div>
   );
@@ -64,7 +67,7 @@ const Services = () => {
     }
 
     return () => window.removeEventListener('resize', updateContainerSize);
-  }, []);
+  }, [mouseX, mouseY]);
 
   const handleMouseMove = (e) => {
     if (!techContainerRef.current || !isDesktop) return;
@@ -125,12 +128,12 @@ const Services = () => {
   ];
 
   const techStack = [
-    { name: 'React', icon: '⚛️', className: 'text-cyan-400' },
-    { name: 'Node.js', icon: '⬢', className: 'text-green-500' },
-    { name: 'Python', icon: '🐍' },
-    { name: 'Flutter', icon: '🦋' },
-    { name: 'Go', icon: '🐹' },
-    { name: 'Docker', icon: '🐳' },
+    { name: 'React', icon: FaReact, className: 'text-cyan-400' },
+    { name: 'Node.js', icon: FaNodeJs, className: 'text-green-500' },
+    { name: 'Python', icon: FaPython, className: 'text-blue-400' },
+    { name: 'Flutter', icon: SiFlutter, className: 'text-blue-500' },
+    { name: 'Go', icon: SiGo, className: 'text-cyan-500' },
+    { name: 'Docker', icon: FaDocker, className: 'text-blue-400' },
   ];
 
   return (
@@ -140,7 +143,7 @@ const Services = () => {
       onMouseLeave={handleMouseLeave}
     >
       <div className="absolute inset-0 opacity-10 dark:opacity-10">
-        {[...Array(15)].map((_, i) => (
+        {[...Array(8)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-2 h-2 bg-cosmic-neon rounded-full"

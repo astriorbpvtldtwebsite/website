@@ -1,23 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 const useMousePosition = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const rafRef = useRef(null);
 
   useEffect(() => {
     const updateMousePosition = (ev) => {
-      setMousePosition({ x: ev.clientX, y: ev.clientY });
+      // Use requestAnimationFrame for better performance
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+      
+      rafRef.current = requestAnimationFrame(() => {
+        setMousePosition({ x: ev.clientX, y: ev.clientY });
+      });
     };
-    window.addEventListener('mousemove', updateMousePosition);
+
+    window.addEventListener('mousemove', updateMousePosition, { passive: true });
+    
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
     };
   }, []);
 
   return mousePosition;
 };
 
-const CustomCursor = () => {
+const CustomCursor = React.memo(() => {
   const { x, y } = useMousePosition();
   const [variant, setVariant] = useState('default');
   const [isTouchDevice, setIsTouchDevice] = useState(false);
@@ -68,8 +81,11 @@ const CustomCursor = () => {
       variants={variants}
       animate={variant}
       transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+      style={{ willChange: 'transform' }}
     />
   );
-};
+});
+
+CustomCursor.displayName = 'CustomCursor';
 
 export default CustomCursor;
