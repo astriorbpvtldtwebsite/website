@@ -1,7 +1,7 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Linkedin, ArrowUp, Twitter, Github, Globe } from 'lucide-react';
 import { staggerContainer, fadeInUp } from '../utils/animations';
+import { LiquidMetal } from '@paper-design/shaders-react';
 
 const Footer = () => {
   const handleMouseEnter = () => document.dispatchEvent(new Event('cursor-enter'));
@@ -65,26 +65,30 @@ const Footer = () => {
         >
           <motion.div variants={fadeInUp} className="lg:col-span-2">
             <div className="space-y-4 md:space-y-6">
-              <div className="flex items-center space-x-2">
-                <motion.div
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="w-10 h-10 bg-gradient-neon rounded-lg flex items-center justify-center relative overflow-hidden p-1"
-                >
-                  <motion.div
-                    animate={{ 
-                      scale: [1, 1.2, 1],
-                      opacity: [0.5, 1, 0.5],
-                    }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="absolute inset-0 bg-gradient-to-r from-cosmic-purple to-cosmic-neon opacity-20"
+              <div className="flex items-center space-x-1">
+                <div className="w-16 h-16 rounded-lg overflow-hidden">
+                  <LiquidMetal 
+                    speed={1} 
+                    colorBack="#00000000" 
+                    colorTint="#FFFFFF" 
+                    softness={0.1} 
+                    repetition={2} 
+                    shiftRed={0.3} 
+                    shiftBlue={0.3} 
+                    distortion={0.07} 
+                    contour={0.4} 
+                    scale={0.6} 
+                    rotation={0} 
+                    shape="diamond" 
+                    image="/logo.png" 
+                    angle={70} 
+                    style={{ 
+                      width: '100%', 
+                      height: '100%',
+                      borderRadius: '0.5rem'
+                    }} 
                   />
-                  <img 
-                    src="/logo.png" 
-                    alt="AstriOrb Logo" 
-                    className="w-full h-full object-contain relative z-10"
-                  />
-                </motion.div>
+                </div>
                 <span className="text-2xl md:text-3xl font-bold text-light-text dark:text-white">AstriOrb</span>
               </div>
               <p className="text-light-subtext dark:text-gray-300 leading-relaxed max-w-md text-sm md:text-base">

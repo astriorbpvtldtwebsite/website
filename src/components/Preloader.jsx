@@ -1,5 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
+import { LiquidMetal } from '@paper-design/shaders-react';
 
 const Preloader = () => {
   const containerVariants = {
@@ -32,32 +32,29 @@ const Preloader = () => {
       variants={containerVariants}
     >
       <motion.div variants={itemVariants}>
-        <motion.div
-          animate={{
-            scale: [1, 1.1, 1],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          className="w-16 h-16 bg-gradient-neon rounded-lg flex items-center justify-center relative overflow-hidden mb-6 p-2"
-        >
-          <motion.div
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.5, 1, 0.5],
-            }}
-            transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-            className="absolute inset-0 bg-gradient-to-r from-cosmic-purple to-cosmic-neon opacity-20"
+        <div className="w-40 h-40 rounded-lg overflow-hidden mb-0">
+          <LiquidMetal 
+            speed={1} 
+            colorBack="#00000000" 
+            colorTint="#FFFFFF" 
+            softness={0.1} 
+            repetition={2} 
+            shiftRed={0.3} 
+            shiftBlue={0.3} 
+            distortion={0.07} 
+            contour={0.4} 
+            scale={0.6} 
+            rotation={0} 
+            shape="diamond" 
+            image="/logo.png" 
+            angle={70} 
+            style={{ 
+              width: '100%', 
+              height: '100%',
+              borderRadius: '0.5rem'
+            }} 
           />
-          <img 
-            src="/logo.png" 
-            alt="AstriOrb Logo" 
-            className="w-full h-full object-contain relative z-10"
-          />
-        </motion.div>
+        </div>
       </motion.div>
       <motion.div
         variants={itemVariants}
