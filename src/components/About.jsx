@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Target, Eye, Heart, Lightbulb, Rocket, Users } from 'lucide-react';
+import { Target, Eye, Heart, Lightbulb, Rocket, User } from 'lucide-react';
 import { staggerContainer, fadeInUp } from '../utils/animations';
 
 const About = () => {
@@ -12,7 +12,7 @@ const About = () => {
     },
     {
       Icon: Eye,
-      title: 'Our Vision', 
+      title: 'Our Vision',
       description: 'To be the global leader in product innovation, creating technologies that shape the future and inspire the next generation of digital solutions.',
     },
     {
@@ -24,8 +24,8 @@ const About = () => {
 
   const stats = [
     { Icon: Lightbulb, number: '3+', label: 'Projects in Progress' },
-    { Icon: Rocket, number: '100k+', label: 'Hours of Development' },
-    { Icon: Users, number: '5+', label: 'Team Members' },
+    { Icon: Rocket, number: '6000+', label: 'Hours of Development' },
+    { Icon: User, number: '100%', label: 'Founder-Led' },
   ];
 
   return (
@@ -35,23 +35,23 @@ const About = () => {
       onMouseLeave={() => document.dispatchEvent(new Event('cursor-leave'))}
     >
       {/* Header */}
-      <motion.div 
+      <motion.div
         variants={fadeInUp}
         className="text-center mb-12 md:mb-16"
       >
-        <h2 
+        <h2
           className="text-3xl md:text-4xl lg:text-5xl font-bold text-light-text dark:text-white mb-4 md:mb-6"
         >
           About <span className="bg-gradient-neon bg-clip-text text-transparent">AstriOrb</span>
         </h2>
         <p className="text-lg md:text-xl text-light-subtext dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          A product development powerhouse where innovation meets execution. We don't just build software—we create 
+          A product development powerhouse where innovation meets execution. We don't just build software—we create
           revolutionary products that redefine industries and enhance human experiences.
         </p>
       </motion.div>
 
       {/* Stats Section */}
-      <motion.div 
+      <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="show"
@@ -86,13 +86,13 @@ const About = () => {
       </motion.div>
 
       {/* Story Section */}
-      <motion.div 
+      <motion.div
         variants={fadeInUp}
         className="glass-effect rounded-2xl p-6 md:p-12 mb-12 md:mb-16 relative overflow-hidden"
       >
         <div className="absolute inset-0 opacity-5 dark:opacity-5">
           <motion.div
-            animate={{ 
+            animate={{
               background: [
                 'radial-gradient(circle at 20% 50%, #6366f1 0%, transparent 50%)',
                 'radial-gradient(circle at 80% 50%, #8b5cf6 0%, transparent 50%)',
@@ -103,24 +103,24 @@ const About = () => {
             className="w-full h-full"
           />
         </div>
-        
+
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h3 className="text-2xl md:text-3xl font-semibold text-light-text dark:text-white mb-4 md:mb-6">Our Innovation Journey</h3>
           <p className="text-base md:text-lg text-light-subtext dark:text-gray-300 leading-relaxed mb-4 md:mb-6">
-            AstriOrb was founded with a singular vision: to create products that don't just solve problems, 
+            AstriOrb was founded with a singular vision: to create products that don't just solve problems,
             but anticipate needs and create new possibilities. We are product creators, not service providers—
             every application we develop represents our own innovative ideas brought to life.
           </p>
           <p className="text-base md:text-lg text-light-subtext dark:text-gray-300 leading-relaxed">
-            Our research and development lab continuously explores emerging technologies, from AI and machine 
-            learning to blockchain and IoT, ensuring our products are always at the forefront of innovation. 
+            Our research and development lab continuously explores emerging technologies, from AI and machine
+            learning to blockchain and IoT, ensuring our products are always at the forefront of innovation.
             We don't follow trends—we create them.
           </p>
         </div>
       </motion.div>
 
       {/* Values Grid */}
-      <motion.div 
+      <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="show"
@@ -140,7 +140,7 @@ const About = () => {
                 className="absolute inset-0 bg-gradient-to-br from-cosmic-purple/10 to-cosmic-neon/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 initial={false}
               />
-              
+
               <div className="relative z-10">
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 360 }}

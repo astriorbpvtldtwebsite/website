@@ -1,80 +1,40 @@
 # AstriOrb - Product Development Company Website
 
-A modern, responsive portfolio website built with React, Vite, and Tailwind CSS featuring smooth animations, dark mode, and an innovative design.
+A modern, responsive portfolio website built with React 19, Vite 6, and Tailwind CSS featuring smooth animations, dark mode, and an innovative design.
 
-## 🚀 Features
+🌐 **Live Site:** https://astriorb.com
 
-- ⚡ Lightning-fast performance with Vite
-- 🎨 Beautiful animations with Framer Motion
-- 🌓 Dark/Light mode toggle
-- 📱 Fully responsive design
-- ♿ Accessibility-focused (WCAG compliant)
-- 🎯 Custom cursor for desktop
-- 📧 Contact form with EmailJS integration
-- 🔒 Input sanitization for security
-- 🎭 Error boundaries for graceful error handling
+---
 
-## 📋 Prerequisites
+## 🚀 Quick Start
 
-- Node.js (v16 or higher)
-- npm or yarn
-
-## 🛠️ Installation
-
-1. Clone the repository or extract the zip file
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Create a `.env` file in the root directory (copy from `.env.example`):
-   ```bash
-   cp .env.example .env
-   ```
-
-4. Add your EmailJS credentials to the `.env` file:
-   ```
-   VITE_EMAILJS_PUBLIC_KEY=your_public_key_here
-   VITE_EMAILJS_SERVICE_ID=your_service_id_here
-   VITE_EMAILJS_TEMPLATE_ID=your_template_id_here
-   ```
-
-## 🚀 Running the Project
-
-### Development Mode
 ```bash
+# 1. Install dependencies
+npm install
+
+# 2. Create environment file
+cp .env.example .env
+# Edit .env with your EmailJS credentials
+
+# 3. Start development server
 npm run dev
 ```
-The site will be available at `http://localhost:5173`
 
-### Build for Production
-```bash
-npm run build
-```
+Visit: http://localhost:5173
 
-### Preview Production Build
-```bash
-npm run preview
-```
+---
 
-### Lint Code
-```bash
-npm run lint
-```
+## 📋 Scripts
 
-## 📁 Project Structure
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Check code quality |
+| `npm run deploy` | Deploy to GitHub Pages |
 
-```
-src/
-├── components/       # React components
-├── contexts/        # React context providers
-├── hooks/           # Custom React hooks
-├── utils/           # Utility functions
-│   ├── animations.js    # Framer Motion variants
-│   ├── constants.js     # App constants
-│   └── sanitize.js      # Input sanitization
-└── index.css        # Global styles
-```
+---
 
 ## 🎨 Tech Stack
 
@@ -82,52 +42,79 @@ src/
 - **Build Tool:** Vite 6
 - **Styling:** Tailwind CSS 3
 - **Animations:** Framer Motion 12
-- **Icons:** Lucide React
+- **Routing:** React Router 7
+- **Icons:** Lucide React, React Icons
 - **Email Service:** EmailJS
-- **HTTP Client:** Axios
-
-## 🔒 Security Features
-
-- Input sanitization for all form submissions
-- Environment variables for sensitive data
-- XSS protection
-- Error boundaries for graceful error handling
-
-## ♿ Accessibility
-
-- ARIA labels for interactive elements
-- Skip to content link for keyboard navigation
-- Semantic HTML structure
-- Screen reader friendly
-- Keyboard navigation support
-
-## 📱 Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-## 📄 License
-
-All rights reserved © 2025 AstriOrb Pvt. Ltd.
-
-## 📈 SEO & Analytics
-
-This project includes:
-- ✅ Sitemap.xml for search engines
-- ✅ Robots.txt for crawler control
-- ✅ Structured data (JSON-LD) for rich snippets
-- ✅ Plausible Analytics (privacy-friendly)
-- ✅ Open Graph tags for social sharing
-- ✅ Optimized meta tags
-
-**See SEO_SETUP_GUIDE.md for complete setup instructions.**
-
-## 🤝 Contributing
-
-This is a private project. For inquiries, contact: astriorbofficial@gmail.com
 
 ---
 
-Built with ❤️ by AstriOrb Team
+## 📁 Project Structure
+
+```
+src/
+├── components/     # 17 React components
+├── contexts/       # Theme & Modal contexts
+├── hooks/          # Custom React hooks
+├── pages/          # Legal pages (Privacy, Terms, etc.)
+└── utils/          # Animations, constants, sanitization
+```
+
+---
+
+## 🔒 Security Features
+
+- ✅ Input sanitization for XSS protection
+- ✅ Environment variables for sensitive data
+- ✅ Error boundaries for graceful error handling
+- ✅ No hardcoded secrets
+
+---
+
+## ♿ Accessibility
+
+- ✅ Skip to content link
+- ✅ Keyboard navigation
+- ✅ ARIA labels
+- ✅ Screen reader friendly
+- ✅ Focus management in modals
+
+---
+
+## 📈 SEO
+
+- ✅ Structured data (JSON-LD schemas)
+- ✅ Sitemap & robots.txt
+- ✅ Open Graph & Twitter Cards
+- ✅ Plausible Analytics integration
+
+---
+
+## 🚀 Deployment
+
+### GitHub Pages
+```bash
+npm run deploy
+```
+
+### Netlify / Vercel
+1. Connect your repository
+2. Build command: `npm run build`
+3. Publish directory: `dist`
+4. Add environment variables
+
+---
+
+## 📞 Contact
+
+**Email:** astriorbofficial@gmail.com  
+**Website:** https://astriorb.com
+
+---
+
+## 📄 License
+
+All rights reserved © 2026 AstriOrb Pvt. Ltd.
+
+---
+
+Built with ❤️ by AstriOrb

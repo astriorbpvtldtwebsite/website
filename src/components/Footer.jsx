@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Mail, Linkedin, ArrowUp, Twitter, Github, Globe } from 'lucide-react';
 import { staggerContainer, fadeInUp } from '../utils/animations';
 import { LiquidMetal } from '@paper-design/shaders-react';
@@ -25,10 +26,10 @@ const Footer = () => {
       { name: 'Beta Program', href: '#' },
     ],
     legal: [
-      { name: 'Privacy Policy', href: '#' },
-      { name: 'Terms of Service', href: '#' },
-      { name: 'License Agreement', href: '#' },
-      { name: 'GDPR Compliance', href: '#' },
+      { name: 'Privacy Policy', href: '/privacy-policy' },
+      { name: 'Terms of Service', href: '/terms' },
+      { name: 'License Agreement', href: '/license' },
+      { name: 'GDPR Compliance', href: '/gdpr' },
     ],
   };
 
@@ -41,7 +42,7 @@ const Footer = () => {
   ];
 
   return (
-    <motion.footer 
+    <motion.footer
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.1 }}
@@ -49,7 +50,7 @@ const Footer = () => {
     >
       <div className="absolute inset-0 opacity-5 dark:opacity-5">
         <motion.div
-          animate={{ 
+          animate={{
             backgroundPosition: ['0% 0%', '100% 100%'],
           }}
           transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse' }}
@@ -59,7 +60,7 @@ const Footer = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 relative z-10">
-        <motion.div 
+        <motion.div
           variants={staggerContainer}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-12"
         >
@@ -67,26 +68,26 @@ const Footer = () => {
             <div className="space-y-4 md:space-y-6">
               <div className="flex items-center space-x-1">
                 <div className="w-16 h-16 rounded-lg overflow-hidden">
-                  <LiquidMetal 
-                    speed={1} 
-                    colorBack="#00000000" 
-                    colorTint="#FFFFFF" 
-                    softness={0.1} 
-                    repetition={2} 
-                    shiftRed={0.3} 
-                    shiftBlue={0.3} 
-                    distortion={0.07} 
-                    contour={0.4} 
-                    scale={0.6} 
-                    rotation={0} 
-                    shape="diamond" 
-                    image="/logo.png" 
-                    angle={70} 
-                    style={{ 
-                      width: '100%', 
+                  <LiquidMetal
+                    speed={1}
+                    colorBack="#00000000"
+                    colorTint="#FFFFFF"
+                    softness={0.1}
+                    repetition={2}
+                    shiftRed={0.3}
+                    shiftBlue={0.3}
+                    distortion={0.07}
+                    contour={0.4}
+                    scale={0.6}
+                    rotation={0}
+                    shape="diamond"
+                    image="/logo.png"
+                    angle={70}
+                    style={{
+                      width: '100%',
                       height: '100%',
                       borderRadius: '0.5rem'
-                    }} 
+                    }}
                   />
                 </div>
                 <span className="text-2xl md:text-3xl font-bold text-light-text dark:text-white">AstriOrb</span>
@@ -135,25 +136,28 @@ const Footer = () => {
           ))}
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={fadeInUp}
           className="border-t border-black/10 dark:border-white/10 pt-6 md:pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
         >
           <div className="text-light-subtext dark:text-gray-400 text-sm text-center md:text-left">
-            © 2025 AstriOrb Pvt. Ltd. All rights reserved.
+            © {new Date().getFullYear()} AstriOrb Pvt. Ltd. All rights reserved.
           </div>
           <div className="flex flex-wrap gap-4 md:gap-6 text-sm justify-center">
             {footerLinks.legal.map((link) => (
-              <motion.a
+              <motion.div
                 key={link.name}
-                href={link.href}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                whileHover={{ color: '#6366f1' }}
-                className="text-light-subtext dark:text-gray-400 dark:hover:text-cosmic-neon transition-colors duration-200"
+                whileHover={{ scale: 1.05 }}
               >
-                {link.name}
-              </motion.a>
+                <Link
+                  to={link.href}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                  className="text-light-subtext dark:text-gray-400 hover:text-cosmic-purple dark:hover:text-cosmic-neon transition-colors duration-200"
+                >
+                  {link.name}
+                </Link>
+              </motion.div>
             ))}
           </div>
           <motion.button

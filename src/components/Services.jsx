@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { Code2, Smartphone, Brain, Database, Cloud, Zap } from 'lucide-react';
-import { FaReact, FaNodeJs, FaPython, FaDocker } from 'react-icons/fa';
-import { SiFlutter, SiGo } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaPython } from 'react-icons/fa';
+import { SiFlutter, SiFirebase, SiSupabase } from 'react-icons/si';
 import { staggerContainer, fadeInUp } from '../utils/animations';
 import useMediaQuery from '../hooks/useMediaQuery';
 import ComingSoonModal from './ComingSoonModal';
@@ -62,8 +62,8 @@ const Services = () => {
     window.addEventListener('resize', updateContainerSize);
 
     if (techContainerRef.current) {
-        mouseX.set(techContainerRef.current.offsetWidth / 2);
-        mouseY.set(techContainerRef.current.offsetHeight / 2);
+      mouseX.set(techContainerRef.current.offsetWidth / 2);
+      mouseY.set(techContainerRef.current.offsetHeight / 2);
     }
 
     return () => window.removeEventListener('resize', updateContainerSize);
@@ -132,8 +132,8 @@ const Services = () => {
     { name: 'Node.js', icon: FaNodeJs, className: 'text-green-500' },
     { name: 'Python', icon: FaPython, className: 'text-blue-400' },
     { name: 'Flutter', icon: SiFlutter, className: 'text-blue-500' },
-    { name: 'Go', icon: SiGo, className: 'text-cyan-500' },
-    { name: 'Docker', icon: FaDocker, className: 'text-blue-400' },
+    { name: 'Firebase', icon: SiFirebase, className: 'text-yellow-500' },
+    { name: 'Supabase', icon: SiSupabase, className: 'text-emerald-500' },
   ];
 
   return (
@@ -164,7 +164,7 @@ const Services = () => {
         ))}
       </div>
 
-      <motion.div 
+      <motion.div
         variants={fadeInUp}
         className="text-center mb-12 md:mb-16"
       >
@@ -172,12 +172,12 @@ const Services = () => {
           What We <span className="bg-gradient-neon bg-clip-text text-transparent">Build</span>
         </h2>
         <p className="text-lg md:text-xl text-light-subtext dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          We develop our own innovative products across multiple categories, each designed to 
+          We develop our own innovative products across multiple categories, each designed to
           push boundaries and create new market opportunities.
         </p>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         ref={techContainerRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeaveContainer}
@@ -187,7 +187,7 @@ const Services = () => {
         <h3 className="text-xl md:text-2xl font-semibold text-light-text dark:text-white mb-6">Powered By Cutting-Edge Technology</h3>
         <div className="flex justify-center items-center gap-8 md:gap-12 flex-wrap px-4">
           {techStack.map((tech) => (
-            <TechIcon 
+            <TechIcon
               key={tech.name}
               tech={tech}
               mouseX={mouseX}
@@ -200,7 +200,7 @@ const Services = () => {
         </div>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="show"
@@ -268,7 +268,7 @@ const Services = () => {
           );
         })}
       </motion.div>
-      
+
       {/* Coming Soon Modal */}
       <ComingSoonModal
         isOpen={isModalOpen}
