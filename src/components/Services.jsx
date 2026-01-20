@@ -6,6 +6,7 @@ import { SiFlutter, SiFirebase, SiSupabase } from 'react-icons/si';
 import { staggerContainer, fadeInUp } from '../utils/animations';
 import useMediaQuery from '../hooks/useMediaQuery';
 import ComingSoonModal from './ComingSoonModal';
+import ProductShowcaseModal from './ProductShowcaseModal';
 
 const TechIcon = ({ tech, mouseX, mouseY, containerWidth, containerHeight, isDesktop }) => {
   const randomX = useRef(Math.random() * 2 - 1).current;
@@ -30,13 +31,21 @@ const TechIcon = ({ tech, mouseX, mouseY, containerWidth, containerHeight, isDes
   );
 };
 
+// Categories with actual products to showcase
+const PRODUCT_CATEGORIES = ['Mobile Innovation'];
+
 const Services = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isComingSoonOpen, setIsComingSoonOpen] = useState(false);
+  const [isProductShowcaseOpen, setIsProductShowcaseOpen] = useState(false);
 
   const handleExploreClick = (category) => {
     setSelectedCategory(category);
-    setIsModalOpen(true);
+    if (PRODUCT_CATEGORIES.includes(category)) {
+      setIsProductShowcaseOpen(true);
+    } else {
+      setIsComingSoonOpen(true);
+    }
   };
 
   const handleMouseEnter = () => document.dispatchEvent(new Event('cursor-enter'));
@@ -269,10 +278,17 @@ const Services = () => {
         })}
       </motion.div>
 
-      {/* Coming Soon Modal */}
+      {/* Coming Soon Modal - for categories without products */}
       <ComingSoonModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        isOpen={isComingSoonOpen}
+        onClose={() => setIsComingSoonOpen(false)}
+        categoryTitle={selectedCategory}
+      />
+
+      {/* Product Showcase Modal - for categories with products */}
+      <ProductShowcaseModal
+        isOpen={isProductShowcaseOpen}
+        onClose={() => setIsProductShowcaseOpen(false)}
         categoryTitle={selectedCategory}
       />
     </div>

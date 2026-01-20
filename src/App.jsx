@@ -23,6 +23,10 @@ import TermsOfService from './pages/TermsOfService';
 import LicenseAgreement from './pages/LicenseAgreement';
 import GDPRCompliance from './pages/GDPRCompliance';
 
+// Fincend Legal Pages
+import FincendPrivacyPolicy from './pages/FincendPrivacyPolicy';
+import FincendTerms from './pages/FincendTerms';
+
 const HomePage = ({ loading }) => {
   return (
     <>
@@ -95,6 +99,9 @@ function App() {
               <Route path="/terms" element={<TermsOfService />} />
               <Route path="/license" element={<LicenseAgreement />} />
               <Route path="/gdpr" element={<GDPRCompliance />} />
+              {/* Fincend Routes */}
+              <Route path="/fincend/privacy-policy" element={<FincendPrivacyPolicy />} />
+              <Route path="/fincend/terms" element={<FincendTerms />} />
             </Routes>
           </div>
         </ProjectModalProvider>
