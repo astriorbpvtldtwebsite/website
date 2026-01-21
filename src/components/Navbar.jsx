@@ -34,11 +34,10 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-light-bg/80 dark:bg-space-900/95 backdrop-blur-lg border-b border-black/10 dark:border-white/10 shadow-lg dark:shadow-cosmic-purple/10' 
-          : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        ? 'bg-light-bg/80 dark:bg-space-900/95 backdrop-blur-lg border-b border-black/10 dark:border-white/10 shadow-lg dark:shadow-cosmic-purple/10'
+        : 'bg-transparent'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
@@ -55,17 +54,35 @@ const Navbar = () => {
               transition={{ duration: 0.6 }}
               className="w-8 h-8 md:w-10 md:h-10 bg-gradient-neon rounded-lg flex items-center justify-center relative overflow-hidden p-1"
             >
+              {/* Shimmer effect */}
               <motion.div
-                animate={{ 
+                animate={{
+                  x: ['-100%', '200%'],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatDelay: 1,
+                  ease: 'easeInOut'
+                }}
+                className="absolute inset-0 z-20 pointer-events-none"
+                style={{
+                  background: 'linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%)',
+                  width: '50%',
+                }}
+              />
+              {/* Background glow */}
+              <motion.div
+                animate={{
                   scale: [1, 1.2, 1],
                   opacity: [0.5, 1, 0.5],
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
                 className="absolute inset-0 bg-gradient-to-r from-cosmic-purple to-cosmic-neon opacity-20"
               />
-              <img 
-                src="/logo.png" 
-                alt="AstriOrb Logo" 
+              <img
+                src="/logo.png"
+                alt="AstriOrb Logo"
                 className="w-full h-full object-contain relative z-10"
               />
             </motion.div>
@@ -83,7 +100,7 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.05,
                   color: theme === 'dark' ? '#00d4aa' : '#6366f1',
                 }}
@@ -100,8 +117,8 @@ const Navbar = () => {
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               onClick={openProjectModal}
-              whileHover={{ 
-                scale: 1.05, 
+              whileHover={{
+                scale: 1.05,
                 boxShadow: '0 10px 30px rgba(99, 102, 241, 0.3)',
               }}
               whileTap={{ scale: 0.95 }}
@@ -132,22 +149,22 @@ const Navbar = () => {
 
           {/* Mobile menu button */}
           <div className="lg:hidden flex items-center gap-2">
-             <button
-                onClick={toggleTheme}
-                className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 dark:bg-space-800 text-light-text dark:text-white"
-              >
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.div
-                    key={theme}
-                    initial={{ y: -20, opacity: 0, rotate: -90 }}
-                    animate={{ y: 0, opacity: 1, rotate: 0 }}
-                    exit={{ y: 20, opacity: 0, rotate: 90 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-                  </motion.div>
-                </AnimatePresence>
-              </button>
+            <button
+              onClick={toggleTheme}
+              className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 dark:bg-space-800 text-light-text dark:text-white"
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={theme}
+                  initial={{ y: -20, opacity: 0, rotate: -90 }}
+                  animate={{ y: 0, opacity: 1, rotate: 0 }}
+                  exit={{ y: 20, opacity: 0, rotate: 90 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                </motion.div>
+              </AnimatePresence>
+            </button>
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsOpen(!isOpen)}
@@ -166,7 +183,7 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         <motion.div
           initial={false}
-          animate={{ 
+          animate={{
             height: isOpen ? 'auto' : 0,
             opacity: isOpen ? 1 : 0,
           }}
@@ -184,7 +201,7 @@ const Navbar = () => {
                 key={item.name}
                 href={item.href}
                 initial={{ opacity: 0, x: -20 }}
-                animate={{ 
+                animate={{
                   opacity: isOpen ? 1 : 0,
                   x: isOpen ? 0 : -20,
                 }}
@@ -194,7 +211,7 @@ const Navbar = () => {
                   e.preventDefault();
                   const targetId = item.href.replace('#', '');
                   const targetElement = document.getElementById(targetId);
-                  
+
                   if (targetElement) {
                     setIsOpen(false);
                     setTimeout(() => {
@@ -206,23 +223,23 @@ const Navbar = () => {
                 {item.name}
               </motion.a>
             ))}
-                          <motion.button
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ 
-                  opacity: isOpen ? 1 : 0,
-                  y: isOpen ? 0 : 20,
-                }}
-                transition={{ duration: 0.3, delay: 0.4 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full mt-4 bg-gradient-purple text-white py-3 rounded-full font-medium flex items-center justify-center space-x-2"
-                onClick={() => {
-                  setIsOpen(false);  // Close mobile menu
-                  openProjectModal(); // Open project modal
-                }}
-              >
-                <Zap className="w-4 h-4" />
-                <span>Project:Tastory</span>
-              </motion.button>
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              animate={{
+                opacity: isOpen ? 1 : 0,
+                y: isOpen ? 0 : 20,
+              }}
+              transition={{ duration: 0.3, delay: 0.4 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-full mt-4 bg-gradient-purple text-white py-3 rounded-full font-medium flex items-center justify-center space-x-2"
+              onClick={() => {
+                setIsOpen(false);  // Close mobile menu
+                openProjectModal(); // Open project modal
+              }}
+            >
+              <Zap className="w-4 h-4" />
+              <span>Project:Tastory</span>
+            </motion.button>
           </motion.div>
         </motion.div>
       </div>
