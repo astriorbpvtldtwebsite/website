@@ -6,14 +6,14 @@ import { Link } from 'react-router-dom';
 // Mobile Innovation Products
 const mobileProducts = [
     {
-        id: 'fincend',
-        name: 'Fincend',
+        id: 'fisclok',
+        name: 'FISCLOK',
         tagline: 'Manage your money with ease',
         description: 'Privacy-first personal finance manager with local-only storage, expense tracking, loan management, and budget monitoring.',
-        icon: '/fincend_app_icon.png',
+        icon: '/fisclok_app_icon.png',
         status: 'coming-soon', // 'live', 'coming-soon', 'in-development'
         playStoreUrl: null, // Add Play Store URL when available
-        privacyUrl: '/fincend/privacy-policy',
+        privacyUrl: '/fisclok/privacy-policy',
         gradient: 'from-purple-500 to-indigo-600',
     },
     {

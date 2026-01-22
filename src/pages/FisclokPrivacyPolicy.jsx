@@ -5,7 +5,7 @@ import { ArrowLeft, Shield, Smartphone, Lock, Mail } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-const FincendPrivacyPolicy = () => {
+const FisclokPrivacyPolicy = () => {
     return (
         <>
             <Navbar />
@@ -34,8 +34,8 @@ const FincendPrivacyPolicy = () => {
                     >
                         <div className="flex justify-center mb-4">
                             <img
-                                src="/fincend_app_icon.png"
-                                alt="Fincend"
+                                src="/fisclok_app_icon.png"
+                                alt="FISCLOK"
                                 className="w-20 h-20 rounded-2xl shadow-lg"
                             />
                         </div>
@@ -43,7 +43,7 @@ const FincendPrivacyPolicy = () => {
                             Privacy Policy
                         </h1>
                         <p className="text-lg text-cosmic-purple dark:text-cosmic-neon font-medium">
-                            Fincend
+                            FISCLOK
                         </p>
                         <p className="text-sm text-light-subtext dark:text-gray-400 mt-2">
                             Last Updated: January 2026
@@ -72,7 +72,7 @@ const FincendPrivacyPolicy = () => {
                         <section>
                             <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">Introduction</h2>
                             <p className="text-light-subtext dark:text-gray-300 leading-relaxed">
-                                Fincend ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we handle your information when you use our mobile application.
+                                FISCLOK ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we handle your information when you use our mobile application.
                             </p>
                         </section>
 
@@ -92,7 +92,7 @@ const FincendPrivacyPolicy = () => {
                             </ul>
 
                             <h3 className="font-medium text-light-text dark:text-white mt-4 mb-2">Data You Provide</h3>
-                            <p className="text-light-subtext dark:text-gray-300 mb-2">When using Fincend, you may enter:</p>
+                            <p className="text-light-subtext dark:text-gray-300 mb-2">When using FISCLOK, you may enter:</p>
                             <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-1 ml-2">
                                 <li>Transaction records (income and expenses)</li>
                                 <li>Loan information</li>
@@ -134,7 +134,7 @@ const FincendPrivacyPolicy = () => {
                             <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-4 mb-4">
                                 <h3 className="font-medium text-yellow-500 mb-2">Google AdMob (Advertising)</h3>
                                 <p className="text-light-subtext dark:text-gray-300 text-sm mb-2">
-                                    Fincend uses Google AdMob to display advertisements. AdMob may collect certain information from your device for advertising purposes, including:
+                                    FISCLOK uses Google AdMob to display advertisements. AdMob may collect certain information from your device for advertising purposes, including:
                                 </p>
                                 <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-1 text-sm ml-2">
                                     <li><strong>Device Identifiers:</strong> Advertising ID (Android) or IDFA (iOS) for personalized advertising</li>
@@ -157,7 +157,7 @@ const FincendPrivacyPolicy = () => {
                             </div>
 
                             <p className="text-light-subtext dark:text-gray-300">
-                                Apart from AdMob, Fincend does NOT use any other third-party analytics or tracking services.
+                                Apart from AdMob, FISCLOK does NOT use any other third-party analytics or tracking services.
                             </p>
                         </section>
 
@@ -179,7 +179,7 @@ const FincendPrivacyPolicy = () => {
                                 To delete your data:
                             </p>
                             <ol className="list-decimal list-inside text-light-subtext dark:text-gray-300 mt-2 ml-2">
-                                <li>Uninstall the Fincend app from your device</li>
+                                <li>Uninstall the FISCLOK app from your device</li>
                                 <li>All locally stored data will be permanently removed</li>
                             </ol>
                         </section>
@@ -188,7 +188,7 @@ const FincendPrivacyPolicy = () => {
                         <section>
                             <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">Children's Privacy</h2>
                             <p className="text-light-subtext dark:text-gray-300">
-                                Fincend does not knowingly collect information from children under 13. The app is intended for users who are at least 13 years old.
+                                FISCLOK does not knowingly collect information from children under 13. The app is intended for users who are at least 13 years old.
                             </p>
                         </section>
 
@@ -212,7 +212,7 @@ const FincendPrivacyPolicy = () => {
                                 If you have questions about this Privacy Policy, please contact us at:
                             </p>
                             <ul className="text-light-subtext dark:text-gray-300 mt-2 ml-2">
-                                <li>Email: <a href="mailto:officialfincend@gmail.com" className="text-cosmic-purple dark:text-cosmic-neon hover:underline">officialfincend@gmail.com</a></li>
+                                <li>Email: <a href="mailto:officialfisclok@gmail.com" className="text-cosmic-purple dark:text-cosmic-neon hover:underline">officialfisclok@gmail.com</a></li>
                                 <li>Company: AstriOrb Private Limited</li>
                             </ul>
                         </section>
@@ -220,10 +220,10 @@ const FincendPrivacyPolicy = () => {
                         {/* Consent */}
                         <section className="border-t border-gray-200 dark:border-gray-700 pt-6">
                             <p className="text-light-subtext dark:text-gray-300 text-sm">
-                                By using Fincend, you consent to this Privacy Policy.
+                                By using FISCLOK, you consent to this Privacy Policy.
                             </p>
                             <p className="text-light-subtext dark:text-gray-400 text-sm mt-4">
-                                <strong>Summary:</strong> Fincend is a privacy-first app. All your financial data stays on your device. We don't collect, transmit, or store any of your personal information. AdMob collects device identifiers for advertising purposes only.
+                                <strong>Summary:</strong> FISCLOK is a privacy-first app. All your financial data stays on your device. We don't collect, transmit, or store any of your personal information. AdMob collects device identifiers for advertising purposes only.
                             </p>
                         </section>
                     </motion.div>
@@ -236,7 +236,7 @@ const FincendPrivacyPolicy = () => {
                         className="text-center mt-8"
                     >
                         <Link
-                            to="/fincend/terms"
+                            to="/fisclok/terms"
                             className="text-cosmic-purple dark:text-cosmic-neon hover:underline"
                         >
                             View Terms of Service →
@@ -249,4 +249,4 @@ const FincendPrivacyPolicy = () => {
     );
 };
 
-export default FincendPrivacyPolicy;
+export default FisclokPrivacyPolicy;

@@ -5,7 +5,7 @@ import { ArrowLeft, FileText, AlertTriangle, Mail } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-const FincendTerms = () => {
+const FisclokTerms = () => {
     return (
         <>
             <Navbar />
@@ -34,8 +34,8 @@ const FincendTerms = () => {
                     >
                         <div className="flex justify-center mb-4">
                             <img
-                                src="/fincend_app_icon.png"
-                                alt="Fincend"
+                                src="/fisclok_app_icon.png"
+                                alt="FISCLOK"
                                 className="w-20 h-20 rounded-2xl shadow-lg"
                             />
                         </div>
@@ -43,7 +43,7 @@ const FincendTerms = () => {
                             Terms of Service
                         </h1>
                         <p className="text-lg text-cosmic-purple dark:text-cosmic-neon font-medium">
-                            Fincend
+                            FISCLOK
                         </p>
                         <p className="text-sm text-light-subtext dark:text-gray-400 mt-2">
                             Last Updated: January 2026
@@ -64,7 +64,7 @@ const FincendTerms = () => {
                                 1. Acceptance of Terms
                             </h2>
                             <p className="text-light-subtext dark:text-gray-300 leading-relaxed">
-                                By downloading, installing, or using Fincend ("the App"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the App.
+                                By downloading, installing, or using FISCLOK ("the App"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the App.
                             </p>
                         </section>
 
@@ -72,7 +72,7 @@ const FincendTerms = () => {
                         <section>
                             <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">2. Description of Service</h2>
                             <p className="text-light-subtext dark:text-gray-300 mb-2">
-                                Fincend is a personal finance management application that helps you:
+                                FISCLOK is a personal finance management application that helps you:
                             </p>
                             <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-1 ml-2">
                                 <li>Track income and expenses</li>
@@ -112,7 +112,7 @@ const FincendTerms = () => {
                                 <li>All your data is stored locally on your device</li>
                                 <li>We do not collect, access, or transmit your financial data</li>
                                 <li>You are responsible for backing up your data</li>
-                                <li>See our <Link to="/fincend/privacy-policy" className="text-cosmic-purple dark:text-cosmic-neon hover:underline">Privacy Policy</Link> for more details</li>
+                                <li>See our <Link to="/fisclok/privacy-policy" className="text-cosmic-purple dark:text-cosmic-neon hover:underline">Privacy Policy</Link> for more details</li>
                             </ul>
                         </section>
 
@@ -153,7 +153,7 @@ const FincendTerms = () => {
                                 7. Financial Advice Disclaimer
                             </h2>
                             <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-4">
-                                <p className="font-medium text-yellow-500 mb-2">Fincend is NOT a financial advisor</p>
+                                <p className="font-medium text-yellow-500 mb-2">FISCLOK is NOT a financial advisor</p>
                                 <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-1 ml-2 text-sm">
                                     <li>The App provides tools for tracking and organizing your finances</li>
                                     <li>It does not provide financial, investment, tax, or legal advice</li>
@@ -167,7 +167,7 @@ const FincendTerms = () => {
                         <section>
                             <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">8. Intellectual Property</h2>
                             <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-1 ml-2">
-                                <li>Fincend and its original content, features, and functionality are owned by AstriOrb Private Limited</li>
+                                <li>FISCLOK and its original content, features, and functionality are owned by AstriOrb Private Limited</li>
                                 <li>You may not copy, modify, distribute, or create derivative works</li>
                                 <li>All trademarks and logos are our property</li>
                             </ul>
@@ -212,7 +212,7 @@ const FincendTerms = () => {
                                 For questions about these Terms, contact us at:
                             </p>
                             <ul className="text-light-subtext dark:text-gray-300 mt-2 ml-2">
-                                <li>Email: <a href="mailto:officialfincend@gmail.com" className="text-cosmic-purple dark:text-cosmic-neon hover:underline">officialfincend@gmail.com</a></li>
+                                <li>Email: <a href="mailto:officialfisclok@gmail.com" className="text-cosmic-purple dark:text-cosmic-neon hover:underline">officialfisclok@gmail.com</a></li>
                                 <li>Company: AstriOrb Private Limited</li>
                             </ul>
                         </section>
@@ -220,10 +220,10 @@ const FincendTerms = () => {
                         {/* Acknowledgment */}
                         <section className="border-t border-gray-200 dark:border-gray-700 pt-6">
                             <p className="text-light-subtext dark:text-gray-300 text-sm uppercase">
-                                BY USING FINCEND, YOU ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD, AND AGREE TO BE BOUND BY THESE TERMS OF SERVICE.
+                                BY USING FISCLOK, YOU ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD, AND AGREE TO BE BOUND BY THESE TERMS OF SERVICE.
                             </p>
                             <p className="text-light-subtext dark:text-gray-400 text-sm mt-4">
-                                <strong>Remember:</strong> Fincend is a tool to help you manage your finances. Always make informed decisions and consult professionals when needed.
+                                <strong>Remember:</strong> FISCLOK is a tool to help you manage your finances. Always make informed decisions and consult professionals when needed.
                             </p>
                         </section>
                     </motion.div>
@@ -236,7 +236,7 @@ const FincendTerms = () => {
                         className="text-center mt-8"
                     >
                         <Link
-                            to="/fincend/privacy-policy"
+                            to="/fisclok/privacy-policy"
                             className="text-cosmic-purple dark:text-cosmic-neon hover:underline"
                         >
                             ← View Privacy Policy
@@ -249,4 +249,4 @@ const FincendTerms = () => {
     );
 };
 
-export default FincendTerms;
+export default FisclokTerms;

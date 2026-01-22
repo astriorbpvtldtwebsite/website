@@ -52,18 +52,18 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Fincend Privacy Policy -->
+  <!-- FISCLOK Privacy Policy -->
   <url>
-    <loc>https://astriorb.com/fincend/privacy-policy/</loc>
-    <lastmod>2026-01-20</lastmod>
+    <loc>https://astriorb.com/fisclok/privacy-policy/</loc>
+    <lastmod>2026-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
-  <!-- Fincend Terms of Service -->
+  <!-- FISCLOK Terms of Service -->
   <url>
-    <loc>https://astriorb.com/fincend/terms/</loc>
-    <lastmod>2026-01-20</lastmod>
+    <loc>https://astriorb.com/fisclok/terms/</loc>
+    <lastmod>2026-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
