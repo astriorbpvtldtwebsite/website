@@ -25,11 +25,11 @@ const ProjectProgressModal = ({ isOpen, onClose }) => {
   const calculateStatus = (targetDate) => {
     const now = new Date();
     const target = new Date(targetDate);
-    
+
     // Set both dates to the first day of their respective months for comparison
     const currentMonth = new Date(now.getFullYear(), now.getMonth(), 1);
     const targetMonth = new Date(target.getFullYear(), target.getMonth(), 1);
-    
+
     if (currentMonth > targetMonth) {
       return 'completed';
     } else if (currentMonth.getTime() === targetMonth.getTime()) {
@@ -59,16 +59,28 @@ const ProjectProgressModal = ({ isOpen, onClose }) => {
       targetDate: '2025-10-01'
     },
     {
-      phase: 'Testing & Optimization',
-      details: 'Quality assurance, performance optimization, and user testing.',
+      phase: 'Development Completed',
+      details: 'All core features implemented and development phase finalized.',
       date: 'Dec 2025',
       targetDate: '2025-12-01'
     },
     {
+      phase: 'Fund Raising',
+      details: 'Securing investment and resources for launch and scaling.',
+      date: 'Feb 2026',
+      targetDate: '2026-02-01'
+    },
+    {
+      phase: 'Final Check & Testing',
+      details: 'Quality assurance, performance optimization, and user testing.',
+      date: 'Mar 2026',
+      targetDate: '2026-03-01'
+    },
+    {
       phase: 'Launch Preparation',
       details: 'Final polishing, documentation, and launch strategy.',
-      date: 'Jan 2026',
-      targetDate: '2026-01-01'
+      date: 'May 2026',
+      targetDate: '2026-05-01'
     }
   ].map(step => ({
     ...step,
@@ -98,7 +110,7 @@ const ProjectProgressModal = ({ isOpen, onClose }) => {
             onClick={onClose}
             className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
           />
-          
+
           {/* Modal */}
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
@@ -126,13 +138,13 @@ const ProjectProgressModal = ({ isOpen, onClose }) => {
                 <p className="text-light-subtext dark:text-gray-300 mb-4">
                   A revolutionary platform connecting food enthusiasts with authentic local cuisines
                 </p>
-                
+
                 {/* Progress Bar */}
                 {(() => {
                   const completedCount = progressSteps.filter(s => s.status === 'completed').length;
                   const totalCount = progressSteps.length;
                   const progressPercentage = Math.round((completedCount / totalCount) * 100);
-                  
+
                   return (
                     <div className="mt-4">
                       <div className="flex items-center justify-between mb-2">

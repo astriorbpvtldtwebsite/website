@@ -19,11 +19,9 @@ const Footer = () => {
       { name: 'Innovation Lab', href: '#services' },
       { name: 'Contact', href: '#contact' },
     ],
-    resources: [
-      { name: 'Product Documentation', href: '#' },
-      { name: 'API Reference', href: '#' },
-      { name: 'Developer Tools', href: '#' },
-      { name: 'Beta Program', href: '#' },
+    products: [
+      { name: 'FISCLOK', href: 'https://play.google.com/store/apps/details?id=com.astriorb.fincend', external: true },
+      { name: 'Tastory', href: '#', badge: 'Coming Soon' },
     ],
     legal: [
       { name: 'Privacy Policy', href: '/privacy-policy' },
@@ -114,7 +112,7 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {['company', 'resources'].map((key) => (
+          {['company', 'products'].map((key) => (
             <motion.div variants={fadeInUp} key={key}>
               <h4 className="text-light-text dark:text-white font-semibold mb-4 md:mb-6 capitalize">{key}</h4>
               <ul className="space-y-3">
@@ -122,12 +120,19 @@ const Footer = () => {
                   <li key={link.name}>
                     <motion.a
                       href={link.href}
+                      target={link.external ? '_blank' : undefined}
+                      rel={link.external ? 'noopener noreferrer' : undefined}
                       onMouseEnter={handleMouseEnter}
                       onMouseLeave={handleMouseLeave}
                       whileHover={{ x: 5, color: '#6366f1' }}
-                      className="text-light-subtext dark:text-gray-300 dark:hover:text-cosmic-neon transition-all duration-200 text-sm"
+                      className="text-light-subtext dark:text-gray-300 dark:hover:text-cosmic-neon transition-all duration-200 text-sm inline-flex items-center gap-2"
                     >
                       {link.name}
+                      {link.badge && (
+                        <span className="text-xs px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/30">
+                          {link.badge}
+                        </span>
+                      )}
                     </motion.a>
                   </li>
                 ))}

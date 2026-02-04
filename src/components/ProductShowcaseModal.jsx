@@ -11,8 +11,8 @@ const mobileProducts = [
         tagline: 'Manage your money with ease',
         description: 'Privacy-first personal finance manager with local-only storage, expense tracking, loan management, and budget monitoring.',
         icon: '/fisclok_app_icon.png',
-        status: 'coming-soon', // 'live', 'coming-soon', 'in-development'
-        playStoreUrl: null, // Add Play Store URL when available
+        status: 'live', // 'live', 'coming-soon', 'in-development'
+        playStoreUrl: 'https://play.google.com/store/apps/details?id=com.astriorb.fincend',
         privacyUrl: '/fisclok/privacy-policy',
         gradient: 'from-purple-500 to-indigo-600',
     },
@@ -51,17 +51,27 @@ const ProductCard = ({ product }) => {
     const renderActionButton = () => {
         if (status === 'live' && playStoreUrl) {
             return (
-                <motion.a
-                    href={playStoreUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="w-full bg-gradient-purple text-white font-medium px-4 py-2.5 rounded-lg flex items-center justify-center space-x-2 hover:shadow-lg transition-shadow text-sm"
-                >
-                    <span>Get on Play Store</span>
-                    <ExternalLink className="w-4 h-4" />
-                </motion.a>
+                <div className="space-y-2">
+                    <motion.a
+                        href={playStoreUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        className="w-full bg-gradient-purple text-white font-medium px-4 py-2.5 rounded-lg flex items-center justify-center space-x-2 hover:shadow-lg transition-shadow text-sm"
+                    >
+                        <span>Get on Play Store</span>
+                        <ExternalLink className="w-4 h-4" />
+                    </motion.a>
+                    {privacyUrl && (
+                        <Link
+                            to={privacyUrl}
+                            className="block w-full text-center text-xs text-gray-400 hover:text-cosmic-neon transition-colors"
+                        >
+                            View Privacy Policy →
+                        </Link>
+                    )}
+                </div>
             );
         }
 
