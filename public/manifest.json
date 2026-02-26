@@ -1,0 +1,25 @@
+{
+    "name": "AstriOrb",
+    "short_name": "AstriOrb",
+    "description": "Where Ideas Orbit into Reality — A product development company building innovative applications and software solutions.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0a0b1e",
+    "theme_color": "#0a0b1e",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": [
+        "technology",
+        "software",
+        "business"
+    ],
+    "lang": "en",
+    "dir": "ltr"
+}

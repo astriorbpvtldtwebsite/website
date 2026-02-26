@@ -26,6 +26,7 @@ const Navbar = () => {
     { name: 'About', href: '#about' },
     { name: 'Projects', href: '#services' },
     { name: 'Why Us', href: '#why-us' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Careers', href: '#careers' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -209,6 +210,11 @@ const Navbar = () => {
                 className="block py-3 text-light-subtext dark:text-gray-300 hover:text-cosmic-purple dark:hover:text-cosmic-neon transition-colors border-b border-black/5 dark:border-white/5 last:border-b-0"
                 onClick={(e) => {
                   e.preventDefault();
+                  if (item.href.startsWith('/')) {
+                    setIsOpen(false);
+                    window.location.href = item.href;
+                    return;
+                  }
                   const targetId = item.href.replace('#', '');
                   const targetElement = document.getElementById(targetId);
 

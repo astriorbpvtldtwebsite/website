@@ -11,14 +11,14 @@ const useMousePosition = () => {
       if (rafRef.current) {
         cancelAnimationFrame(rafRef.current);
       }
-      
+
       rafRef.current = requestAnimationFrame(() => {
         setMousePosition({ x: ev.clientX, y: ev.clientY });
       });
     };
 
     window.addEventListener('mousemove', updateMousePosition, { passive: true });
-    
+
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
       if (rafRef.current) {
@@ -39,7 +39,7 @@ const CustomCursor = React.memo(() => {
     if (typeof window !== 'undefined') {
       setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
     }
-    
+
     const enterHandler = () => setVariant('hover');
     const leaveHandler = () => setVariant('default');
 

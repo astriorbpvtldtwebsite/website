@@ -1,5 +1,5 @@
 # Robots.txt for AstriOrb
-# Allow all search engines to crawl the site
+# Allow all search engines and AI crawlers to crawl the site
 
 User-agent: *
 Allow: /
@@ -10,6 +10,10 @@ Allow: /
 
 # Sitemap location
 Sitemap: https://astriorb.com/sitemap.xml
+
+# LLMs.txt - AI-facing company profile
+# See https://llmstxt.org/
+# Available at: https://astriorb.com/llms.txt
 
 # Crawl-delay (optional, helps prevent server overload)
 Crawl-delay: 1
@@ -22,4 +26,23 @@ User-agent: Bingbot
 Allow: /
 
 User-agent: Slurp
+Allow: /
+
+# AI Search Engine Crawlers - explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
 Allow: /

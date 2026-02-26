@@ -8,6 +8,7 @@ import Services from './components/Services';
 import WhyChooseUs from './components/WhyChooseUs';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import SectionWrapper from './components/SectionWrapper';
@@ -26,6 +27,10 @@ import GDPRCompliance from './pages/GDPRCompliance';
 // FISCLOK Legal Pages
 import FisclokPrivacyPolicy from './pages/FisclokPrivacyPolicy';
 import FisclokTerms from './pages/FisclokTerms';
+
+// Blog Pages
+import BlogList from './pages/BlogList';
+import BlogPost from './pages/BlogPost';
 
 const HomePage = ({ loading }) => {
   return (
@@ -59,6 +64,9 @@ const HomePage = ({ loading }) => {
               </SectionWrapper>
               <SectionWrapper id="contact" className="py-16 md:py-24 bg-light-bg dark:bg-gradient-to-b dark:from-space-900 dark:to-space-800 relative overflow-hidden">
                 <Contact />
+              </SectionWrapper>
+              <SectionWrapper id="faq" className="py-16 md:py-24 bg-light-card dark:bg-gradient-to-b dark:from-space-800 dark:to-space-900 relative overflow-hidden">
+                <FAQ />
               </SectionWrapper>
             </main>
             <Footer />
@@ -102,6 +110,9 @@ function App() {
               {/* FISCLOK Routes */}
               <Route path="/fisclok/privacy-policy" element={<FisclokPrivacyPolicy />} />
               <Route path="/fisclok/terms" element={<FisclokTerms />} />
+              {/* Blog Routes */}
+              <Route path="/blog" element={<BlogList />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
             </Routes>
           </div>
         </ProjectModalProvider>

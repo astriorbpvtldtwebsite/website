@@ -8,17 +8,17 @@ const About = () => {
     {
       Icon: Target,
       title: 'Our Mission',
-      description: 'To revolutionize industries by developing groundbreaking products that transform how people interact with technology and solve everyday challenges.',
+      description: 'To solve real-world problems through software and build a better, simpler society. We identify everyday challenges and turn them into products that make a tangible difference in people\'s lives.',
     },
     {
       Icon: Eye,
       title: 'Our Vision',
-      description: 'To be the global leader in product innovation, creating technologies that shape the future and inspire the next generation of digital solutions.',
+      description: 'To grow AstriOrb into a globally recognized product company built from India — known for shipping useful, well-crafted software across multiple domains including food, finance, AI, gaming, and beyond.',
     },
     {
       Icon: Heart,
       title: 'Our Values',
-      description: 'Innovation, excellence, and impact drive our product development. We believe in creating technology that not only works brilliantly but changes lives.',
+      description: 'User-first thinking, transparency, and quality over quantity. We respect our users\' privacy, we don\'t cut corners, and we only ship products we\'d use ourselves.',
     },
   ];
 
@@ -45,8 +45,9 @@ const About = () => {
           About <span className="bg-gradient-neon bg-clip-text text-transparent">AstriOrb</span>
         </h2>
         <p className="text-lg md:text-xl text-light-subtext dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          A product development powerhouse where innovation meets execution. We don't just build software—we create
-          revolutionary products that redefine industries and enhance human experiences.
+          AstriOrb Pvt. Ltd. is a product development company founded in 2025 by Mohammed Hashim in Kerala, India.
+          We build software products that solve real-world problems — from food platforms and finance tools
+          to AI solutions and game development — with the goal of creating a better, simpler society.
         </p>
       </motion.div>
 
@@ -105,16 +106,20 @@ const About = () => {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h3 className="text-2xl md:text-3xl font-semibold text-light-text dark:text-white mb-4 md:mb-6">Our Innovation Journey</h3>
+          <h3 className="text-2xl md:text-3xl font-semibold text-light-text dark:text-white mb-4 md:mb-6">How AstriOrb Started</h3>
           <p className="text-base md:text-lg text-light-subtext dark:text-gray-300 leading-relaxed mb-4 md:mb-6">
-            AstriOrb was founded with a singular vision: to create products that don't just solve problems,
-            but anticipate needs and create new possibilities. We are product creators, not service providers—
-            every application we develop represents our own innovative ideas brought to life.
+            AstriOrb was founded by Mohammed Hashim — a Computer Science Engineering graduate with experience
+            as Studio Head at Custodian Games and developer at Annolive (an AI company in Bangalore) — with a clear
+            purpose: to solve real-world problems through software and build a better, simpler society.
+          </p>
+          <p className="text-base md:text-lg text-light-subtext dark:text-gray-300 leading-relaxed mb-4 md:mb-6">
+            Our major project Tastory, a food-based platform, is already fully developed and seeking funding for launch.
+            On the side, we built FISCLOK — a free finance management app born from a personal need to track expenses
+            during the startup journey — which is now live on the Google Play Store.
           </p>
           <p className="text-base md:text-lg text-light-subtext dark:text-gray-300 leading-relaxed">
-            Our research and development lab continuously explores emerging technologies, from AI and machine
-            learning to blockchain and IoT, ensuring our products are always at the forefront of innovation.
-            We don't follow trends—we create them.
+            Beyond these, AstriOrb is exploring game development, AI solutions, and gadget innovations.
+            Every product is built entirely by the founder using Flutter, Firebase, React, Supabase, and Python.
           </p>
         </div>
       </motion.div>

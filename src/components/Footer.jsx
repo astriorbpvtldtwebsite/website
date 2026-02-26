@@ -17,6 +17,7 @@ const Footer = () => {
       { name: 'About Us', href: '#about' },
       { name: 'Careers', href: '#careers' },
       { name: 'Innovation Lab', href: '#services' },
+      { name: 'Blog', href: '/blog' },
       { name: 'Contact', href: '#contact' },
     ],
     products: [
