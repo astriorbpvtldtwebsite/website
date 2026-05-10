@@ -1,5 +1,84 @@
 export const blogPosts = [
     {
+        slug: 'fisclok-v1-0-1-update-built-by-listening',
+        title: 'FISCLOK v1.0.1 — An Update Built by Listening',
+        excerpt: 'Our first major update is here — driven entirely by user feedback. Bug fixes, a new reminder feature, an improved date picker, more currencies, and zero ads.',
+        date: '2026-05-10',
+        author: 'Mohammed Hashim',
+        readTime: '5 min read',
+        category: 'Product',
+        content: [
+            {
+                type: 'paragraph',
+                text: 'FISCLOK v1.0.1 is live — and this update means a lot to us. Not because of the features we added, but because of why we added them. Every single change in this update came from one place: our users.',
+            },
+            {
+                type: 'heading',
+                text: 'No Launch Is Perfect — And That\'s Okay',
+            },
+            {
+                type: 'paragraph',
+                text: 'When we launched FISCLOK v1.0.0, we knew it wasn\'t going to be flawless. As a startup, you can\'t wait for perfection — you launch, you learn, and you improve. Some users reported small bugs and occasional crashing issues. We heard every single report, and in v1.0.1, we\'ve fixed all of them.',
+            },
+            {
+                type: 'paragraph',
+                text: 'The reality of building a product is that mistakes will happen. What matters is how fast you respond and how seriously you take the feedback. For us, updating from our mistakes isn\'t just a process — it\'s a principle.',
+            },
+            {
+                type: 'heading',
+                text: 'Listening to Users — Even the Small Things',
+            },
+            {
+                type: 'paragraph',
+                text: 'The most important part of this update isn\'t any single feature — it\'s the approach behind it. We listened. We were always there when a user raised something, no matter how small it seemed.',
+            },
+            {
+                type: 'paragraph',
+                text: 'Here\'s a perfect example: one of our users reached out and asked us to add the Omani Rial as a currency option. He\'s working in Oman and needed it for his daily tracking. Now, some might think that\'s a tiny request — but we don\'t see it that way. If even one user needs something and it makes their experience better, it matters to us. So we added it.',
+            },
+            {
+                type: 'heading',
+                text: 'A Better Way to Pick Dates',
+            },
+            {
+                type: 'paragraph',
+                text: 'In v1.0.0, changing a transaction date meant manually typing it in. It worked, but it wasn\'t the smoothest experience. In this update, we\'ve replaced it with a mini calendar picker. Now when you tap to change a date, a clean calendar view pops up — just tap the date you want. It looks better, feels more intuitive, and keeps everything more organized.',
+            },
+            {
+                type: 'heading',
+                text: 'Daily Reminders — Never Forget to Track',
+            },
+            {
+                type: 'paragraph',
+                text: 'This was one of the most requested features. A lot of users told us they loved FISCLOK but sometimes forgot to log their transactions at the end of the day. They wanted a reminder — something simple that nudges them to update their financial data.',
+            },
+            {
+                type: 'paragraph',
+                text: 'So we built it. You can now set a specific time, and every day at that time, FISCLOK will send you a notification reminding you to update your transactions. It\'s a small feature, but it makes a huge difference in building a consistent financial tracking habit.',
+            },
+            {
+                type: 'heading',
+                text: 'No More Ads — Completely Free',
+            },
+            {
+                type: 'paragraph',
+                text: 'We\'ve completely removed all ads from FISCLOK. No banners, no pop-ups, no interruptions. The app is now fully ad-free. We want users to focus on managing their finances without any distractions. That\'s it — no catch, no premium paywall for this. Just a cleaner, better experience.',
+            },
+            {
+                type: 'heading',
+                text: 'We\'re Still Listening',
+            },
+            {
+                type: 'paragraph',
+                text: 'This update is proof that we take our users seriously. But we\'re not stopping here. We\'re still listening, still reading every message, and still working to make FISCLOK better with every update. Our goal has always been to help users improve their financial health — and the best way to do that is to build what they actually need.',
+            },
+            {
+                type: 'paragraph',
+                text: 'If you have feedback, suggestions, or even a small request like adding a currency — reach out. We\'re here, and we\'re building this together.',
+            },
+        ],
+    },
+    {
         slug: 'building-fisclok-in-30-days',
         title: 'Building FISCLOK in 30 Days — With a Language I Didn\'t Know',
         excerpt: 'How I built a full finance management app in React Native in 30 days, starting from zero React experience. A story of learning by doing.',
