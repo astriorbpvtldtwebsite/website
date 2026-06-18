@@ -119,7 +119,7 @@ const ProjectProgressModal = ({ isOpen, onClose }) => {
             transition={{ type: "spring", duration: 0.3 }}
             className="fixed inset-0 flex items-center justify-center z-50 p-4 pointer-events-none"
           >
-            <div className="glass-effect w-full max-w-2xl max-h-[85vh] overflow-y-auto p-6 md:p-8 rounded-2xl relative pointer-events-auto">
+            <div className="glass-effect w-full max-w-2xl max-h-[85vh] overflow-y-auto custom-scrollbar p-6 md:p-8 rounded-2xl relative pointer-events-auto">
               {/* Close Button */}
               <button
                 ref={closeButtonRef}

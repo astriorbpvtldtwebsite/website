@@ -188,7 +188,7 @@ const ProductShowcaseModal = ({ isOpen, onClose, categoryTitle }) => {
                         transition={{ type: "spring", duration: 0.3 }}
                         className="fixed inset-0 flex items-center justify-center z-50 p-4"
                     >
-                        <div className="glass-effect w-full max-w-3xl max-h-[85vh] overflow-y-auto p-6 md:p-8 rounded-2xl relative">
+                        <div className="glass-effect w-full max-w-3xl max-h-[85vh] overflow-y-auto custom-scrollbar p-6 md:p-8 rounded-2xl relative">
                             {/* Close Button */}
                             <button
                                 ref={closeButtonRef}
