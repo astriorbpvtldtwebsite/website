@@ -1,15 +1,12 @@
-import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ShieldCheck } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const GDPRCompliance = () => {
-    useEffect(() => {
-        document.title = 'GDPR Compliance | AstriOrb';
-    }, []);
-
     return (
         <div className="min-h-screen bg-light-bg dark:bg-gradient-cosmic py-20 px-4 sm:px-6 lg:px-8">
+            <SEO title="GDPR Compliance" description="GDPR compliance statement and user rights for AstriOrb Pvt. Ltd." url="/gdpr" />
             <div className="max-w-4xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

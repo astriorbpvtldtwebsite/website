@@ -22,15 +22,15 @@ const faqs = [
     },
     {
         question: 'What technologies does AstriOrb use?',
-        answer: 'We build with Flutter, Firebase, React, Node.js, Python, Supabase, React Native, Java, and AI/ML technologies. FISCLOK is built with Flutter and uses MMKV for local data storage.',
+        answer: 'We build with React Native, Flutter, Firebase, React, Node.js, Python, Supabase, Java, and AI/ML technologies. FISCLOK is built with React Native and Tastory is built with Flutter.',
     },
     {
         question: 'What is Tastory?',
-        answer: 'Tastory is one of AstriOrb\'s major projects — a food-based platform with development already fully completed. We are currently seeking funding for its official launch.',
+        answer: 'Tastory is one of AstriOrb\'s major projects — a food-based platform built with Flutter, with development already fully completed. We are currently seeking funding for its official launch.',
     },
     {
         question: 'Who is the founder of AstriOrb?',
-        answer: 'Mohammed Hashim — a Computer Science Engineering graduate with experience as Studio Head at Custodian Games (1.6 years), developer intern at Annolive (an AI company in Bangalore), and freelance developer (11 months). All AstriOrb products are built entirely by the founder.',
+        answer: 'Mohammed Hashim — a Computer Science Engineer who has led teams, shipped products, and built across multiple domains. He headed a game development studio at Custodian Games Pvt. Ltd. in Kerala, currently advises Hopz Corp Pvt. Ltd. as a Creative Consultant, and has experience in AI development at Annolive (Bangalore) alongside multiple freelance collaborations. Every product at AstriOrb is either developed by him or built entirely under his direct supervision.',
     },
     {
         question: 'How can I contact AstriOrb?',

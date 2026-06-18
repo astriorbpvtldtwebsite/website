@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, FileText, AlertTriangle, Mail } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const FisclokTerms = () => {
     return (
         <>
+            <SEO title="FISCLOK Terms of Service" description="Terms of Service for FISCLOK, a privacy-first personal finance tracker by AstriOrb." url="/fisclok/terms" />
             <Navbar />
             <main className="min-h-screen bg-light-bg dark:bg-gradient-cosmic pt-24 pb-16">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

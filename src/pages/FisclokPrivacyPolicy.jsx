@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, Shield, Smartphone, Lock, Mail } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const FisclokPrivacyPolicy = () => {
     return (
         <>
+            <SEO title="FISCLOK Privacy Policy" description="Privacy Policy for FISCLOK, a privacy-first personal finance tracker by AstriOrb." url="/fisclok/privacy-policy" />
             <Navbar />
             <main className="min-h-screen bg-light-bg dark:bg-gradient-cosmic pt-24 pb-16">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -130,34 +132,8 @@ const FisclokPrivacyPolicy = () => {
                         {/* Third-Party Services */}
                         <section>
                             <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">Third-Party Services</h2>
-
-                            <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-4 mb-4">
-                                <h3 className="font-medium text-yellow-500 mb-2">Google AdMob (Advertising)</h3>
-                                <p className="text-light-subtext dark:text-gray-300 text-sm mb-2">
-                                    FISCLOK uses Google AdMob to display advertisements. AdMob may collect certain information from your device for advertising purposes, including:
-                                </p>
-                                <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-1 text-sm ml-2">
-                                    <li><strong>Device Identifiers:</strong> Advertising ID (Android) or IDFA (iOS) for personalized advertising</li>
-                                    <li><strong>Device Information:</strong> Device type, operating system version, and mobile network information</li>
-                                    <li><strong>Interaction Data:</strong> Information about how you interact with ads</li>
-                                </ul>
-                                <p className="text-light-subtext dark:text-gray-300 text-sm mt-3">
-                                    AdMob's data collection is governed by{' '}
-                                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-cosmic-purple dark:text-cosmic-neon hover:underline">
-                                        Google's Privacy Policy
-                                    </a>.
-                                </p>
-                                <p className="text-light-subtext dark:text-gray-300 text-sm mt-2">
-                                    You can opt out of personalized ads in your device settings:
-                                </p>
-                                <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 text-sm ml-2 mt-1">
-                                    <li>Android: Settings → Google → Ads → Opt out of Ads Personalization</li>
-                                    <li>iOS: Settings → Privacy → Advertising → Limit Ad Tracking</li>
-                                </ul>
-                            </div>
-
-                            <p className="text-light-subtext dark:text-gray-300">
-                                Apart from AdMob, FISCLOK does NOT use any other third-party analytics or tracking services.
+                            <p className="text-light-subtext dark:text-gray-300 leading-relaxed">
+                                FISCLOK is 100% ad-free and does not display advertisements. We do NOT integrate Google AdMob or any other third-party advertising SDKs, nor do we use any analytics or tracking services. No advertising identifiers or tracking data are collected or processed.
                             </p>
                         </section>
 
@@ -223,7 +199,7 @@ const FisclokPrivacyPolicy = () => {
                                 By using FISCLOK, you consent to this Privacy Policy.
                             </p>
                             <p className="text-light-subtext dark:text-gray-400 text-sm mt-4">
-                                <strong>Summary:</strong> FISCLOK is a privacy-first app. All your financial data stays on your device. We don't collect, transmit, or store any of your personal information. AdMob collects device identifiers for advertising purposes only.
+                                <strong>Summary:</strong> FISCLOK is a privacy-first app. All your financial data stays on your device. We don't collect, transmit, or store any of your personal information. The app is completely ad-free and contains no third-party trackers.
                             </p>
                         </section>
                     </motion.div>

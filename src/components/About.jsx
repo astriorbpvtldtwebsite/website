@@ -1,7 +1,49 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { Target, Eye, Heart, Lightbulb, Rocket, User } from 'lucide-react';
 import { staggerContainer, fadeInUp } from '../utils/animations';
+
+// Parse a stat string like "6000+" into { value: 6000, suffix: "+" }
+const parseStat = (str) => {
+  const match = str.match(/^(\d+)(.*)/);
+  return match ? { value: parseInt(match[1], 10), suffix: match[2] } : { value: 0, suffix: str };
+};
+
+const AnimatedNumber = ({ target, suffix }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const hasAnimated = useRef(false);
+
+  const animate = useCallback(() => {
+    if (hasAnimated.current) return;
+    hasAnimated.current = true;
+
+    const duration = 2000;
+    const startTime = performance.now();
+
+    const step = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // easeOutQuart for a snappy start that decelerates
+      const eased = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.round(eased * target));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+
+    requestAnimationFrame(step);
+  }, [target]);
+
+  useEffect(() => {
+    if (isInView) animate();
+  }, [isInView, animate]);
+
+  return (
+    <span ref={ref}>
+      {count.toLocaleString()}{suffix}
+    </span>
+  );
+};
 
 const About = () => {
   const values = [
@@ -61,6 +103,7 @@ const About = () => {
       >
         {stats.map((stat) => {
           const { Icon, number, label } = stat;
+          const { value, suffix } = parseStat(number);
           return (
             <motion.div
               key={label}
@@ -78,7 +121,7 @@ const About = () => {
               <div
                 className="text-3xl md:text-4xl font-bold bg-gradient-neon bg-clip-text text-transparent mb-2"
               >
-                {number}
+                <AnimatedNumber target={value} suffix={suffix} />
               </div>
               <p className="text-light-subtext dark:text-gray-300 font-medium">{label}</p>
             </motion.div>
@@ -106,20 +149,28 @@ const About = () => {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h3 className="text-2xl md:text-3xl font-semibold text-light-text dark:text-white mb-4 md:mb-6">How AstriOrb Started</h3>
+          <h3 className="text-2xl md:text-3xl font-semibold text-light-text dark:text-white mb-4 md:mb-6">Why AstriOrb Exists</h3>
           <p className="text-base md:text-lg text-light-subtext dark:text-gray-300 leading-relaxed mb-4 md:mb-6">
-            AstriOrb was founded by Mohammed Hashim — a Computer Science Engineering graduate with experience
-            as Studio Head at Custodian Games and developer at Annolive (an AI company in Bangalore) — with a clear
-            purpose: to solve real-world problems through software and build a better, simpler society.
+            India has no shortage of startups — young founders launch companies every day. But look closely, and you'll
+            notice a pattern: most are single-product companies. Kerala, despite its talent and ambition, still doesn't
+            have a multi-product innovation company like Google or Zoho — one that tackles real-world problems across domains,
+            not just one idea and done.
           </p>
           <p className="text-base md:text-lg text-light-subtext dark:text-gray-300 leading-relaxed mb-4 md:mb-6">
-            Our major project Tastory, a food-based platform, is already fully developed and seeking funding for launch.
-            On the side, we built FISCLOK — a free finance management app born from a personal need to track expenses
-            during the startup journey — which is now live on the Google Play Store.
+            That's the gap AstriOrb was built to fill. We believe the best solutions come from those who truly understand the
+            problem — not from pitching ideas through layers of corporate structure, but from building them directly.
+            Every project at AstriOrb is born from a real problem that real people face. We research it deeply,
+            design the right solution, and build it end to end.
+          </p>
+          <p className="text-base md:text-lg text-light-subtext dark:text-gray-300 leading-relaxed mb-4 md:mb-6">
+            We're not a single-project company, and we're not a service-based company. We're a problem-solving company.
+            We apply the same approach to every product: identify a genuine problem in society, conduct thorough R&D,
+            and deliver a solution that actually works. If someone comes to us with a problem worth solving, we empower
+            them with the full support of our team to bring it to life.
           </p>
           <p className="text-base md:text-lg text-light-subtext dark:text-gray-300 leading-relaxed">
-            Beyond these, AstriOrb is exploring game development, AI solutions, and gadget innovations.
-            Every product is built entirely by the founder using Flutter, Firebase, React, Supabase, and Python.
+            That's why Tastory exists. That's why FISCLOK exists. And that's why what comes next will follow
+            the same principle — find the problem, understand it deeply, and fix it right.
           </p>
         </div>
       </motion.div>

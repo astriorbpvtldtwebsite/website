@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, Calendar, Clock, User, Share2, Linkedin, Twitter } from 'lucide-react';
 import { getBlogPost, blogPosts } from '../data/blogPosts';
 import { fadeInUp } from '../utils/animations';
+import SEO from '../components/SEO';
 
 const handleMouseEnter = () => document.dispatchEvent(new Event('cursor-enter'));
 const handleMouseLeave = () => document.dispatchEvent(new Event('cursor-leave'));
@@ -14,9 +15,6 @@ const BlogPost = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        if (post) {
-            document.title = `${post.title} | AstriOrb Blog`;
-        }
     }, [post]);
 
     if (!post) {
@@ -54,6 +52,7 @@ const BlogPost = () => {
 
     return (
         <div className="min-h-screen bg-light-bg dark:bg-gradient-cosmic py-20 px-4 sm:px-6 lg:px-8">
+            <SEO title={post.title} description={post.excerpt} url={`/blog/${post.slug}`} type="article" />
             <article className="max-w-3xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

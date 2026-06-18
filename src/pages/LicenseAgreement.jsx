@@ -1,15 +1,12 @@
-import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Scale } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const LicenseAgreement = () => {
-    useEffect(() => {
-        document.title = 'License Agreement | AstriOrb';
-    }, []);
-
     return (
         <div className="min-h-screen bg-light-bg dark:bg-gradient-cosmic py-20 px-4 sm:px-6 lg:px-8">
+            <SEO title="License Agreement" description="Software End User License Agreement (EULA) for AstriOrb Pvt. Ltd. products." url="/license" />
             <div className="max-w-4xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

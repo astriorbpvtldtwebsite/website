@@ -1,15 +1,12 @@
-import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, FileText } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const TermsOfService = () => {
-    useEffect(() => {
-        document.title = 'Terms of Service | AstriOrb';
-    }, []);
-
     return (
         <div className="min-h-screen bg-light-bg dark:bg-gradient-cosmic py-20 px-4 sm:px-6 lg:px-8">
+            <SEO title="Terms of Service" description="Terms of Service for AstriOrb Pvt. Ltd. governing the use of our website and services." url="/terms" />
             <div className="max-w-4xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

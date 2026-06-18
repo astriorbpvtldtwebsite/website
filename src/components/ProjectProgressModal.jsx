@@ -41,46 +41,46 @@ const ProjectProgressModal = ({ isOpen, onClose }) => {
 
   const progressSteps = [
     {
-      phase: 'Planning & Research',
-      details: 'Market research, user interviews, and concept validation completed.',
+      phase: 'Planning & Scope',
+      details: 'Started planning about the project Tastory, outlining the scope and detailing scalability requirements.',
       date: 'Aug 2025',
       targetDate: '2025-08-01'
     },
     {
-      phase: 'Design & Architecture',
-      details: 'UI/UX design, system architecture, and database schema finalized.',
+      phase: 'UI/UX Design',
+      details: 'Designed the UI/UX layout arrangements, navigation structures, and core features.',
       date: 'Sep 2025',
       targetDate: '2025-09-01'
     },
     {
-      phase: 'Core Development',
-      details: 'Building core features and implementing backend services.',
+      phase: 'Basic Implementation',
+      details: 'Implemented the basic database structure and initial core features.',
       date: 'Oct 2025',
       targetDate: '2025-10-01'
     },
     {
-      phase: 'Development Completed',
-      details: 'All core features implemented and development phase finalized.',
+      phase: 'MVP Completion',
+      details: 'Completed the Minimum Viable Product (MVP) for primary testing.',
       date: 'Dec 2025',
       targetDate: '2025-12-01'
     },
     {
-      phase: 'Fund Raising',
-      details: 'Securing investment and resources for launch and scaling.',
+      phase: 'Market Study & Research',
+      details: 'Visited the audience directly to research struggles in the food industry and analyze user needs.',
       date: 'Feb 2026',
       targetDate: '2026-02-01'
     },
     {
-      phase: 'Final Check & Testing',
-      details: 'Quality assurance, performance optimization, and user testing.',
-      date: 'Mar 2026',
-      targetDate: '2026-03-01'
+      phase: 'Fundraising & Grants',
+      details: 'Seeking investors and KSUM (Kerala Startup Mission) grants to complete pending development.',
+      date: 'Jul 2026',
+      targetDate: '2026-07-01'
     },
     {
       phase: 'Launch Preparation',
-      details: 'Final polishing, documentation, and launch strategy.',
-      date: 'May 2026',
-      targetDate: '2026-05-01'
+      details: 'Preparing for launch in a small-scale area (Estimated).',
+      date: 'Sep 2026',
+      targetDate: '2026-09-01'
     }
   ].map(step => ({
     ...step,
@@ -119,12 +119,12 @@ const ProjectProgressModal = ({ isOpen, onClose }) => {
             transition={{ type: "spring", duration: 0.3 }}
             className="fixed inset-0 flex items-center justify-center z-50 p-4 pointer-events-none"
           >
-            <div className="glass-effect w-full max-w-2xl p-6 md:p-8 rounded-2xl relative overflow-hidden pointer-events-auto">
+            <div className="glass-effect w-full max-w-2xl max-h-[85vh] overflow-y-auto p-6 md:p-8 rounded-2xl relative pointer-events-auto">
               {/* Close Button */}
               <button
                 ref={closeButtonRef}
                 onClick={onClose}
-                className="absolute right-4 top-4 p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+                className="absolute right-4 top-4 p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors z-10"
                 aria-label="Close modal"
               >
                 <CloseIcon className="w-6 h-6 text-light-text dark:text-white" />

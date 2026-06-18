@@ -1,15 +1,12 @@
-import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Shield } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const PrivacyPolicy = () => {
-    useEffect(() => {
-        document.title = 'Privacy Policy | AstriOrb';
-    }, []);
-
     return (
         <div className="min-h-screen bg-light-bg dark:bg-gradient-cosmic py-20 px-4 sm:px-6 lg:px-8">
+            <SEO title="Privacy Policy" description="Privacy Policy for AstriOrb Pvt. Ltd. outlining how we handle and protect your data." url="/privacy-policy" />
             <div className="max-w-4xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
