@@ -32,6 +32,23 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
+# Cache compiled assets (JS, CSS) forever since they are content-hashed by Vite
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache primary static assets for 1 week
+[[headers]]
+  for = "/logo.png"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, must-revalidate"
+
+[[headers]]
+  for = "/fisclok_app_icon.png"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, must-revalidate"
+
 [[headers]]
   for = "/llms.txt"
   [headers.values]

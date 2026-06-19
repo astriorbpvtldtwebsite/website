@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Mail, Linkedin, ArrowUp, Twitter, Github, Globe } from 'lucide-react';
 import { staggerContainer, fadeInUp } from '../utils/animations';
-import { LiquidMetal } from '@paper-design/shaders-react';
+import AnimatedLogo from './AnimatedLogo';
 
 const Footer = () => {
   const handleMouseEnter = () => document.dispatchEvent(new Event('cursor-enter'));
@@ -66,29 +66,7 @@ const Footer = () => {
           <motion.div variants={fadeInUp} className="lg:col-span-2">
             <div className="space-y-4 md:space-y-6">
               <div className="flex items-center space-x-1">
-                <div className="w-16 h-16 rounded-lg overflow-hidden">
-                  <LiquidMetal
-                    speed={1}
-                    colorBack="#00000000"
-                    colorTint="#FFFFFF"
-                    softness={0.1}
-                    repetition={2}
-                    shiftRed={0.3}
-                    shiftBlue={0.3}
-                    distortion={0.07}
-                    contour={0.4}
-                    scale={0.6}
-                    rotation={0}
-                    shape="diamond"
-                    image="/logo.png"
-                    angle={70}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      borderRadius: '0.5rem'
-                    }}
-                  />
-                </div>
+                <AnimatedLogo size="w-16 h-16" />
                 <span className="text-2xl md:text-3xl font-bold text-light-text dark:text-white">AstriOrb</span>
               </div>
               <p className="text-light-subtext dark:text-gray-300 leading-relaxed max-w-md text-sm md:text-base">
