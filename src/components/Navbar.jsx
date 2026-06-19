@@ -131,6 +131,7 @@ const Navbar = () => {
             <motion.div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
               <button
                 onClick={toggleTheme}
+                aria-label="Toggle light/dark theme"
                 className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 dark:bg-space-800 text-light-text dark:text-white"
               >
                 <AnimatePresence mode="wait" initial={false}>
@@ -147,11 +148,12 @@ const Navbar = () => {
               </button>
             </motion.div>
           </div>
-
+ 
           {/* Mobile menu button */}
           <div className="lg:hidden flex items-center gap-2">
             <button
               onClick={toggleTheme}
+              aria-label="Toggle light/dark theme"
               className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 dark:bg-space-800 text-light-text dark:text-white"
             >
               <AnimatePresence mode="wait" initial={false}>

@@ -25,7 +25,7 @@ const TechIcon = ({ tech, mouseX, mouseY, containerWidth, containerHeight, isDes
       whileHover={{ scale: 1.15, y: isDesktop ? -8 : 0 }}
       className="flex flex-col items-center justify-center space-y-2"
     >
-      <IconComponent className={`text-4xl md:text-5xl ${tech.className || ''}`} />
+      <IconComponent className={`text-4xl md:text-5xl ${tech.className || ''}`} aria-label={tech.name} />
       <span className="text-xs md:text-sm text-light-subtext dark:text-gray-300 font-medium">{tech.name}</span>
     </motion.div>
   );
