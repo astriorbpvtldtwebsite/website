@@ -4,8 +4,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#0a0b1e" />
-  <title>AstriOrb - Where Ideas Orbit into Reality</title>
+  <meta name="theme-color" content="#071616" />
+  <title>AstriOrb - Engineering Next-Gen Digital Products & Smart Hardware</title>
+
+  <!-- Immediate Theme Initialization to prevent splash/page FOUT (Defaults to OS system theme) -->
+  <script type="text/javascript">
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('theme');
+        var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = (savedTheme === 'light' || savedTheme === 'dark')
+          ? savedTheme
+          : (systemDark ? 'dark' : 'light');
+        document.documentElement.classList.remove('light', 'dark');
+        document.documentElement.classList.add(theme);
+        var metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (metaThemeColor) {
+          metaThemeColor.setAttribute('content', theme === 'light' ? '#F1ECE6' : '#071616');
+        }
+      } catch (e) {}
+    })();
+  </script>
 
   <!-- SPA redirect script for GitHub Pages -->
   <script type="text/javascript">
@@ -24,41 +43,44 @@
   <!-- Preload logo for faster preloader animation -->
   <link rel="preload" href="/logo.png" as="image" type="image/png" />
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/logo.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/logo.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/logo.png" />
-  <link rel="shortcut icon" href="/logo.png" />
+  <!-- Favicons and Search Engine Icons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="manifest" href="/manifest.json" />
 
   <meta name="description"
-    content="AstriOrb - Where Ideas Orbit into Reality. A product development powerhouse creating revolutionary applications and software solutions." />
+    content="AstriOrb Pvt. Ltd. is an Indian software and smart hardware company engineering high-impact digital ecosystems: FISCLOK, Tastory, DocCo, Continuum, and Project ROW." />
   <meta name="keywords"
-    content="AstriOrb, software development, web applications, mobile apps, AI solutions, product development, tech company, innovative software, React development, Node.js, Python, React Native, Flutter, cloud computing" />
+    content="AstriOrb, IT company, software engineering, product development, FISCLOK, Tastory, DocCo, Continuum, Project ROW, Flutter, React Native, IoT hardware, Mohammed Hashim, Kerala" />
   <meta name="author" content="AstriOrb Pvt. Ltd." />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="language" content="English" />
   <meta name="revisit-after" content="7 days" />
   <meta name="rating" content="general" />
 
-  <meta property="og:title" content="AstriOrb - Where Ideas Orbit into Reality" />
+  <meta property="og:title" content="AstriOrb - Engineering Next-Gen Digital Products & Smart Hardware" />
   <meta property="og:description"
-    content="A product development powerhouse creating revolutionary applications and software solutions." />
+    content="An independent multi-product software and smart hardware company engineering high-impact digital solutions." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://astriorb.com" />
   <meta property="og:image" content="https://astriorb.com/logo.png" />
   <meta property="og:image:secure_url" content="https://astriorb.com/logo.png" />
   <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:alt" content="AstriOrb - Where Ideas Orbit into Reality" />
+  <meta property="og:image:alt" content="AstriOrb - Engineering Next-Gen Digital Products & Smart Hardware" />
   <meta property="og:site_name" content="AstriOrb" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="AstriOrb - Where Ideas Orbit into Reality" />
+  <meta name="twitter:title" content="AstriOrb - Engineering Next-Gen Digital Products & Smart Hardware" />
   <meta name="twitter:description"
-    content="A product development powerhouse creating revolutionary applications and software solutions." />
+    content="An independent multi-product software and smart hardware company engineering high-impact digital solutions." />
   <meta name="twitter:site" content="@astriorb" />
   <meta name="twitter:image" content="https://astriorb.com/logo.png" />
-  <meta name="twitter:image:alt" content="AstriOrb - Where Ideas Orbit into Reality" />
+  <meta name="twitter:image:alt" content="AstriOrb - Engineering Next-Gen Digital Products & Smart Hardware" />
 
   <link rel="canonical" href="https://astriorb.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,8 +99,8 @@
       "alternateName": "AstriOrb",
       "url": "https://astriorb.com",
       "logo": "https://astriorb.com/logo.png",
-      "description": "Where Ideas Orbit into Reality. A product development powerhouse creating revolutionary applications and software solutions.",
-      "slogan": "Where Ideas Orbit into Reality",
+      "description": "An independent product engineering company building high-impact software applications and smart hardware innovations across finance, food discovery, healthcare, productivity, and navigation.",
+      "slogan": "Engineering High-Impact Digital Ecosystems & Smart Hardware Innovations",
       "foundingDate": "2025",
       "email": "astriorbofficial@gmail.com",
       "address": {
@@ -96,12 +118,12 @@
         "email": "astriorbofficial@gmail.com"
       },
       "knowsAbout": [
-        "Software Development",
-        "Web Applications",
-        "Mobile Applications",
-        "AI Solutions",
-        "Cloud Computing",
-        "Product Development"
+        "Software Engineering",
+        "Mobile App Development",
+        "Cloud Architecture",
+        "Embedded Hardware & IoT",
+        "Applied AI & ML",
+        "Product Engineering"
       ],
       "areaServed": {
         "@type": "Place",
@@ -117,7 +139,7 @@
       "@type": "WebSite",
       "name": "AstriOrb",
       "url": "https://astriorb.com",
-      "description": "Where Ideas Orbit into Reality",
+      "description": "Engineering High-Impact Digital Ecosystems & Smart Hardware Innovations",
       "publisher": {
         "@type": "Organization",
         "name": "AstriOrb Pvt. Ltd.",
@@ -144,24 +166,30 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Products",
+          "item": "https://astriorb.com/#products"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "About",
           "item": "https://astriorb.com/#about"
         },
         {
           "@type": "ListItem",
-          "position": 3,
-          "name": "Services",
-          "item": "https://astriorb.com/#services"
+          "position": 4,
+          "name": "Capabilities",
+          "item": "https://astriorb.com/#capabilities"
         },
         {
           "@type": "ListItem",
-          "position": 4,
+          "position": 5,
           "name": "Careers",
           "item": "https://astriorb.com/#careers"
         },
         {
           "@type": "ListItem",
-          "position": 5,
+          "position": 6,
           "name": "Contact",
           "item": "https://astriorb.com/#contact"
         }
@@ -180,7 +208,15 @@
           "name": "What is AstriOrb?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "AstriOrb Pvt. Ltd. is a product development company founded in 2025 by Mohammed Hashim in Kerala, India. Our mission is to solve real-world problems through software and build a better, simpler society. We develop products across multiple domains including food platforms, finance tools, AI solutions, game development, and gadget innovations."
+            "text": "AstriOrb Pvt. Ltd. is an independent software and hardware product engineering company founded in 2025 by Mohammed Hashim in Kerala, India. We engineer proprietary digital ecosystems across food discovery, finance, healthcare, team productivity, and smart mobility hardware."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What products does AstriOrb build?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AstriOrb's ecosystem includes 5 primary products: FISCLOK (live encrypted finance manager on Android), Project Tastory (flagship culinary discovery platform, MVP completed), Project DocCo (clinical workflow platform in clinical research phase), Project Continuum (offline-first project management suite), and Project ROW (smart navigation app paired with custom IoT hardware in R&D)."
           }
         },
         {
@@ -188,55 +224,39 @@
           "name": "What is FISCLOK?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "FISCLOK is a completely free finance management side project by AstriOrb, available on Android. It was born from a personal need — the founder needed a better way to track expenses during the startup journey. It helps users track expenses, manage budgets, monitor financial health with month-on-month charts, manage loans with repayment tracking, and supports multiple currencies. All user data is stored locally on the device using MMKV storage — no permissions required and no data is collected."
+            "text": "FISCLOK is a free, privacy-first mobile finance manager on Android. It operates with zero-knowledge local-first MMKV encrypted storage. An optional Google Drive backup writes directly to the user's own Drive. FISCLOK is published on the Google Play Store (v1.0.2) with a major update in development."
           }
         },
         {
           "@type": "Question",
-          "name": "Is FISCLOK really free?",
+          "name": "What is Project Tastory?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, FISCLOK is completely free with no hidden charges, no premium tiers, and no in-app purchases. The app does not require any permissions and does not collect any user data."
+            "text": "Project Tastory is AstriOrb's flagship culinary discovery and social taste-matching platform built with Flutter. Its MVP is fully developed, and AstriOrb is currently engaging with seed and angel investors for its commercial deployment."
           }
         },
         {
           "@type": "Question",
-          "name": "Does FISCLOK collect my data?",
+          "name": "Who is the founder of AstriOrb?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. FISCLOK stores all user data locally on the device using MMKV storage. The app does not require any permissions and does not send any personal or financial data to external servers."
+            "text": "Mohammed Hashim — a Computer Science Engineer with multidisciplinary product leadership. Former Studio Head at Custodian Games Pvt. Ltd., Creative Consultant at Hopz Corp Pvt. Ltd., and AI engineer with experience at Annolive (Bangalore). All AstriOrb products are developed under his direct architectural supervision."
           }
         },
         {
           "@type": "Question",
-          "name": "Who founded AstriOrb?",
+          "name": "What technologies does AstriOrb specialize in?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Mohammed Hashim — a Computer Science Engineer who has led teams, shipped products, and built across multiple domains. He headed a game development studio at Custodian Games Pvt. Ltd. in Kerala, currently advises Hopz Corp Pvt. Ltd. as a Creative Consultant, and has experience in AI development at Annolive (Bangalore) alongside multiple freelance collaborations. Every product at AstriOrb is either developed by him or built entirely under his direct supervision."
+            "text": "AstriOrb builds with Flutter, React Native, React, TypeScript, Node.js, Python, Firebase, Supabase, PostgreSQL, and embedded IoT technologies (ESP32, BLE 5.0)."
           }
         },
         {
           "@type": "Question",
-          "name": "What technologies does AstriOrb use?",
+          "name": "How can I contact AstriOrb or explore investment?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "AstriOrb builds products using React Native, Flutter, Firebase, React, Node.js, Python, Supabase, Java, and AI/ML technologies. FISCLOK is built with React Native."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is Tastory?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Tastory is one of AstriOrb's major projects — a food-based platform built with Flutter, with development already fully completed. We are currently seeking funding for its official launch."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How can I contact AstriOrb?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You can reach AstriOrb via email at astriorbofficial@gmail.com, through the contact form on astriorb.com, or via LinkedIn at linkedin.com/company/astriorb."
+            "text": "You can reach AstriOrb directly at astriorbofficial@gmail.com, via the contact form on astriorb.com, or through LinkedIn at linkedin.com/company/astriorb."
           }
         }
       ]
@@ -256,38 +276,38 @@
       },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Product Development Services",
+        "name": "Core Technical Capabilities",
         "itemListElement": [
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Web Application Development",
-              "description": "Building web platforms including SaaS products, progressive web apps, and enterprise dashboards using React and Node.js."
+              "name": "High-Performance Mobile Systems",
+              "description": "Cross-platform mobile applications engineered in Flutter and React Native with 60fps local-first state and offline synchronization."
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Mobile App Development",
-              "description": "Cross-platform and native mobile applications built with Flutter and React Native for Android and iOS."
+              "name": "Cloud Backend & Scalable APIs",
+              "description": "Resilient serverless and microservices architectures using Node.js, Python, PostgreSQL, Firebase, and distributed edge workers."
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "AI-Powered Solutions",
-              "description": "Intelligent applications using artificial intelligence and machine learning, including predictive analytics, NLP, and computer vision."
+              "name": "Embedded IoT & Smart Hardware Prototyping",
+              "description": "Hardware-software integration connecting microcontrollers (ESP32, STM32) and telemetry sensors to mobile applications via BLE."
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Cloud Platform Development",
-              "description": "Scalable cloud-native applications using Firebase and Supabase, including serverless architectures and API development."
+              "name": "Applied AI & Edge Intelligence",
+              "description": "On-device intelligence, NLP recommendation pipelines, and vision models designed for real-world user utility."
             }
           }
         ]
@@ -301,7 +321,7 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Mohammed Hashim",
-      "jobTitle": "Founder & Developer",
+      "jobTitle": "Founder & Lead Architect",
       "worksFor": {
         "@type": "Organization",
         "name": "AstriOrb Pvt. Ltd.",
@@ -314,8 +334,8 @@
       "sameAs": [
         "https://www.linkedin.com/in/mohammed-hashim-b9632b325/"
       ],
-      "knowsAbout": ["React Native", "Flutter", "Firebase", "Web Development", "Supabase", "Artificial Intelligence", "Java", "Mobile App Development"],
-      "description": "Computer Science Engineer, founder of AstriOrb. Former Studio Head at Custodian Games Pvt. Ltd. (Kerala), Creative Consultant at Hopz Corp Pvt. Ltd. (Kerala), AI development experience at Annolive (Bangalore), and experienced freelance developer. Built FISCLOK and Tastory independently or under direct supervision."
+      "knowsAbout": ["Flutter", "React Native", "Firebase", "React", "Node.js", "TypeScript", "Embedded Systems", "Artificial Intelligence"],
+      "description": "Computer Science Engineer, Founder & Lead Architect at AstriOrb. Former Studio Head at Custodian Games, Creative Consultant at Hopz Corp, and AI engineer with industry background at Annolive (Bangalore). Leads architecture across AstriOrb's proprietary software and smart hardware portfolio."
     }
   </script>
 
@@ -324,45 +344,157 @@
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "AstriOrb - Where Ideas Orbit into Reality",
+      "name": "AstriOrb - Engineering Next-Gen Digital Products & Smart Hardware",
       "speakable": {
         "@type": "SpeakableSpecification",
-        "cssSelector": ["#home", "#about", "#services"]
+        "cssSelector": ["#home", "#products", "#about", "#capabilities"]
       },
       "url": "https://astriorb.com"
     }
   </script>
 
-  <script type="module" crossorigin src="/assets/index.cxHyIK5n.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/vendor-core.DaXQIBND.js">
-  <link rel="modulepreload" crossorigin href="/assets/vendor-framer-motion.BXOUEKmR.js">
-  <link rel="stylesheet" crossorigin href="/assets/index.CKWEbOtf.css">
+  <!-- Software Applications & Product Schemas (GEO / AIO / Rich Snippets) -->
+  <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "FISCLOK",
+        "operatingSystem": "Android 8.0 and up",
+        "applicationCategory": "FinanceApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "120"
+        },
+        "installUrl": "https://play.google.com/store/apps/details?id=com.astriorb.fincend",
+        "softwareVersion": "1.0.2",
+        "author": {
+          "@type": "Organization",
+          "name": "AstriOrb Pvt. Ltd.",
+          "url": "https://astriorb.com"
+        },
+        "description": "Privacy-first personal finance and debt tracker. Encrypted MMKV local-first storage with zero data harvesting and optional Google Drive backup."
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Project Tastory",
+        "operatingSystem": "iOS, Android",
+        "applicationCategory": "LifestyleApplication",
+        "applicationSubCategory": "Food & Drink",
+        "author": {
+          "@type": "Organization",
+          "name": "AstriOrb Pvt. Ltd.",
+          "url": "https://astriorb.com"
+        },
+        "description": "Intelligent culinary discovery, social recipe curation, and algorithmic taste-matching platform engineered in Flutter."
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Project DocCo",
+        "operatingSystem": "Web, Cloud",
+        "applicationCategory": "MedicalApplication",
+        "author": {
+          "@type": "Organization",
+          "name": "AstriOrb Pvt. Ltd.",
+          "url": "https://astriorb.com"
+        },
+        "description": "Clinical practice management and patient intake suite engineered with role-based access control and medical privacy compliance."
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Project Continuum",
+        "operatingSystem": "Cross-Platform",
+        "applicationCategory": "BusinessApplication",
+        "author": {
+          "@type": "Organization",
+          "name": "AstriOrb Pvt. Ltd.",
+          "url": "https://astriorb.com"
+        },
+        "description": "Offline-first task orchestration and project management suite with reactive state synchronization for distributed engineering squads."
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Project ROW",
+        "category": "Smart Mobility & IoT Navigation",
+        "brand": {
+          "@type": "Brand",
+          "name": "AstriOrb"
+        },
+        "manufacturer": {
+          "@type": "Organization",
+          "name": "AstriOrb Pvt. Ltd.",
+          "url": "https://astriorb.com"
+        },
+        "description": "Next-generation smart navigation mobile application integrated with custom ESP32 Bluetooth Low Energy IoT hardware companion."
+      }
+    ]
+  </script>
+
+  <script type="module" crossorigin src="/assets/index.ChStYysL.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-core.BtSwiHOo.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-framer-motion.CjTBIAnc.js">
+  <link rel="stylesheet" crossorigin href="/assets/index.yFMl8x7P.css">
 </head>
 
 <body>
   <div id="root"></div>
   <noscript>
-    <div style="max-width:800px;margin:0 auto;padding:2rem;font-family:Inter,sans-serif;color:#1a1a2e;">
-      <h1>AstriOrb - Where Ideas Orbit into Reality</h1>
-      <p>AstriOrb Pvt. Ltd. is a product development company founded in 2025 by Mohammed Hashim in Kerala, India. Our
-        mission is to solve real-world problems through software and build a better, simpler society.</p>
-      <h2>Our Products</h2>
-      <p><strong>Tastory</strong> (Major Project) — A food-based platform built with Flutter. Development fully completed, seeking funding
-        for launch.</p>
-      <p><strong>FISCLOK</strong> (Side Project) — A completely free finance management app for Android. Born from a
-        personal need to track expenses. All data stored locally on your device — no permissions required, no data
-        collected. <a href="https://play.google.com/store/apps/details?id=com.astriorb.fincend">Download on Google
-          Play</a></p>
-      <h2>What We Build</h2>
-      <ul>
-        <li>Web Applications — React, Node.js</li>
-        <li>Mobile Apps — Flutter, React Native</li>
-        <li>AI-Powered Solutions — Python, ML</li>
-        <li>Cloud Platforms — Firebase, Supabase</li>
+    <div style="max-width:860px;margin:0 auto;padding:2.5rem 1.5rem;font-family:Inter,sans-serif;color:#0f172a;background:#ffffff;">
+      <h1 style="color:#090d16;font-size:1.8rem;margin-bottom:0.75rem;">AstriOrb Pvt. Ltd.</h1>
+      <p style="font-size:1.1rem;color:#334155;line-height:1.6;">
+        An independent product development company founded in 2025 by Mohammed Hashim in Kerala, India. We engineer proprietary digital ecosystems and smart hardware innovations designed for high scalability and user privacy.
+      </p>
+      
+      <h2 style="color:#090d16;margin-top:2rem;font-size:1.4rem;">Our Product Portfolio</h2>
+      
+      <div style="margin-bottom:1.5rem;">
+        <h3 style="margin-bottom:0.25rem;color:#1e3a8a;">1. Project Tastory (Flagship)</h3>
+        <p style="color:#334155;margin:0;line-height:1.5;">Intelligent culinary discovery, taste-matching engine, and social recipe network built in Flutter. MVP development completed; actively seeking seed funding for commercial rollout.</p>
+      </div>
+
+      <div style="margin-bottom:1.5rem;">
+        <h3 style="margin-bottom:0.25rem;color:#1e3a8a;">2. FISCLOK (Live on Google Play)</h3>
+        <p style="color:#334155;margin:0;line-height:1.5;">Zero-knowledge, privacy-first personal finance and debt tracker. Encrypted MMKV local-first storage with optional Google Drive backup. Free with no ads or third-party trackers. <a href="https://play.google.com/store/apps/details?id=com.astriorb.fincend" style="color:#2563eb;font-weight:600;">Download on Google Play</a>. Review our <a href="/fisclok/privacy-policy/" style="color:#2563eb;">Privacy Policy</a> and <a href="/fisclok/terms/" style="color:#2563eb;">Terms of Service</a>.</p>
+      </div>
+
+      <div style="margin-bottom:1.5rem;">
+        <h3 style="margin-bottom:0.25rem;color:#1e3a8a;">3. Project DocCo</h3>
+        <p style="color:#334155;margin:0;line-height:1.5;">Specialized clinical workflow and healthcare operations platform. Core architecture completed; currently in clinical trials and specialist research consultation.</p>
+      </div>
+
+      <div style="margin-bottom:1.5rem;">
+        <h3 style="margin-bottom:0.25rem;color:#1e3a8a;">4. Project Continuum</h3>
+        <p style="color:#334155;margin:0;line-height:1.5;">High-speed offline-first project orchestration suite engineered for independent developers, technical leads, and multi-team initiatives. MVP completed and in private testing.</p>
+      </div>
+
+      <div style="margin-bottom:1.5rem;">
+        <h3 style="margin-bottom:0.25rem;color:#1e3a8a;">5. Project ROW</h3>
+        <p style="color:#334155;margin:0;line-height:1.5;">Smart route guidance ecosystem bridging a real-time mobile interface with dedicated IoT telemetry hardware. Currently in active hardware prototyping and R&D.</p>
+      </div>
+
+      <h2 style="color:#090d16;margin-top:2rem;font-size:1.4rem;">Engineering Capabilities</h2>
+      <ul style="color:#334155;line-height:1.8;">
+        <li>Mobile Engineering: Flutter, React Native, Dart, TypeScript</li>
+        <li>Backend & Cloud: Node.js, Python, PostgreSQL, Firebase, Supabase</li>
+        <li>Embedded Systems: ESP32, BLE 5.0, IoT Telemetry</li>
+        <li>Applied AI & Edge ML</li>
       </ul>
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:astriorbofficial@gmail.com">astriorbofficial@gmail.com</a> | <a
-          href="https://linkedin.com/company/astriorb">LinkedIn</a> | <a href="https://astriorb.com">astriorb.com</a>
+
+      <h2 style="color:#090d16;margin-top:2rem;font-size:1.4rem;">Get in Touch</h2>
+      <p style="color:#334155;line-height:1.6;">
+        Email: <a href="mailto:astriorbofficial@gmail.com" style="color:#2563eb;">astriorbofficial@gmail.com</a> | 
+        LinkedIn: <a href="https://linkedin.com/company/astriorb" style="color:#2563eb;">AstriOrb on LinkedIn</a> | 
+        Website: <a href="https://astriorb.com" style="color:#2563eb;">astriorb.com</a>
       </p>
     </div>
   </noscript>

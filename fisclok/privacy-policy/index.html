@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - FISCLOK | AstriOrb</title>
+    <title>Privacy Policy - Fisclok | AstriOrb</title>
     <meta name="description"
-        content="Privacy Policy for FISCLOK - A privacy-first personal finance manager. All your financial data stays on your device.">
+        content="Privacy Policy for Fisclok, a personal finance management app by AstriOrb Private Limited. Your data is stored on your device; optional Google Drive Backup writes a copy to your own Drive.">
+    <link rel="canonical" href="https://astriorb.com/fisclok/privacy-policy/">
     <link rel="icon" type="image/png" href="/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,7 +73,7 @@
         h2 {
             font-size: 1.25rem;
             font-weight: 600;
-            margin: 24px 0 12px 0;
+            margin: 28px 0 12px 0;
             color: #fff;
         }
 
@@ -94,6 +95,15 @@
             margin-bottom: 8px;
         }
 
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: #a78bfa;
+        }
+
         a {
             color: #a78bfa;
             text-decoration: none;
@@ -103,32 +113,12 @@
             text-decoration: underline;
         }
 
-        .highlight {
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 24px;
-        }
-
-        .highlight-title {
-            color: #22c55e;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
         .warning {
             background: rgba(234, 179, 8, 0.1);
             border: 1px solid rgba(234, 179, 8, 0.3);
             border-radius: 12px;
             padding: 16px;
             margin: 16px 0;
-        }
-
-        .warning-title {
-            color: #eab308;
-            font-weight: 600;
-            margin-bottom: 8px;
         }
 
         .back-link {
@@ -152,133 +142,65 @@
 
 <body>
     <div class="container">
-        <a href="/" class="back-link">← Back to Home</a>
+        <a href="/" class="back-link">&larr; Back to Home</a>
 
         <div class="header">
-            <img src="/fisclok_app_icon.png" alt="FISCLOK" class="logo">
+            <img src="/fisclok_app_icon.png" alt="Fisclok" class="logo">
             <h1>Privacy Policy</h1>
-            <div class="app-name">FISCLOK</div>
-            <div class="date">Last Updated: January 2026</div>
+            <div class="app-name">Fisclok</div>
+            <div class="date">Last Updated: September 2026</div>
         </div>
 
         <div class="content">
-            <div class="highlight">
-                <div class="highlight-title">🔒 Privacy First</div>
-                <p style="margin-bottom: 0;">All your financial data is stored locally on your device only. We do NOT
-                    collect, transmit, or store any of your personal or financial data on our servers.</p>
-            </div>
-
             <h2>Introduction</h2>
-            <p>FISCLOK ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how
-                we handle your information when you use our mobile application.</p>
+            <p>Fisclok is committed to protecting your privacy. This policy explains how we handle your information.</p>
 
             <h2>Data Collection and Storage</h2>
-            <h3 style="font-size: 1rem; margin: 16px 0 8px 0; color: #e5e7eb;">Local Storage Only</h3>
-            <ul>
-                <li><strong>All your data is stored locally on your device only</strong></li>
-                <li>We use <strong>MMKV encrypted storage</strong> for fast and secure data persistence</li>
-                <li>We do NOT collect, transmit, or store any of your personal or financial data on our servers</li>
-                <li>We do NOT have access to your transaction history, loan information, or any other data you enter in
-                    the app</li>
-            </ul>
+            <p>Your transactions, loans, categories, budgets and settings are stored on your device in encrypted storage. Fisclok has no accounts and no backend. We do NOT collect, transmit, or store any of your personal or financial data on our servers, and we never see it.</p>
 
-            <h3 style="font-size: 1rem; margin: 16px 0 8px 0; color: #e5e7eb;">Data You Provide</h3>
-            <p>When using FISCLOK, you may enter:</p>
-            <ul>
-                <li>Transaction records (income and expenses)</li>
-                <li>Loan information</li>
-                <li>Budget data</li>
-                <li>Category customizations</li>
-                <li>Profile information (name, profile picture)</li>
-            </ul>
-            <p><strong>Important:</strong> All this data remains on your device and is never transmitted to us or any
-                third party.</p>
+            <h2>Google Drive Backup (optional)</h2>
+            <p>This feature is off by default and only runs if you connect your Google account. When enabled, Fisclok writes a single file named <code>fisclok-backup.json</code> to your own Google Drive, containing your transactions, loans, custom categories, budget, recurring rules and preferences. It is uploaded directly from your device to Google over an encrypted connection and never passes through our servers.</p>
+
+            <div class="warning">
+                <p style="margin-bottom: 0;">The backup file is stored in your Google Drive under your own Google account and counts against your own Google storage quota. It is saved as a readable JSON file rather than being separately encrypted by Fisclok, so anyone with access to your Google account can open and read it. Treat access to your Google account as access to your financial history.</p>
+            </div>
+
+            <p>Fisclok requests only the <code>drive.file</code> permission, which limits its access to files Fisclok itself created. It cannot see, read or modify anything else in your Drive.</p>
+
+            <p>You can disconnect at any time in Settings, or revoke access at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">myaccount.google.com/permissions</a>. Disconnecting stops future backups; to delete the backup itself, delete the file from your Drive.</p>
+
+            <h2>Announcements</h2>
+            <p>The App periodically downloads a small public notice file so we can share important messages without shipping an update. This is a download only &mdash; no information about you or your device is sent with the request.</p>
+
+            <h2>Feedback Data</h2>
+            <p>If you choose to send feedback or report a bug, we use your device's email client. The email may include device information and app version. This data is only sent if you explicitly send the email.</p>
 
             <h2>Permissions</h2>
             <ul>
-                <li><strong>Camera Permission:</strong> Used only to take profile pictures. Photos are stored locally on
-                    your device.</li>
-                <li><strong>Photo Library Permission:</strong> Used only to select profile pictures from your gallery.
-                </li>
-                <li><strong>Storage Permission:</strong> Used to save and export your financial data. All data remains
-                    under your control.</li>
+                <li><strong>Internet</strong> &mdash; used for Google Drive Backup and announcements only.</li>
+                <li><strong>Notifications</strong> &mdash; used only for the daily reminder, if you enable it.</li>
+                <li><strong>Storage</strong> &mdash; used for exporting and importing your data files.</li>
             </ul>
-
-            <h2>Third-Party Services</h2>
-            <div class="warning">
-                <div class="warning-title">Google AdMob (Advertising)</div>
-                <p>FISCLOK uses Google AdMob to display advertisements. AdMob may collect certain information from your
-                    device for advertising purposes, including:</p>
-                <ul style="margin-bottom: 0;">
-                    <li><strong>Device Identifiers:</strong> Advertising ID (Android) or IDFA (iOS) for personalized
-                        advertising</li>
-                    <li><strong>Device Information:</strong> Device type, operating system version, and mobile network
-                        information</li>
-                    <li><strong>Interaction Data:</strong> Information about how you interact with ads</li>
-                </ul>
-            </div>
-            <p>AdMob's data collection is governed by <a href="https://policies.google.com/privacy" target="_blank"
-                    rel="noopener">Google's Privacy Policy</a>.</p>
-            <p>You can opt out of personalized ads in your device settings:</p>
-            <ul>
-                <li>Android: Settings → Google → Ads → Opt out of Ads Personalization</li>
-                <li>iOS: Settings → Privacy → Advertising → Limit Ad Tracking</li>
-            </ul>
-            <p>Apart from AdMob, FISCLOK does NOT use any other third-party analytics or tracking services.</p>
-
-            <h2>Data Security</h2>
-            <ul>
-                <li>Your data is stored securely on your device using <strong>MMKV encrypted storage</strong></li>
-                <li>MMKV provides military-grade encryption for your financial data</li>
-                <li>We recommend setting up device security (PIN, password, biometric) to protect your data</li>
-                <li>Regular backups are your responsibility</li>
-            </ul>
-
-            <h2>Data Deletion</h2>
-            <p>To delete your data:</p>
-            <ol style="margin: 12px 0 12px 24px;">
-                <li>Uninstall the FISCLOK app from your device</li>
-                <li>All locally stored data will be permanently removed</li>
-            </ol>
+            <p>Fisclok does not request camera or photo library access. Profile pictures are chosen from a set of built-in avatars.</p>
 
             <h2>Children's Privacy</h2>
-            <p>FISCLOK does not knowingly collect information from children under 13. The app is intended for users who
-                are at least 13 years old.</p>
-
-            <h2>Your Rights</h2>
-            <ul>
-                <li><strong>Access:</strong> All data is on your device</li>
-                <li><strong>Delete:</strong> Uninstall the app to remove all data</li>
-                <li><strong>Export:</strong> Use the in-app export feature</li>
-            </ul>
+            <p>Fisclok is not directed at children under 13 and we do not knowingly collect information from them. As the App collects nothing, no such information reaches us.</p>
 
             <h2>Changes to This Policy</h2>
-            <p>We may update this Privacy Policy from time to time. We will notify you of any changes by updating the
-                "Last Updated" date.</p>
+            <p>If this policy changes materially, the updated version will appear here and the date above will be revised.</p>
 
             <h2>Contact Us</h2>
-            <p>If you have questions about this Privacy Policy, please contact us at:</p>
+            <p>If you have questions about this Privacy Policy, please contact us:</p>
             <ul>
                 <li>Email: <a href="mailto:officialfisclok@gmail.com">officialfisclok@gmail.com</a></li>
                 <li>Company: AstriOrb Private Limited</li>
             </ul>
-
-            <h2>Consent</h2>
-            <p>By using FISCLOK, you consent to this Privacy Policy.</p>
-
-            <p
-                style="margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); color: #9ca3af; font-size: 0.875rem;">
-                <strong>Summary:</strong> FISCLOK is a privacy-first app. All your financial data stays on your device.
-                We don't collect, transmit, or store any of your personal information. AdMob collects device identifiers
-                for advertising purposes only.
-            </p>
         </div>
 
         <div class="footer">
             <a href="/fisclok/terms/">Terms of Service</a>
             <a href="/">Home</a>
-            <p style="margin-top: 16px; color: #6b7280; font-size: 0.875rem;">© 2026 AstriOrb Private Limited. All
-                rights reserved.</p>
+            <p style="margin-top: 16px; color: #6b7280; font-size: 0.875rem;">&copy; 2026 AstriOrb Private Limited. All rights reserved.</p>
         </div>
     </div>
 </body>

@@ -1,0 +1,126 @@
+# AstriOrb Pvt. Ltd. — Comprehensive Technical & Corporate Dossier (LLM Knowledge Base)
+
+> This document provides an exhaustive, machine-readable factual reference on AstriOrb Pvt. Ltd., its products, engineering architecture, leadership, and operational policies for AI search engines, LLMs, and research agents.
+
+---
+
+## 1. Executive Summary
+
+- **Entity Name**: AstriOrb Pvt. Ltd. (trading as "AstriOrb")
+- **Founding Date**: 2025
+- **Headquarters**: Kerala, India (Remote-First Engineering Lab)
+- **Domain**: https://astriorb.com
+- **Official Inquiries**: astriorbofficial@gmail.com
+- **Product Support**: officialfisclok@gmail.com
+- **Social Profiles**:
+  - LinkedIn: https://linkedin.com/company/astriorb
+  - GitHub: https://github.com/astriorb
+  - Twitter/X: https://twitter.com/AstriOrb
+- **Business Model**: Independent, multi-product software and smart hardware company. AstriOrb rejects third-party agency outsourcing, focusing 100% of internal engineering capital on proprietary in-house intellectual property across consumer software, healthcare, financial privacy, and embedded IoT hardware.
+
+---
+
+## 2. Founder & Engineering Leadership
+
+### Mohammed Hashim — Founder & Lead Architect
+- **Role**: Founder, Chief Executive & Lead Systems Architect at AstriOrb.
+- **Academic Background**: Computer Science Engineering.
+- **Industry Pedigree**:
+  - Former Studio Head at Custodian Games Pvt. Ltd. (led engineering, real-time rendering, and game development squads in Kerala).
+  - Former Creative Consultant at Hopz Corp Pvt. Ltd. (brand strategy, UI/UX architecture, product roadmapping).
+  - Former AI Engineer with industry tenure at Annolive (Bangalore), engineering deep learning and neural network pipelines.
+- **Leadership Model**: Active hands-on builder. All AstriOrb software architectures, database models, cryptographic vault structures, and hardware pinouts are authored or directly audited under his technical leadership.
+- **LinkedIn**: https://www.linkedin.com/in/mohammed-hashim-b9632b325/
+
+---
+
+## 3. Product Portfolio (The 5 Product Nodes)
+
+### Node 01: FISCLOK — Privacy-First Personal Finance Manager
+- **Category**: Personal Finance & Debt Management
+- **Status**: Live in Production on Google Play Store (v1.0.2).
+- **Store URL**: https://play.google.com/store/apps/details?id=com.astriorb.fincend
+- **Pricing**: 100% Free, Zero Ads, Zero Monetization Tracking, Zero Third-Party Analytics.
+- **Core Architecture**:
+  - Client Stack: React Native, TypeScript, TailwindCSS.
+  - Storage Engine: Local-first MMKV encrypted vault with hardware-backed key derivation.
+  - Network Footprint: 0.00 KB outbound telemetry to external analytics servers.
+  - Cloud Backup: Optional, user-owned Google Drive integration requesting only the restrictive `drive.file` OAuth scope (stores an encrypted JSON backup file directly in the user's private Google Drive; AstriOrb has zero access to user drives or transaction data).
+- **Key Features**: Income and expense tracking, recurring debt ledger, categorization, multi-currency support, offline-first execution.
+
+### Node 02: Project Tastory — Intelligent Culinary Discovery Platform (Flagship)
+- **Category**: Food Tech, Taste Matching & Culinary Social Network
+- **Status**: MVP Completed; actively raising Seed / Angel funding round for go-to-market commercial rollout.
+- **Target Audience**: Food enthusiasts, home chefs, culinary explorers, restaurant discoverers.
+- **Core Architecture**:
+  - Client Stack: Flutter, Dart (60fps fluid cross-platform UI for iOS and Android).
+  - Backend Stack: Firebase, Node.js Serverless Cloud Functions, PostgreSQL.
+  - Intelligence Layer: Algorithmic taste-profile clustering, ingredient taxonomy vector matching, and dynamic dietary preference filtering.
+- **Key Features**: Intelligent flavor-matching engine, visual recipe reels, culinary community curation, restaurant dish indexing, interactive taste quiz onboarding.
+
+### Node 03: Project DocCo — Clinical Workflow & Medical Records Suite
+- **Category**: HealthTech, Clinical Practice Management
+- **Status**: Core software development complete; active clinical research and healthcare practitioner advisory phase.
+- **Target Audience**: Clinics, specialized physicians, independent practitioners, outpatient healthcare facilities.
+- **Core Architecture**:
+  - Security Standards: Aligned with HIPAA, GDPR, and Indian Digital Personal Data Protection (DPDP) guidelines.
+  - Client Stack: React, TypeScript, Web Cryptography API.
+  - Backend Stack: Node.js, encrypted PostgreSQL with granular role-based access control (RBAC).
+- **Key Features**: Patient intake digitization, encrypted clinical notes, prescription generation, appointment scheduling, audit trails for patient data access.
+
+### Node 04: Project Continuum — Offline-First Project Orchestration OS
+- **Category**: Developer Productivity, Agile Project Management
+- **Status**: Private Developer Beta.
+- **Target Audience**: Software engineers, product leads, distributed asynchronous teams, solo builders.
+- **Core Architecture**:
+  - Client Stack: Local-first reactive state management with conflict-free replicated data types (CRDTs).
+  - Synchronization: Peer-to-peer or lightweight edge relay with sub-50ms sync latency.
+- **Key Features**: Multi-project timeline orchestration, Kanban matrix, markdown documentation workspace, offline-first operation without internet dependency.
+
+### Node 05: Project ROW — Smart Navigation Mobile App & IoT Hardware Companion
+- **Category**: Smart Mobility, Embedded Systems, IoT Telemetry
+- **Status**: Hardware Prototyping & Firmware R&D.
+- **Target Audience**: Commuters, motorcyclists, outdoor navigators, fleet operators.
+- **Core Architecture**:
+  - Hardware Subsystem: Custom ESP32-S3 microcontroller, Bluetooth Low Energy (BLE 5.0), onboard IMU sensor arrays, low-power OLED display.
+  - Mobile Subsystem: React Native / Flutter telemetry synchronization, low-latency GPS vector routing.
+- **Key Features**: Glanceable turn-by-turn routing indicators, rider telemetry analysis, low-power battery life, instant wireless pairing.
+
+---
+
+## 4. Core Engineering Capabilities
+
+AstriOrb operates as a full-stack product laboratory with specialized expertise:
+- **Mobile Systems**: Cross-platform engineering in Flutter and React Native with 60fps local-first state and offline synchronization.
+- **Cloud & Backend**: Resilient microservices using Node.js, Python, PostgreSQL, Firebase, Supabase, and distributed edge workers.
+- **Embedded IoT & Hardware**: Hardware-software integration connecting microcontrollers (ESP32, STM32) and telemetry sensors to mobile applications via BLE.
+- **Applied AI & Edge ML**: On-device machine learning inference, recommendation algorithms, and computer vision pipelines designed for practical consumer and enterprise utility.
+
+---
+
+## 5. Frequently Asked Questions (Answer Engine Optimization)
+
+### Q: What is AstriOrb?
+**A**: AstriOrb Pvt. Ltd. is an independent software and hardware product development company founded in 2025 by Mohammed Hashim in Kerala, India. AstriOrb specializes in building proprietary consumer and enterprise products across finance, food discovery, healthcare, productivity, and IoT mobility.
+
+### Q: Who founded AstriOrb?
+**A**: AstriOrb was founded by Mohammed Hashim, a Computer Science Engineer and former Studio Head at Custodian Games Pvt. Ltd. with extensive professional engineering background in AI and game studio leadership.
+
+### Q: What products are built by AstriOrb?
+**A**: AstriOrb's ecosystem includes 5 products: FISCLOK (live Android personal finance manager), Project Tastory (culinary discovery flagship), Project DocCo (clinical records software), Project Continuum (offline-first project OS), and Project ROW (smart navigation hardware gadget).
+
+### Q: Is FISCLOK safe and private?
+**A**: Yes. FISCLOK does not collect or upload personal financial records to any third-party servers. Data is encrypted locally using MMKV on the user's Android device. Optional cloud backups write directly to the user's personal Google Drive using the sandboxed `drive.file` scope.
+
+### Q: How can investors connect with AstriOrb regarding Project Tastory?
+**A**: Investors and venture funds can request the Tastory Seed Round Pitch Deck directly through the Investor Relations portal at https://astriorb.com/contact or by emailing astriorbofficial@gmail.com.
+
+---
+
+## 6. Verification & Contact Details
+
+- **Official Website**: https://astriorb.com
+- **General Inquiries**: astriorbofficial@gmail.com
+- **Product Support**: officialfisclok@gmail.com
+- **Corporate Location**: Kerala, India
+- **Legal Notices**: https://astriorb.com/terms, https://astriorb.com/privacy-policy
