@@ -3,10 +3,19 @@ import { createContext, useContext, useState, useEffect } from 'react';
 const ThemeContext = createContext();
 
 const getSystemTheme = () => {
-  if (typeof window !== 'undefined' && window.matchMedia) {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  try {
+    if (typeof window !== 'undefined' && window.matchMedia) {
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+      if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        return 'light';
+      }
+    }
+  } catch (e) {
+    // If detection fails, use light theme as default
   }
-  return 'dark';
+  return 'light';
 };
 
 export const ThemeProvider = ({ children }) => {
@@ -38,32 +47,38 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     if (typeof window === 'undefined' || !window.matchMedia) return;
 
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleSystemThemeChange = (e) => {
-      try {
-        const savedTheme = localStorage.getItem('theme');
-        // Only react to OS changes if the user hasn't explicitly locked a preference
-        if (!savedTheme) {
-          setTheme(e.matches ? 'dark' : 'light');
+    try {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      if (!mediaQuery) return;
+
+      const handleSystemThemeChange = (e) => {
+        try {
+          const savedTheme = localStorage.getItem('theme');
+          // Only react to OS changes if the user hasn't explicitly locked a preference
+          if (!savedTheme) {
+            setTheme(e.matches ? 'dark' : 'light');
+          }
+        } catch (err) {
+          setTheme('light');
         }
-      } catch (err) {
-        setTheme(e.matches ? 'dark' : 'light');
-      }
-    };
+      };
 
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener('change', handleSystemThemeChange);
-    } else if (mediaQuery.addListener) {
-      mediaQuery.addListener(handleSystemThemeChange);
+      if (mediaQuery.addEventListener) {
+        mediaQuery.addEventListener('change', handleSystemThemeChange);
+      } else if (mediaQuery.addListener) {
+        mediaQuery.addListener(handleSystemThemeChange);
+      }
+
+      return () => {
+        if (mediaQuery.removeEventListener) {
+          mediaQuery.removeEventListener('change', handleSystemThemeChange);
+        } else if (mediaQuery.removeListener) {
+          mediaQuery.removeListener(handleSystemThemeChange);
+        }
+      };
+    } catch (e) {
+      // matchMedia listener setup failed gracefully
     }
-
-    return () => {
-      if (mediaQuery.removeEventListener) {
-        mediaQuery.removeEventListener('change', handleSystemThemeChange);
-      } else if (mediaQuery.removeListener) {
-        mediaQuery.removeListener(handleSystemThemeChange);
-      }
-    };
   }, []);
 
   const toggleTheme = () => {

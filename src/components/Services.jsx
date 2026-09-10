@@ -187,7 +187,7 @@ const Services = () => {
                         key={t.name}
                         className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg dark:bg-titanium-800 bg-white border dark:border-white/10 border-sand-border text-[10px] font-mono dark:text-titanium-200 text-sand-charcoal shadow-sm"
                       >
-                        <Icon className={`w-3 h-3 ${t.color}`} />
+                        <Icon title={t.name} aria-label={t.name} role="img" className={`w-3 h-3 ${t.color}`} />
                         <span>{t.name}</span>
                       </span>
                     );
@@ -227,7 +227,7 @@ const Services = () => {
                         key={t.name}
                         className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg dark:bg-titanium-800 bg-white border dark:border-white/10 border-sand-border text-[10px] font-mono dark:text-titanium-200 text-sand-charcoal shadow-sm"
                       >
-                        <Icon className={`w-3 h-3 ${t.color}`} />
+                        <Icon title={t.name} aria-label={t.name} role="img" className={`w-3 h-3 ${t.color}`} />
                         <span>{t.name}</span>
                       </span>
                     );
@@ -267,7 +267,7 @@ const Services = () => {
                         key={t.name}
                         className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg dark:bg-titanium-800 bg-white border dark:border-white/10 border-sand-border text-[10px] font-mono dark:text-titanium-200 text-sand-charcoal shadow-sm"
                       >
-                        <Icon className={`w-3 h-3 ${t.color}`} />
+                        <Icon title={t.name} aria-label={t.name} role="img" className={`w-3 h-3 ${t.color}`} />
                         <span>{t.name}</span>
                       </span>
                     );
@@ -307,7 +307,7 @@ const Services = () => {
                         key={t.name}
                         className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg dark:bg-titanium-800 bg-white border dark:border-white/10 border-sand-border text-[10px] font-mono dark:text-titanium-200 text-sand-charcoal shadow-sm"
                       >
-                        <Icon className={`w-3 h-3 ${t.color}`} />
+                        <Icon title={t.name} aria-label={t.name} role="img" className={`w-3 h-3 ${t.color}`} />
                         <span>{t.name}</span>
                       </span>
                     );
