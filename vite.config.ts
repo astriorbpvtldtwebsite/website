@@ -15,6 +15,9 @@ export default defineConfig({
             if (id.includes('framer-motion')) {
               return 'vendor-framer-motion';
             }
+            if (id.includes('three')) {
+              return 'vendor-three';
+            }
             if (id.includes('@paper-design')) {
               return 'vendor-shaders';
             }

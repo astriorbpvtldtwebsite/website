@@ -1,194 +1,168 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Rocket, Users, Award, Clock, Globe, Lightbulb, ChevronDown } from 'lucide-react';
-import useMediaQuery from '../hooks/useMediaQuery';
+import { ShieldCheck, Layers, Cpu, Sparkles, Zap, CheckCircle2, ChevronRight } from 'lucide-react';
+import { fadeInUp } from '../utils/animations';
+import SpotlightCard from './SpotlightCard';
 
-const reasons = [
+const principles = [
   {
-    Icon: Lightbulb,
-    title: 'Product Innovation',
-    description: 'We are shaping innovative digital solutions that aim to transform industries and elevate everyday experiences. Our focus is on research, experimentation, and building products that stand out in the market.',
-    stat: 'In Progress',
-    statLabel: 'Solutions',
+    Icon: Layers,
+    title: 'Multi-Product Problem Solving',
+    description:
+      'We reject the narrow focus of single-product startups and IT outsourcers. Inspired by pioneers like Zoho, Google, and Microsoft, we build an interconnected portfolio of proprietary software and hardware solutions.',
+    stat: '5 Verticals',
+    statLabel: 'Active Pipeline',
   },
   {
-    Icon: Rocket,
-    title: 'Innovation at Core',
-    description: 'We explore and adopt cutting-edge technologies like AI, blockchain, and cloud computing to craft future-ready solutions. Innovation drives every step of our journey.',
-    stat: 'Driven',
-    statLabel: 'By Innovation',
+    Icon: ShieldCheck,
+    title: 'Architectural Data Sovereignty',
+    description:
+      'Privacy is never an afterthought. From local-first MMKV encrypted device storage in FISCLOK to strict healthcare consent models in DocCo, user data belongs solely to the user.',
+    stat: 'Local-First',
+    statLabel: 'Zero Tracking',
   },
   {
-    Icon: Users,
-    title: 'User-Centric Design',
-    description: 'Every solution we create begins with the user in mind. We design products that are intuitive, engaging, and built to solve real-world problems.',
+    Icon: Cpu,
+    title: 'Hardware & Software Synergy',
+    description:
+      'Our engineering capability reaches beyond touchscreens. With Project ROW, we engineer both custom embedded IoT hardware gadgets and real-time mobile telemetry in unison.',
+    stat: 'App + Gadget',
+    statLabel: 'Full-Stack IoT',
+  },
+  {
+    Icon: Zap,
+    title: 'Founder-Led Deep R&D',
+    description:
+      'All architectures, research datasets, and technical designs are conducted directly by our founder, Mohammed Hashim. This guarantees laser focus, swift iteration, and zero corporate bureaucracy.',
     stat: '100%',
-    statLabel: 'UX Focused',
+    statLabel: 'Hands-On R&D',
   },
   {
-    Icon: Award,
-    title: 'Market Impact',
-    description: 'We aim to create meaningful change by building software that empowers businesses and enhances everyday life. Our success is measured by the value and opportunities we deliver to clients and users.',
-    stat: 'Vision',
-    statLabel: 'For Impact',
-  },
-  {
-    Icon: Clock,
-    title: 'Rapid Development',
-    description: 'We follow agile practices to turn ideas into prototypes and working solutions quickly. Our iterative approach ensures continuous improvement, adaptability, and efficiency throughout the development journey.',
-    stat: 'Agile',
-    statLabel: 'Methodology',
-  },
-  {
-    Icon: Globe,
-    title: 'Global Reach',
-    description: 'We design our solutions with a global mindset, ensuring they are scalable, adaptable, and inclusive for diverse audiences. Our ambition is to create products that can impact users worldwide.',
-    stat: 'Future',
-    statLabel: 'Worldwide Impact',
+    Icon: CheckCircle2,
+    title: 'Production Rigor Over Hype',
+    description:
+      'We do not launch unverified mockups. FISCLOK underwent 2 months of rigorous testing prior to Play Store release; Tastory, DocCo, and Continuum follow the same uncompromising standard.',
+    stat: '3,000+',
+    statLabel: 'Hours Solo R&D',
   },
 ];
 
-const DesktopView = ({ selected, setSelected }) => {
-  const handleMouseEnter = () => document.dispatchEvent(new Event('cursor-enter'));
-  const handleMouseLeave = () => document.dispatchEvent(new Event('cursor-leave'));
-  const selectedReason = reasons[selected];
-  const SelectedIcon = selectedReason.Icon;
-
-  return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 min-h-[450px]">
-      <div className="lg:col-span-1 flex flex-col justify-center space-y-2">
-        {reasons.map((reason, index) => (
-          <motion.div
-            key={reason.title}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => setSelected(index)}
-            className={`p-4 rounded-lg transition-all duration-300 cursor-pointer relative ${
-              selected === index 
-                ? 'bg-black/5 dark:bg-white/10' 
-                : 'bg-transparent hover:bg-black/[0.02] dark:hover:bg-white/[0.03]'
-            }`}
-          >
-            <div className="flex items-center space-x-4">
-              <reason.Icon className={`w-6 h-6 transition-colors ${selected === index ? 'text-cosmic-purple dark:text-cosmic-neon' : 'text-light-subtext dark:text-gray-400'}`} />
-              <h3 className={`text-lg font-medium transition-colors ${selected === index ? 'text-light-text dark:text-white' : 'text-light-subtext dark:text-gray-300'}`}>{reason.title}</h3>
-            </div>
-            {selected === index && (
-              <motion.div layoutId="why-us-underline" className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-neon" />
-            )}
-          </motion.div>
-        ))}
-      </div>
-      <div className="lg:col-span-2 glass-effect rounded-xl p-8 md:p-12 flex items-center relative overflow-hidden">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={selected}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
-            className="w-full"
-          >
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1, rotate: 360 }}
-                transition={{ duration: 0.8, type: 'spring' }}
-                className="w-24 h-24 md:w-32 md:h-32 bg-gradient-purple rounded-full flex items-center justify-center flex-shrink-0 animate-glow"
-              >
-                <SelectedIcon className="w-12 h-12 md:w-16 md:h-16 text-white" />
-              </motion.div>
-              <div>
-                <div className="mb-4 text-center md:text-left">
-                  <div className="text-4xl md:text-5xl font-bold bg-gradient-neon bg-clip-text text-transparent leading-tight inline-block align-bottom mb-1">{selectedReason.stat}</div>
-                  <div className="text-sm text-cosmic-purple dark:text-cosmic-neon font-medium tracking-wider uppercase">{selectedReason.statLabel}</div>
-                </div>
-                <p className="text-base md:text-lg text-light-subtext dark:text-gray-300 leading-relaxed text-center md:text-left">{selectedReason.description}</p>
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-    </div>
-  );
-};
-
-const MobileView = () => {
-  const [openIndex, setOpenIndex] = useState(0);
-
-  return (
-    <div className="space-y-4">
-      {reasons.map((reason, index) => (
-        <div key={reason.title} className="glass-effect rounded-xl overflow-hidden">
-          <motion.header
-            className="p-4 cursor-pointer flex justify-between items-center"
-            onClick={() => setOpenIndex(openIndex === index ? null : index)}
-          >
-            <div className="flex items-center space-x-4">
-              <reason.Icon className="w-6 h-6 text-cosmic-purple dark:text-cosmic-neon" />
-              <h3 className="text-lg font-medium text-light-text dark:text-white">{reason.title}</h3>
-            </div>
-            <motion.div animate={{ rotate: openIndex === index ? 180 : 0 }} transition={{ duration: 0.3 }}>
-              <ChevronDown className="w-6 h-6 text-light-subtext dark:text-gray-400" />
-            </motion.div>
-          </motion.header>
-          <AnimatePresence>
-            {openIndex === index && (
-              <motion.section
-                initial="collapsed"
-                animate="open"
-                exit="collapsed"
-                variants={{
-                  open: { opacity: 1, height: 'auto' },
-                  collapsed: { opacity: 0, height: 0 },
-                }}
-                transition={{ duration: 0.4, ease: 'easeInOut' }}
-                className="px-4 pb-4"
-              >
-                <div className="border-t border-black/10 dark:border-white/10 pt-4">
-                  <div className="mb-4">
-                    <div className="text-3xl font-bold bg-gradient-neon bg-clip-text text-transparent mb-1">{reason.stat}</div>
-                    <div className="text-xs text-cosmic-purple dark:text-cosmic-neon font-medium tracking-wider uppercase">{reason.statLabel}</div>
-                  </div>
-                  <p className="text-light-subtext dark:text-gray-300 leading-relaxed">{reason.description}</p>
-                </div>
-              </motion.section>
-            )}
-          </AnimatePresence>
-        </div>
-      ))}
-    </div>
-  );
-};
-
 const WhyChooseUs = () => {
   const [selected, setSelected] = useState(0);
-  const isDesktop = useMediaQuery('(min-width: 1024px)');
+  const activePrinciple = principles[selected];
+  const ActiveIcon = activePrinciple.Icon;
 
   return (
-    <div
-      className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
-      onMouseEnter={() => document.dispatchEvent(new Event('cursor-enter'))}
-      onMouseLeave={() => document.dispatchEvent(new Event('cursor-leave'))}
-    >
-      <div className="absolute inset-0 -bottom-8 md:-bottom-12 opacity-5 dark:opacity-5">
-        <motion.div
-          animate={{ backgroundPosition: ['0% 0%', '100% 100%'] }}
-          transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse' }}
-          className="w-full h-full bg-gradient-to-r from-cosmic-purple via-cosmic-blue to-cosmic-neon"
-          style={{ backgroundSize: '400% 400%' }}
-        />
-      </div>
-      <div className="text-center mb-12 md:mb-16">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-light-text dark:text-white mb-4 md:mb-6">
-          Why Choose <span className="bg-gradient-neon bg-clip-text text-transparent leading-tight inline-block align-bottom">AstriOrb</span>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-white">
+      {/* Header */}
+      <motion.div variants={fadeInUp} className="text-center max-w-3xl mx-auto mb-16">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-titanium-800/80 border border-citron/30 mb-4">
+          <Sparkles className="w-3.5 h-3.5 text-citron" />
+          <span className="text-xs font-mono font-semibold text-citron uppercase tracking-wider">
+            FOUNDATIONAL PHILOSOPHY
+          </span>
+        </div>
+
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
+          Why AstriOrb Operates Differently
         </h2>
-        <p className="text-lg md:text-xl text-light-subtext dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          When you choose AstriOrb products, you're choosing innovation, reliability, and a commitment 
-          to pushing the boundaries of what's possible in technology.
+        <p className="text-base sm:text-lg text-titanium-300 leading-relaxed font-normal">
+          The foundational engineering principles that guide our product development philosophy from Kerala, India.
         </p>
+      </motion.div>
+
+      {/* Interactive Desktop / Tablet Principle Selector */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        {/* Navigation List */}
+        <div className="lg:col-span-5 flex flex-col space-y-2.5 justify-center">
+          {principles.map((item, index) => {
+            const isSelected = selected === index;
+            const ItemIcon = item.Icon;
+            return (
+              <button
+                key={item.title}
+                onClick={() => setSelected(index)}
+                className={`w-full p-4 rounded-xl text-left transition-all duration-200 flex items-center justify-between cursor-pointer border ${
+                  isSelected
+                    ? 'bg-titanium-800 border-citron shadow-lg shadow-citron/10'
+                    : 'bg-titanium-900/60 border-white/5 hover:border-white/15'
+                }`}
+              >
+                <div className="flex items-center gap-3.5">
+                  <div
+                    className={`w-9 h-9 rounded-lg flex items-center justify-center ${
+                      isSelected
+                        ? 'bg-citron text-obsidian font-bold'
+                        : 'bg-titanium-800 text-titanium-400'
+                    }`}
+                  >
+                    <ItemIcon size={18} />
+                  </div>
+                  <span
+                    className={`text-sm font-semibold font-mono ${
+                      isSelected ? 'text-citron' : 'text-titanium-200'
+                    }`}
+                  >
+                    {item.title}
+                  </span>
+                </div>
+                <ChevronRight
+                  size={16}
+                  className={`transition-transform ${
+                    isSelected ? 'text-citron translate-x-1' : 'text-titanium-500 opacity-50'
+                  }`}
+                />
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Selected Principle Display Card */}
+        <div className="lg:col-span-7 flex flex-col">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activePrinciple.title}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.25 }}
+              className="h-full"
+            >
+              <SpotlightCard className="p-8 sm:p-10 h-full flex flex-col justify-between" withCorners>
+                <div>
+                  <div className="w-14 h-14 rounded-2xl bg-titanium-800 border border-white/10 p-0.5 mb-6 inline-flex items-center justify-center text-citron">
+                    <ActiveIcon size={28} />
+                  </div>
+
+                  <span className="text-xs font-mono uppercase tracking-wider text-citron block mb-2">
+                    CORE PRINCIPLE
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
+                    {activePrinciple.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-titanium-200 leading-relaxed mb-8 font-normal">
+                    {activePrinciple.description}
+                  </p>
+                </div>
+
+                <div className="pt-6 border-t border-white/10 flex items-center justify-between">
+                  <div>
+                    <span className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight block font-mono">
+                      {activePrinciple.stat}
+                    </span>
+                    <span className="text-xs font-mono text-titanium-400">
+                      {activePrinciple.statLabel}
+                    </span>
+                  </div>
+                  <div className="text-xs font-mono text-citron">
+                    AstriOrb Standard
+                  </div>
+                </div>
+              </SpotlightCard>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
-      {isDesktop ? <DesktopView selected={selected} setSelected={setSelected} /> : <MobileView />}
     </div>
   );
 };

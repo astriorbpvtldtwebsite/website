@@ -1,102 +1,81 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X as CloseIcon, Check, Circle } from 'lucide-react';
+import { X as CloseIcon, Check, Circle, Sparkles, TrendingUp } from 'lucide-react';
 
 const ProjectProgressModal = ({ isOpen, onClose }) => {
   const closeButtonRef = useRef(null);
 
-  // Focus trap and keyboard handling
   useEffect(() => {
     if (isOpen) {
       closeButtonRef.current?.focus();
-
       const handleEscape = (e) => {
-        if (e.key === 'Escape') {
-          onClose();
-        }
+        if (e.key === 'Escape') onClose();
       };
-
       document.addEventListener('keydown', handleEscape);
       return () => document.removeEventListener('keydown', handleEscape);
     }
   }, [isOpen, onClose]);
 
-  // Function to calculate status based on current date
-  const calculateStatus = (targetDate) => {
-    const now = new Date();
-    const target = new Date(targetDate);
-
-    // Set both dates to the first day of their respective months for comparison
-    const currentMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-    const targetMonth = new Date(target.getFullYear(), target.getMonth(), 1);
-
-    if (currentMonth > targetMonth) {
-      return 'completed';
-    } else if (currentMonth.getTime() === targetMonth.getTime()) {
-      return 'in-progress';
-    } else {
-      return 'upcoming';
-    }
-  };
-
   const progressSteps = [
     {
-      phase: 'Planning & Scope',
-      details: 'Started planning about the project Tastory, outlining the scope and detailing scalability requirements.',
+      phase: 'Planning & Architecture',
+      details: 'Conceived the Tastory platform scope, culinary taste graph model, and cross-platform Flutter architecture.',
       date: 'Aug 2025',
-      targetDate: '2025-08-01'
+      status: 'completed',
     },
     {
-      phase: 'UI/UX Design',
-      details: 'Designed the UI/UX layout arrangements, navigation structures, and core features.',
+      phase: 'UI/UX Design Systems',
+      details: 'Engineered high-fidelity kitchen user experience, visual dish cards, and community recipe navigation.',
       date: 'Sep 2025',
-      targetDate: '2025-09-01'
+      status: 'completed',
     },
     {
-      phase: 'Basic Implementation',
-      details: 'Implemented the basic database structure and initial core features.',
+      phase: 'Core Engine & Database',
+      details: 'Built scalable cloud database schemas, dynamic ingredient indexing, and user culinary profiles.',
       date: 'Oct 2025',
-      targetDate: '2025-10-01'
+      status: 'completed',
     },
     {
       phase: 'MVP Completion',
-      details: 'Completed the Minimum Viable Product (MVP) for primary testing.',
+      details: 'Full Minimum Viable Product successfully engineered and validated in internal testing.',
       date: 'Dec 2025',
-      targetDate: '2025-12-01'
+      status: 'completed',
     },
     {
-      phase: 'Market Study & Research',
-      details: 'Visited the audience directly to research struggles in the food industry and analyze user needs.',
+      phase: 'Culinary Market & User Research',
+      details: 'Direct field testing with home cooks, foodies, and culinary creators in Kerala and across India.',
       date: 'Feb 2026',
-      targetDate: '2026-02-01'
+      status: 'completed',
     },
     {
-      phase: 'Fundraising & Grants',
-      details: 'Seeking investors and KSUM (Kerala Startup Mission) grants to complete pending development.',
-      date: 'Jul 2026',
-      targetDate: '2026-07-01'
+      phase: 'Investor Funding & Launch Scaling',
+      details: 'Actively in talks with angel investors and venture funds to support production launch and creator onboarding.',
+      date: 'Current',
+      status: 'in-progress',
     },
     {
-      phase: 'Launch Preparation',
-      details: 'Preparing for launch in a small-scale area (Estimated).',
-      date: 'Sep 2026',
-      targetDate: '2026-09-01'
-    }
-  ].map(step => ({
-    ...step,
-    status: calculateStatus(step.targetDate)
-  }));
+      phase: 'Public Launch & Scaling',
+      details: 'Rollout on iOS and Android app stores with targeted regional culinary hubs.',
+      date: 'Upcoming',
+      status: 'upcoming',
+    },
+  ];
 
   const getStatusColor = (status) => {
     switch (status) {
       case 'completed':
-        return 'text-green-500 dark:text-green-400';
+        return 'text-emerald-400';
       case 'in-progress':
-        return 'text-cosmic-purple dark:text-cosmic-neon';
+        return 'text-citron';
       default:
-        return 'text-gray-400 dark:text-gray-500';
+        return 'text-titanium-500';
     }
   };
+
+  const completedCount = progressSteps.filter((s) => s.status === 'completed').length;
+  const totalCount = progressSteps.length;
+  const progressPercentage = Math.round((completedCount / totalCount) * 100);
 
   return (
     <AnimatePresence>
@@ -108,108 +87,120 @@ const ProjectProgressModal = ({ isOpen, onClose }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-black/80 backdrop-blur-md z-50"
           />
 
           {/* Modal */}
           <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.95, opacity: 0 }}
-            transition={{ type: "spring", duration: 0.3 }}
+            initial={{ scale: 0.95, opacity: 0, y: 15 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.95, opacity: 0, y: 15 }}
+            transition={{ type: 'spring', duration: 0.3 }}
             className="fixed inset-0 flex items-center justify-center z-50 p-4 pointer-events-none"
           >
-            <div className="glass-effect w-full max-w-2xl max-h-[85vh] overflow-y-auto custom-scrollbar p-6 md:p-8 rounded-2xl relative pointer-events-auto">
+            <div className="w-full max-w-2xl max-h-[85vh] overflow-y-auto custom-scrollbar p-6 sm:p-8 rounded-2xl relative pointer-events-auto border border-white/10 shadow-2xl bg-obsidian text-white">
               {/* Close Button */}
               <button
+                type="button"
                 ref={closeButtonRef}
                 onClick={onClose}
-                className="absolute right-4 top-4 p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors z-10"
+                className="absolute right-5 top-5 p-2 rounded-xl bg-titanium-800 border border-white/5 hover:border-citron/40 transition-colors z-10 text-titanium-400 hover:text-white cursor-pointer"
                 aria-label="Close modal"
               >
-                <CloseIcon className="w-6 h-6 text-light-text dark:text-white" />
+                <CloseIcon className="w-5 h-5" />
               </button>
 
-              {/* Content */}
+              {/* Header */}
               <div className="mb-8">
-                <h3 className="text-2xl md:text-3xl font-bold text-light-text dark:text-white mb-2">
-                  Project: <span className="bg-gradient-neon bg-clip-text text-transparent">Tastory</span>
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-citron/10 text-citron border border-citron/30 text-xs font-mono font-medium mb-3">
+                  <Sparkles size={14} />
+                  <span>FLAGSHIP CONSUMER PRODUCT</span>
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-1 font-mono">
+                  Project: <span className="text-citron">Tastory</span>
                 </h3>
-                <p className="text-light-subtext dark:text-gray-300 mb-4">
-                  A revolutionary platform connecting food enthusiasts with authentic local cuisines
+                <p className="text-xs sm:text-sm text-titanium-300 font-normal">
+                  Next-generation culinary exploration platform built with Flutter. MVP completed, currently seeking funding.
                 </p>
 
                 {/* Progress Bar */}
-                {(() => {
-                  const completedCount = progressSteps.filter(s => s.status === 'completed').length;
-                  const totalCount = progressSteps.length;
-                  const progressPercentage = Math.round((completedCount / totalCount) * 100);
-
-                  return (
-                    <div className="mt-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm font-medium text-light-text dark:text-white">
-                          Overall Progress
-                        </span>
-                        <span className="text-sm font-bold text-cosmic-purple dark:text-cosmic-neon">
-                          {progressPercentage}%
-                        </span>
-                      </div>
-                      <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${progressPercentage}%` }}
-                          transition={{ duration: 1, ease: "easeOut" }}
-                          className="h-full bg-gradient-neon rounded-full"
-                        />
-                      </div>
-                      <p className="text-xs text-light-subtext dark:text-gray-400 mt-2">
-                        {completedCount} of {totalCount} phases completed
-                      </p>
-                    </div>
-                  );
-                })()}
+                <div className="mt-6 p-4 rounded-xl bg-titanium-900 border border-white/5">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-mono uppercase tracking-wider text-titanium-300">
+                      Development & Launch Roadmap
+                    </span>
+                    <span className="text-xs font-mono font-bold text-citron">
+                      {progressPercentage}% Complete
+                    </span>
+                  </div>
+                  <div className="w-full h-2 bg-titanium-800 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${progressPercentage}%` }}
+                      transition={{ duration: 0.8, ease: 'easeOut' }}
+                      className="h-full bg-citron rounded-full shadow-[0_0_8px_#EA9216]"
+                    />
+                  </div>
+                  <p className="text-[11px] font-mono text-titanium-400 mt-2">
+                    {completedCount} of {totalCount} phases completed • Active Milestone: Investor Discussions
+                  </p>
+                </div>
               </div>
 
               {/* Progress Timeline */}
-              <div className="space-y-6 relative">
-                {progressSteps.map((step, index) => (
+              <div className="space-y-6 relative pl-2">
+                {progressSteps.map((step) => (
                   <div key={step.phase} className="flex items-start gap-4">
                     {/* Status Icon */}
-                    <div className={`mt-1 ${getStatusColor(step.status)}`}>
+                    <div className={`mt-0.5 shrink-0 ${getStatusColor(step.status)}`}>
                       {step.status === 'completed' ? (
-                        <Check className="w-6 h-6" />
+                        <div className="w-6 h-6 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center">
+                          <Check className="w-3.5 h-3.5" />
+                        </div>
                       ) : step.status === 'in-progress' ? (
-                        <motion.div
-                          animate={{ scale: [1, 1.2, 1] }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                        >
-                          <Circle className="w-6 h-6 fill-current" />
-                        </motion.div>
+                        <div className="w-6 h-6 rounded-full bg-citron/10 border border-citron/40 flex items-center justify-center animate-pulse">
+                          <Circle className="w-3.5 h-3.5 fill-citron text-citron" />
+                        </div>
                       ) : (
-                        <Circle className="w-6 h-6" />
+                        <div className="w-6 h-6 rounded-full bg-titanium-800 border border-white/5 flex items-center justify-center">
+                          <Circle className="w-3.5 h-3.5 text-titanium-500" />
+                        </div>
                       )}
                     </div>
 
                     {/* Content */}
                     <div className="flex-1">
-                      <div className="flex items-center justify-between mb-1">
-                        <h4 className={`font-semibold ${getStatusColor(step.status)}`}>
+                      <div className="flex items-baseline justify-between mb-1">
+                        <h4 className="text-sm font-semibold text-white font-mono">
                           {step.phase}
                         </h4>
-                        <span className="text-sm text-light-subtext dark:text-gray-400">
+                        <span className="text-[11px] font-mono text-titanium-400">
                           {step.date}
                         </span>
                       </div>
-                      <p className="text-sm text-light-subtext dark:text-gray-300">
+                      <p className="text-xs text-titanium-300 leading-relaxed font-normal">
                         {step.details}
                       </p>
                     </div>
                   </div>
                 ))}
+              </div>
 
-                {/* Timeline line */}
-                <div className="absolute left-3 top-6 bottom-6 w-px bg-gray-200 dark:bg-gray-700" />
+              {/* Investor Note Footer */}
+              <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-2 text-xs font-mono text-titanium-300">
+                  <TrendingUp className="w-4 h-4 text-citron" />
+                  <span>Seed / Angel Equity Round Open</span>
+                </div>
+
+                <Link
+                  to="/contact"
+                  onClick={onClose}
+                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-mono font-semibold bg-citron text-obsidian hover:bg-citron-light transition-all shadow-md shadow-citron/20 text-center"
+                >
+                  REQUEST PITCH DECK
+                </Link>
               </div>
             </div>
           </motion.div>

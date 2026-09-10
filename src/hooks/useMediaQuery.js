@@ -1,33 +1,35 @@
 import { useState, useEffect } from 'react';
 
 const useMediaQuery = (query) => {
-  const [matches, setMatches] = useState(false);
+  const [matches, setMatches] = useState(() => {
+    if (typeof window !== 'undefined' && window.matchMedia) {
+      return window.matchMedia(query).matches;
+    }
+    return false;
+  });
 
   useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return;
+
     const media = window.matchMedia(query);
-    if (media.matches !== matches) {
-      setMatches(media.matches);
-    }
-    const listener = () => setMatches(media.matches);
-    // Use resize event as a fallback for older browsers
-    window.addEventListener('resize', listener);
-    // Use the modern way to listen for changes
-    try {
+    setMatches(media.matches);
+
+    const listener = (e) => setMatches(e.matches);
+
+    if (media.addEventListener) {
       media.addEventListener('change', listener);
-    } catch (_) {
-      // Fallback for older browsers
+    } else if (media.addListener) {
       media.addListener(listener);
     }
 
     return () => {
-      window.removeEventListener('resize', listener);
-      try {
+      if (media.removeEventListener) {
         media.removeEventListener('change', listener);
-      } catch (_) {
+      } else if (media.removeListener) {
         media.removeListener(listener);
       }
     };
-  }, [matches, query]);
+  }, [query]);
 
   return matches;
 };

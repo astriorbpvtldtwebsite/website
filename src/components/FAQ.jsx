@@ -4,128 +4,122 @@ import { ChevronDown, HelpCircle } from 'lucide-react';
 import { fadeInUp } from '../utils/animations';
 
 const faqs = [
-    {
-        question: 'What is AstriOrb?',
-        answer: 'AstriOrb Pvt. Ltd. is a product development company founded in 2025 by Mohammed Hashim in Kerala, India. Our mission is to solve real-world problems through software and build a better, simpler society. We develop products across multiple domains including food platforms, finance tools, AI solutions, game development, and gadget innovations.',
-    },
-    {
-        question: 'What is FISCLOK?',
-        answer: 'FISCLOK is a completely free finance management side project by AstriOrb, available on Android. It was born from a personal need — our founder needed a better way to track expenses during the startup journey. It helps you track expenses, set monthly budgets, manage loans with repayment tracking, view financial health charts, and supports multiple currencies. It was developed in one month and tested for two months before release.',
-    },
-    {
-        question: 'Is FISCLOK really free? Are there hidden charges?',
-        answer: 'Yes, FISCLOK is 100% free — no premium tiers, no in-app purchases, no hidden charges. We built it to solve our own finance tracking problem and released it publicly because friends who tried it loved it.',
-    },
-    {
-        question: 'Does FISCLOK collect my personal or financial data?',
-        answer: 'No. FISCLOK stores all your data locally on your device using MMKV storage. The app requires zero permissions and sends no personal or financial data to any external server. Your data stays on your phone.',
-    },
-    {
-        question: 'What technologies does AstriOrb use?',
-        answer: 'We build with React Native, Flutter, Firebase, React, Node.js, Python, Supabase, Java, and AI/ML technologies. FISCLOK is built with React Native and Tastory is built with Flutter.',
-    },
-    {
-        question: 'What is Tastory?',
-        answer: 'Tastory is one of AstriOrb\'s major projects — a food-based platform built with Flutter, with development already fully completed. We are currently seeking funding for its official launch.',
-    },
-    {
-        question: 'Who is the founder of AstriOrb?',
-        answer: 'Mohammed Hashim — a Computer Science Engineer who has led teams, shipped products, and built across multiple domains. He headed a game development studio at Custodian Games Pvt. Ltd. in Kerala, currently advises Hopz Corp Pvt. Ltd. as a Creative Consultant, and has experience in AI development at Annolive (Bangalore) alongside multiple freelance collaborations. Every product at AstriOrb is either developed by him or built entirely under his direct supervision.',
-    },
-    {
-        question: 'How can I contact AstriOrb?',
-        answer: 'You can reach us via email at astriorbofficial@gmail.com, through the contact form on this website, or connect with us on LinkedIn at linkedin.com/company/astriorb.',
-    },
+  {
+    question: 'What is AstriOrb and how does it differ from other tech companies?',
+    answer:
+      'AstriOrb Pvt. Ltd. is an independent multi-product technology and hardware company founded in 2025 by Mohammed Hashim in Kerala, India. Unlike IT service companies or single-product startups, AstriOrb develops, owns, and scales an interconnected suite of proprietary products solving everyday challenges across finance, culinary social discovery, healthcare, productivity, and IoT navigation — inspired by the multi-product models of Zoho, Google, and Microsoft.',
+  },
+  {
+    question: 'What are the 5 core projects currently in AstriOrb’s ecosystem?',
+    answer:
+      'Our portfolio includes: (1) FISCLOK — live personal finance manager on Google Play; (2) Project Tastory — our flagship culinary exploration and social recipe platform (MVP completed, funding phase); (3) Project DocCo — a clinical workflow and medical platform (development completed, client/research phase); (4) Project Continuum — an advanced project management suite for freelancers & coordinators (MVP testing); and (5) Project ROW — an intelligent navigation ecosystem combining a smart app and custom hardware gadget.',
+  },
+  {
+    question: 'Does FISCLOK collect my financial data or require cloud accounts?',
+    answer:
+      'No. FISCLOK has no accounts, no backend, and your data never reaches AstriOrb servers. It stores all transactions and loans directly on your device using encrypted MMKV storage. The only optional cloud capability is Google Drive Backup: if you explicitly connect your Google account, a copy is written directly from your device to your personal Google Drive.',
+  },
+  {
+    question: 'What is the current status of Project Tastory?',
+    answer:
+      'Tastory is our flagship consumer product built with Flutter. The entire core MVP development is 100% completed. We are currently actively seeking venture and angel funding to fuel its official public launch, creator onboarding, and international scaling.',
+  },
+  {
+    question: 'Can you tell us more about DocCo and Continuum?',
+    answer:
+      'DocCo is designed to streamline clinical documentation and diagnostic tracking between doctors and clinics; its core development is complete and it is currently undergoing field research and client stakeholder alignment. Continuum is an ultra-fast project orchestration suite tailored for freelancers and multi-project leads, currently undergoing private testing.',
+  },
+  {
+    question: 'What makes Project ROW unique?',
+    answer:
+      'Project ROW breaks out of screen-only limitations by combining an intelligent routing mobile application with a dedicated smart hardware gadget. It provides ambient, distraction-free navigation cues without requiring drivers or travelers to constantly stare at smartphone screens.',
+  },
+  {
+    question: 'Who leads the architecture and engineering at AstriOrb?',
+    answer:
+      'Mohammed Hashim — a Computer Science Engineer with extensive leadership across games, AI systems, and mobile applications. All architectures, research datasets, and technical pipelines are conceived, researched, and engineered directly under his hands-on leadership.',
+  },
+  {
+    question: 'How can investors, partners, or healthcare clients get in touch?',
+    answer:
+      'You can reach out directly via astriorbofficial@gmail.com, connect via LinkedIn at linkedin.com/company/astriorb, or use the categorized inquiry form in the Contact section below.',
+  },
 ];
 
 const FAQItem = ({ faq, isOpen, onToggle }) => {
-    const handleMouseEnter = () => document.dispatchEvent(new Event('cursor-enter'));
-    const handleMouseLeave = () => document.dispatchEvent(new Event('cursor-leave'));
-
-    return (
+  return (
+    <motion.div variants={fadeInUp} className="rounded-2xl overflow-hidden border border-white/10 bg-titanium-900/80 transition-colors">
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        className="w-full p-5 sm:p-6 flex justify-between items-center text-left cursor-pointer hover:bg-white/[0.02] transition-colors"
+      >
+        <h3 className="text-base sm:text-lg font-semibold text-white pr-4 font-mono">
+          {faq.question}
+        </h3>
         <motion.div
-            variants={fadeInUp}
-            className="glass-effect rounded-xl overflow-hidden"
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+          className="text-citron shrink-0"
         >
-            <motion.button
-                onClick={onToggle}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                className="w-full p-5 md:p-6 flex justify-between items-center text-left cursor-pointer"
-                whileHover={{ backgroundColor: 'rgba(99, 102, 241, 0.03)' }}
-            >
-                <h3 className="text-base md:text-lg font-medium text-light-text dark:text-white pr-4">
-                    {faq.question}
-                </h3>
-                <motion.div
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex-shrink-0"
-                >
-                    <ChevronDown className="w-5 h-5 text-cosmic-purple dark:text-cosmic-neon" />
-                </motion.div>
-            </motion.button>
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    >
-                        <div className="px-5 md:px-6 pb-5 md:pb-6 border-t border-black/5 dark:border-white/10 pt-4">
-                            <p className="text-sm md:text-base text-light-subtext dark:text-gray-300 leading-relaxed">
-                                {faq.answer}
-                            </p>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+          <ChevronDown size={20} />
         </motion.div>
-    );
+      </button>
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+          >
+            <div className="px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-titanium-300 leading-relaxed border-t border-white/10 pt-4 font-normal">
+              {faq.answer}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
 };
 
 const FAQ = () => {
-    const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(0);
 
-    return (
-        <div
-            className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
-            onMouseEnter={() => document.dispatchEvent(new Event('cursor-enter'))}
-            onMouseLeave={() => document.dispatchEvent(new Event('cursor-leave'))}
-        >
-            <motion.div
-                variants={fadeInUp}
-                className="text-center mb-10 md:mb-14"
-            >
-                <div className="flex items-center justify-center gap-3 mb-4 md:mb-6">
-                    <HelpCircle className="w-8 h-8 text-cosmic-purple dark:text-cosmic-neon" />
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-light-text dark:text-white">
-                        Frequently <span className="bg-gradient-neon bg-clip-text text-transparent">Asked</span>
-                    </h2>
-                </div>
-                <p className="text-lg md:text-xl text-light-subtext dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-                    Common questions about AstriOrb, our products, and how we work.
-                </p>
-            </motion.div>
-
-            <motion.div
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.1 }}
-                className="space-y-3 md:space-y-4"
-            >
-                {faqs.map((faq, index) => (
-                    <FAQItem
-                        key={faq.question}
-                        faq={faq}
-                        isOpen={openIndex === index}
-                        onToggle={() => setOpenIndex(openIndex === index ? null : index)}
-                    />
-                ))}
-            </motion.div>
+  return (
+    <div id="faq" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-white">
+      {/* Header */}
+      <motion.div variants={fadeInUp} className="text-center max-w-3xl mx-auto mb-16">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-titanium-800/80 border border-citron/30 mb-4">
+          <HelpCircle className="w-3.5 h-3.5 text-citron" />
+          <span className="text-xs font-mono font-semibold text-citron uppercase tracking-wider">
+            KNOWLEDGE BASE & FAQ
+          </span>
         </div>
-    );
+
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
+          Frequently Asked Questions
+        </h2>
+        <p className="text-base sm:text-lg text-titanium-300 leading-relaxed font-normal">
+          Everything you need to know about AstriOrb, our 5 core products, and our engineering roadmap.
+        </p>
+      </motion.div>
+
+      {/* FAQ Items */}
+      <div className="space-y-4">
+        {faqs.map((faq, index) => (
+          <FAQItem
+            key={faq.question}
+            faq={faq}
+            isOpen={openIndex === index}
+            onToggle={() => setOpenIndex(openIndex === index ? -1 : index)}
+          />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default FAQ;

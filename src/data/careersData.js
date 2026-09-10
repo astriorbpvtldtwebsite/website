@@ -1,0 +1,78 @@
+export const jobRoles = [
+  {
+    id: 'mobile-fullstack',
+    title: 'Mobile & Fullstack Engineer',
+    department: 'Engineering',
+    category: 'engineering',
+    location: 'Remote (Kerala, India)',
+    type: 'Full-time / Contract',
+    experience: 'Fresher to 3 Yrs (Projects > Years)',
+    color: 'text-citron',
+    badge: 'Core Team',
+    description:
+      'Help architect and scale mobile interfaces and backend services across our product portfolio using React Native, Flutter, and TypeScript. Freshers with proven GitHub project delivery and deep technical curiosity are warmly encouraged.',
+    highlights: [
+      'Direct contribution to FISCLOK updates and Tastory consumer launch',
+      'Architect local-first MMKV encrypted device vaults with zero telemetry',
+      'Optimize 60–120 FPS fluid micro-interactions and native bridges',
+    ],
+    techStack: ['React Native', 'Flutter', 'TypeScript', 'Node.js', 'Supabase'],
+  },
+  {
+    id: 'embedded-iot',
+    title: 'Embedded Hardware & IoT Specialist',
+    department: 'Hardware R&D',
+    category: 'hardware',
+    location: 'Hybrid / Remote (Kerala, India)',
+    type: 'Contract / Project-Based',
+    experience: 'Maker / Embedded Specialist',
+    color: 'text-laser-cyan',
+    badge: 'Hardware Lab',
+    description:
+      'Work directly with our founder on Project ROW, prototyping custom ambient navigation hardware gadgets, Bluetooth LE 5.0 telemetry, and low-power microcontroller firmware.',
+    highlights: [
+      'Hardware-software telemetry co-design pairing gadgets to mobile apps',
+      'Ultra-low power optimization for sub-15mA operational battery draw',
+      'Firmware programming for ESP32-S3 dual-core microcontrollers',
+    ],
+    techStack: ['Embedded C/C++', 'ESP32-S3', 'BLE 5.0', 'Custom PCB', 'Sensors'],
+  },
+  {
+    id: 'clinical-researcher',
+    title: 'Clinical Data & Domain Researcher',
+    department: 'HealthTech Research',
+    category: 'health',
+    location: 'Remote (Kerala, India)',
+    type: 'Flexible / Contract',
+    experience: 'Domain Researcher / BioTech',
+    color: 'text-cyan-400',
+    badge: 'Clinical Pilot',
+    description:
+      'Collaborate on Project DocCo to synthesize clinical workflows, conduct healthcare practitioner interviews, and ensure patient health record integrity and compliance.',
+    highlights: [
+      'Physician-patient consultation protocol analysis',
+      'Zero-knowledge health record consent ledger design',
+      'Clinical trial feedback coordination with partner doctors',
+    ],
+    techStack: ['Clinical Protocols', 'HIPAA / GDPR', 'Medical UX', 'Research'],
+  },
+  {
+    id: 'growth-community',
+    title: 'Growth & Community Lead',
+    department: 'Growth & Strategy',
+    category: 'growth',
+    location: 'Remote (Kerala, India)',
+    type: 'Part-time / Contract',
+    experience: 'Community Builder / Marketer',
+    color: 'text-purple-400',
+    badge: 'Ecosystem',
+    description:
+      'Lead organic product adoption for FISCLOK on Google Play, drive creator outreach for Tastory, and build organic tech community presence across developer channels.',
+    highlights: [
+      'Play Store Optimization (ASO) and user feedback loops',
+      'Culinary creator onboarding for Tastory flagship rollout',
+      'Authentic developer community storytelling on LinkedIn & X',
+    ],
+    techStack: ['App Store Optimization', 'Community Building', 'Content', 'Analytics'],
+  },
+];

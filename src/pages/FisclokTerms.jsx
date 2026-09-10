@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, FileText, AlertTriangle, Mail } from 'lucide-react';
+import { ArrowLeft, FileText, Cloud, AlertCircle, ShieldAlert, CheckCircle, Database } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
@@ -9,9 +9,13 @@ import SEO from '../components/SEO';
 const FisclokTerms = () => {
     return (
         <>
-            <SEO title="FISCLOK Terms of Service" description="Terms of Service for FISCLOK, a privacy-first personal finance tracker by AstriOrb." url="/fisclok/terms" />
+            <SEO
+                title="Terms of Service - Fisclok | AstriOrb"
+                description="Terms of Service for Fisclok, a personal finance management app by AstriOrb Private Limited."
+                url="/fisclok/terms"
+            />
             <Navbar />
-            <main className="min-h-screen bg-light-bg dark:bg-gradient-cosmic pt-24 pb-16">
+            <main className="min-h-screen bg-sand dark:bg-obsidian pt-28 pb-20 text-sand-charcoal dark:text-titanium-100 transition-colors duration-300 relative">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Back Link */}
                     <motion.div
@@ -20,11 +24,11 @@ const FisclokTerms = () => {
                         className="mb-8"
                     >
                         <Link
-                            to="/"
-                            className="inline-flex items-center text-cosmic-purple dark:text-cosmic-neon hover:underline"
+                            to="/products"
+                            className="inline-flex items-center gap-2 text-xs font-mono font-medium text-sand-charcoal/70 dark:text-titanium-300 hover:text-citron dark:hover:text-citron transition-colors group"
                         >
-                            <ArrowLeft className="w-4 h-4 mr-2" />
-                            Back to Home
+                            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+                            Back to Products
                         </Link>
                     </motion.div>
 
@@ -37,18 +41,18 @@ const FisclokTerms = () => {
                         <div className="flex justify-center mb-4">
                             <img
                                 src="/fisclok_app_icon.png"
-                                alt="FISCLOK"
-                                className="w-20 h-20 rounded-2xl shadow-lg"
+                                alt="Fisclok"
+                                className="w-20 h-20 rounded-2xl shadow-xl ring-1 ring-black/10 dark:ring-white/10"
                             />
                         </div>
-                        <h1 className="text-3xl md:text-4xl font-bold text-light-text dark:text-white mb-2">
+                        <h1 className="text-3xl md:text-5xl font-bold text-sand-charcoal dark:text-white mb-2 tracking-tight">
                             Terms of Service
                         </h1>
-                        <p className="text-lg text-cosmic-purple dark:text-cosmic-neon font-medium">
-                            FISCLOK
+                        <p className="text-xs font-mono uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-bold">
+                            Fisclok
                         </p>
-                        <p className="text-sm text-light-subtext dark:text-gray-400 mt-2">
-                            Last Updated: January 2026
+                        <p className="text-xs font-mono text-sand-charcoal/60 dark:text-titanium-400 mt-2">
+                            Last Updated: September 2026
                         </p>
                     </motion.div>
 
@@ -57,175 +61,86 @@ const FisclokTerms = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="glass-effect rounded-2xl p-6 md:p-10 space-y-8"
+                        className="bg-white/95 dark:bg-titanium-900/90 border border-sand-border dark:border-white/10 rounded-2xl p-6 md:p-10 shadow-xl backdrop-blur-xl space-y-8"
                     >
-                        {/* 1. Acceptance */}
+                        {/* 1. Acceptance of Terms */}
                         <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3 flex items-center">
-                                <FileText className="w-5 h-5 mr-2 text-cosmic-purple dark:text-cosmic-neon" />
+                            <h2 className="text-lg md:text-xl font-bold text-sand-charcoal dark:text-white mb-3 flex items-center gap-2.5">
+                                <FileText className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                                 1. Acceptance of Terms
                             </h2>
-                            <p className="text-light-subtext dark:text-gray-300 leading-relaxed">
-                                By downloading, installing, or using FISCLOK ("the App"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the App.
+                            <p className="text-sand-charcoal/85 dark:text-titanium-200 leading-relaxed text-sm md:text-base">
+                                By downloading, installing, or using Fisclok ("the App"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the App.
                             </p>
                         </section>
 
-                        {/* 2. Description */}
+                        {/* 2. Description of Service */}
                         <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">2. Description of Service</h2>
-                            <p className="text-light-subtext dark:text-gray-300 mb-2">
-                                FISCLOK is a personal finance management application that helps you:
+                            <h2 className="text-lg md:text-xl font-bold text-sand-charcoal dark:text-white mb-3 flex items-center gap-2.5">
+                                <CheckCircle className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                                2. Description of Service
+                            </h2>
+                            <p className="text-sand-charcoal/85 dark:text-titanium-200 leading-relaxed text-sm md:text-base">
+                                Fisclok is a personal finance management application that helps you track income and expenses, manage loans, create budgets, and analyze spending patterns.
                             </p>
-                            <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-1 ml-2">
-                                <li>Track income and expenses</li>
-                                <li>Manage loans (money lent and borrowed)</li>
-                                <li>Create and monitor budgets</li>
-                                <li>Categorize transactions</li>
-                                <li>Analyze spending patterns</li>
-                                <li>Export financial data</li>
-                            </ul>
                         </section>
 
                         {/* 3. User Responsibilities */}
                         <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">3. User Responsibilities</h2>
-
-                            <h3 className="font-medium text-light-text dark:text-white mt-4 mb-2">You agree to:</h3>
-                            <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-1 ml-2">
-                                <li>Provide accurate information when using the App</li>
-                                <li>Keep your device secure to protect your financial data</li>
-                                <li>Use the App for lawful purposes only</li>
-                                <li>Not attempt to reverse engineer, decompile, or hack the App</li>
-                                <li>Not use the App to track finances for illegal activities</li>
-                            </ul>
-
-                            <h3 className="font-medium text-light-text dark:text-white mt-4 mb-2">You understand that:</h3>
-                            <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-1 ml-2">
-                                <li>You are solely responsible for the accuracy of data you enter</li>
-                                <li>You should regularly backup your data</li>
-                                <li>The App is for personal use only</li>
-                            </ul>
+                            <h2 className="text-lg md:text-xl font-bold text-sand-charcoal dark:text-white mb-3 flex items-center gap-2.5">
+                                <AlertCircle className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                                3. User Responsibilities
+                            </h2>
+                            <p className="text-sand-charcoal/85 dark:text-titanium-200 leading-relaxed text-sm md:text-base">
+                                You agree to provide accurate information and keep your device secure. You are solely responsible for the accuracy of data you enter and should regularly backup your data.
+                            </p>
                         </section>
 
                         {/* 4. Data and Privacy */}
                         <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">4. Data and Privacy</h2>
-                            <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-1 ml-2">
-                                <li>All your data is stored locally on your device</li>
-                                <li>We do not collect, access, or transmit your financial data</li>
-                                <li>You are responsible for backing up your data</li>
-                                <li>See our <Link to="/fisclok/privacy-policy" className="text-cosmic-purple dark:text-cosmic-neon hover:underline">Privacy Policy</Link> for more details</li>
-                            </ul>
+                            <h2 className="text-lg md:text-xl font-bold text-sand-charcoal dark:text-white mb-3 flex items-center gap-2.5">
+                                <Database className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                                4. Data and Privacy
+                            </h2>
+                            <p className="text-sand-charcoal/85 dark:text-titanium-200 leading-relaxed text-sm md:text-base">
+                                Your data is stored on your device and is never sent to our servers. If you turn on Google Drive Backup, a copy is written to your own Google Drive account. You remain responsible for the accuracy of your data and for keeping a backup.
+                            </p>
+                            <p className="text-sand-charcoal/85 dark:text-titanium-200 leading-relaxed text-sm md:text-base mt-2">
+                                See our <Link to="/fisclok/privacy-policy" className="text-emerald-600 dark:text-emerald-400 hover:text-citron dark:hover:text-citron underline font-mono text-sm transition-colors">Privacy Policy</Link> for more details.
+                            </p>
                         </section>
 
-                        {/* 5. Disclaimer */}
+                        {/* 5. Google Drive Backup */}
                         <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">5. Disclaimer of Warranties</h2>
-                            <div className="bg-gray-500/10 border border-gray-500/20 rounded-xl p-4">
-                                <p className="text-light-subtext dark:text-gray-300 text-sm uppercase">
-                                    THE APP IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO:
+                            <h2 className="text-lg md:text-xl font-bold text-sand-charcoal dark:text-white mb-3 flex items-center gap-2.5">
+                                <Cloud className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                                5. Google Drive Backup
+                            </h2>
+                            <p className="text-sand-charcoal/85 dark:text-titanium-200 leading-relaxed text-sm md:text-base">
+                                Google Drive Backup is optional and off by default. If you enable it, you authorise the App to create and update a single backup file in your own Google Drive. That file is held under your Google account and is subject to Google's own terms. We cannot see it. You may disconnect at any time from Settings.
+                            </p>
+                        </section>
+
+                        {/* 6. Disclaimer of Warranties */}
+                        <section>
+                            <h2 className="text-lg md:text-xl font-bold text-sand-charcoal dark:text-white mb-3 flex items-center gap-2.5">
+                                <ShieldAlert className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                                6. Disclaimer of Warranties
+                            </h2>
+                            <div className="bg-sand-light dark:bg-titanium-950/80 border border-sand-border dark:border-white/10 rounded-xl p-4">
+                                <p className="text-xs md:text-sm font-mono text-sand-charcoal/80 dark:text-titanium-300 leading-relaxed uppercase">
+                                    THE APP IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND. We do not guarantee accuracy of calculations or error-free operation.
                                 </p>
-                                <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-1 ml-2 mt-2 text-sm">
-                                    <li>Accuracy of calculations</li>
-                                    <li>Uninterrupted or error-free operation</li>
-                                    <li>Fitness for a particular purpose</li>
-                                    <li>Data loss prevention</li>
-                                </ul>
                             </div>
                         </section>
 
-                        {/* 6. Limitation of Liability */}
+                        {/* 7. Limitation of Liability */}
                         <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">6. Limitation of Liability</h2>
-                            <p className="text-light-subtext dark:text-gray-300 text-sm uppercase mb-2">
-                                TO THE MAXIMUM EXTENT PERMITTED BY LAW:
-                            </p>
-                            <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-1 ml-2">
-                                <li>We are not liable for any financial losses or decisions made based on the App</li>
-                                <li>We are not liable for data loss (please backup regularly)</li>
-                                <li>We are not liable for any indirect, incidental, or consequential damages</li>
-                                <li>Our total liability shall not exceed the amount you paid for the App (if any)</li>
-                            </ul>
-                        </section>
-
-                        {/* 7. Financial Advice Disclaimer */}
-                        <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3 flex items-center">
-                                <AlertTriangle className="w-5 h-5 mr-2 text-yellow-500" />
-                                7. Financial Advice Disclaimer
+                            <h2 className="text-lg md:text-xl font-bold text-sand-charcoal dark:text-white mb-3">
+                                7. Limitation of Liability
                             </h2>
-                            <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-4">
-                                <p className="font-medium text-yellow-500 mb-2">FISCLOK is NOT a financial advisor</p>
-                                <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-1 ml-2 text-sm">
-                                    <li>The App provides tools for tracking and organizing your finances</li>
-                                    <li>It does not provide financial, investment, tax, or legal advice</li>
-                                    <li>Always consult qualified professionals for financial decisions</li>
-                                    <li>We are not responsible for financial decisions you make</li>
-                                </ul>
-                            </div>
-                        </section>
-
-                        {/* 8. Intellectual Property */}
-                        <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">8. Intellectual Property</h2>
-                            <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-1 ml-2">
-                                <li>FISCLOK and its original content, features, and functionality are owned by AstriOrb Private Limited</li>
-                                <li>You may not copy, modify, distribute, or create derivative works</li>
-                                <li>All trademarks and logos are our property</li>
-                            </ul>
-                        </section>
-
-                        {/* 9. Updates */}
-                        <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">9. Updates and Changes</h2>
-                            <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-1 ml-2">
-                                <li>We may update the App from time to time</li>
-                                <li>Updates may include new features, bug fixes, or changes</li>
-                                <li>We may modify these Terms at any time</li>
-                                <li>Continued use after changes means you accept the new Terms</li>
-                            </ul>
-                        </section>
-
-                        {/* 10. Termination */}
-                        <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">10. Termination</h2>
-                            <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-1 ml-2">
-                                <li>You may stop using the App at any time by uninstalling it</li>
-                                <li>We reserve the right to terminate or suspend access for violations of these Terms</li>
-                                <li>Upon termination, all data on your device will remain until you delete the App</li>
-                            </ul>
-                        </section>
-
-                        {/* 11. Governing Law */}
-                        <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">11. Governing Law</h2>
-                            <p className="text-light-subtext dark:text-gray-300">
-                                These Terms shall be governed by and construed in accordance with the laws of India.
-                            </p>
-                        </section>
-
-                        {/* 12. Contact */}
-                        <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3 flex items-center">
-                                <Mail className="w-5 h-5 mr-2 text-cosmic-purple dark:text-cosmic-neon" />
-                                12. Contact Information
-                            </h2>
-                            <p className="text-light-subtext dark:text-gray-300">
-                                For questions about these Terms, contact us at:
-                            </p>
-                            <ul className="text-light-subtext dark:text-gray-300 mt-2 ml-2">
-                                <li>Email: <a href="mailto:officialfisclok@gmail.com" className="text-cosmic-purple dark:text-cosmic-neon hover:underline">officialfisclok@gmail.com</a></li>
-                                <li>Company: AstriOrb Private Limited</li>
-                            </ul>
-                        </section>
-
-                        {/* Acknowledgment */}
-                        <section className="border-t border-gray-200 dark:border-gray-700 pt-6">
-                            <p className="text-light-subtext dark:text-gray-300 text-sm uppercase">
-                                BY USING FISCLOK, YOU ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD, AND AGREE TO BE BOUND BY THESE TERMS OF SERVICE.
-                            </p>
-                            <p className="text-light-subtext dark:text-gray-400 text-sm mt-4">
-                                <strong>Remember:</strong> FISCLOK is a tool to help you manage your finances. Always make informed decisions and consult professionals when needed.
+                            <p className="text-xs md:text-sm font-mono text-sand-charcoal/80 dark:text-titanium-300 leading-relaxed uppercase">
+                                We are not liable for any financial losses, data loss, or decisions made based on the App.
                             </p>
                         </section>
                     </motion.div>
@@ -239,7 +154,7 @@ const FisclokTerms = () => {
                     >
                         <Link
                             to="/fisclok/privacy-policy"
-                            className="text-cosmic-purple dark:text-cosmic-neon hover:underline"
+                            className="text-emerald-600 dark:text-emerald-400 hover:text-citron dark:hover:text-citron font-mono text-sm inline-flex items-center gap-1.5 transition-colors"
                         >
                             ← View Privacy Policy
                         </Link>

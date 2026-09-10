@@ -1,238 +1,216 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X as CloseIcon, ExternalLink, Clock, Rocket } from 'lucide-react';
+import {
+  X,
+  ExternalLink,
+  Download,
+  CheckCircle2,
+  Cpu,
+  Layers,
+  Sparkles,
+  ArrowRight,
+  HelpCircle,
+  Lightbulb,
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// Mobile Innovation Products
-const mobileProducts = [
-    {
-        id: 'fisclok',
-        name: 'FISCLOK',
-        tagline: 'Manage your money with ease',
-        description: 'Privacy-first personal finance manager with local-only storage, expense tracking, loan management, and budget monitoring.',
-        icon: '/fisclok_app_icon.png',
-        status: 'live', // 'live', 'coming-soon', 'in-development'
-        playStoreUrl: 'https://play.google.com/store/apps/details?id=com.astriorb.fincend',
-        privacyUrl: '/fisclok/privacy-policy',
-        gradient: 'from-purple-500 to-indigo-600',
-    },
-    {
-        id: 'tastory',
-        name: 'Tastory',
-        tagline: 'Your culinary journey begins',
-        description: 'Discover, save, and share recipes. A social platform for food enthusiasts to explore cuisines from around the world.',
-        icon: null, // Coming soon
-        status: 'in-development',
-        playStoreUrl: null,
-        privacyUrl: null,
-        gradient: 'from-orange-500 to-red-500',
-    },
-];
+const ProductShowcaseModal = ({ product, isOpen, onClose, onOpenTastoryModal }) => {
+  const closeButtonRef = useRef(null);
 
-const StatusBadge = ({ status }) => {
-    const config = {
-        'live': { label: 'Live', className: 'bg-green-500/20 text-green-400 border-green-500/30' },
-        'coming-soon': { label: 'Coming Soon', className: 'bg-purple-500/20 text-purple-400 border-purple-500/30' },
-        'in-development': { label: 'In Development', className: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30' },
-    };
+  useEffect(() => {
+    if (isOpen) {
+      closeButtonRef.current?.focus();
+      const handleEscape = (e) => {
+        if (e.key === 'Escape') onClose();
+      };
+      document.addEventListener('keydown', handleEscape);
+      return () => document.removeEventListener('keydown', handleEscape);
+    }
+  }, [isOpen, onClose]);
 
-    const { label, className } = config[status] || config['in-development'];
+  if (!isOpen || !product) return null;
 
-    return (
-        <span className={`px-2 py-1 text-xs font-medium rounded-full border ${className}`}>
-            {label}
-        </span>
-    );
-};
-
-const ProductCard = ({ product }) => {
-    const { name, tagline, description, icon, status, playStoreUrl, privacyUrl, gradient } = product;
-
-    const renderActionButton = () => {
-        if (status === 'live' && playStoreUrl) {
-            return (
-                <div className="space-y-2">
-                    <motion.a
-                        href={playStoreUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.03 }}
-                        whileTap={{ scale: 0.97 }}
-                        className="w-full bg-gradient-purple text-white font-medium px-4 py-2.5 rounded-lg flex items-center justify-center space-x-2 hover:shadow-lg transition-shadow text-sm"
-                    >
-                        <span>Get on Play Store</span>
-                        <ExternalLink className="w-4 h-4" />
-                    </motion.a>
-                    {privacyUrl && (
-                        <Link
-                            to={privacyUrl}
-                            className="block w-full text-center text-xs text-gray-400 hover:text-cosmic-neon transition-colors"
-                        >
-                            View Privacy Policy →
-                        </Link>
-                    )}
-                </div>
-            );
-        }
-
-        if (status === 'coming-soon') {
-            return (
-                <div className="space-y-2">
-                    <div className="w-full bg-purple-500/10 text-purple-400 font-medium px-4 py-2.5 rounded-lg flex items-center justify-center space-x-2 text-sm border border-purple-500/20">
-                        <Rocket className="w-4 h-4" />
-                        <span>Launching Soon on Play Store</span>
-                    </div>
-                    {privacyUrl && (
-                        <Link
-                            to={privacyUrl}
-                            className="block w-full text-center text-xs text-gray-400 hover:text-cosmic-neon transition-colors"
-                        >
-                            View Privacy Policy →
-                        </Link>
-                    )}
-                </div>
-            );
-        }
-
-        return (
-            <div className="w-full bg-gray-500/10 text-gray-400 font-medium px-4 py-2.5 rounded-lg flex items-center justify-center space-x-2 text-sm border border-gray-500/20">
-                <Clock className="w-4 h-4" />
-                <span>In Development</span>
-            </div>
-        );
-    };
-
-    return (
+  return (
+    <AnimatePresence>
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        {/* Backdrop */}
         <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            whileHover={{ y: -5 }}
-            className="glass-effect rounded-xl p-5 flex flex-col h-full group hover:shadow-xl dark:hover:shadow-cosmic-purple/10 transition-all duration-300"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+          className="fixed inset-0 bg-black/80 backdrop-blur-md"
+        />
+
+        {/* Modal Dialog */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: 20 }}
+          transition={{ duration: 0.25, ease: 'easeOut' }}
+          className="relative w-full max-w-2xl bg-obsidian border border-white/15 rounded-2xl shadow-2xl p-6 sm:p-8 z-10 custom-scrollbar max-h-[90vh] overflow-y-auto text-white"
         >
-            {/* Header */}
-            <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center space-x-3">
-                    {/* App Icon */}
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center overflow-hidden shadow-lg`}>
-                        {icon ? (
-                            <img src={icon} alt={`${name} icon`} className="w-full h-full object-cover" />
-                        ) : (
-                            <span className="text-white text-xl font-bold">{name[0]}</span>
-                        )}
-                    </div>
-                    <div>
-                        <h4 className="text-lg font-semibold text-light-text dark:text-white">{name}</h4>
-                        <p className="text-sm text-light-subtext dark:text-gray-400">{tagline}</p>
-                    </div>
-                </div>
-                <StatusBadge status={status} />
+          {/* Close Button */}
+          <button
+            type="button"
+            ref={closeButtonRef}
+            onClick={onClose}
+            aria-label="Close modal"
+            className="absolute top-5 right-5 p-2 rounded-xl text-titanium-400 hover:text-white bg-titanium-800 border border-white/5 hover:border-citron/40 transition-colors cursor-pointer"
+          >
+            <X size={18} />
+          </button>
+
+          {/* Header */}
+          <div className="flex items-start gap-4 mb-6 pr-10">
+            {product.icon ? (
+              <img
+                src={product.icon}
+                alt={product.name}
+                className="w-16 h-16 rounded-2xl shadow-lg shrink-0 border border-white/10"
+              />
+            ) : (
+              <div
+                className="w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 shadow-lg text-white font-bold text-xl border border-white/10"
+                style={{ backgroundColor: product.accentColor || '#141b29' }}
+              >
+                <Cpu className="w-8 h-8" />
+              </div>
+            )}
+            <div>
+              <span className="text-[11px] font-mono uppercase tracking-wider text-citron">
+                {product.category}
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                {product.name}
+              </h2>
+              <p className="text-xs sm:text-sm text-titanium-300 mt-1 font-normal">
+                {product.tagline}
+              </p>
+            </div>
+          </div>
+
+          {/* Problem & Solution Grid */}
+          <div className="space-y-4 mb-6">
+            <div className="p-4 rounded-xl bg-titanium-900 border border-white/5">
+              <div className="flex items-center gap-2 text-xs font-mono font-semibold text-rose-400 mb-1.5">
+                <HelpCircle className="w-3.5 h-3.5" />
+                <span>THE REAL-WORLD PROBLEM</span>
+              </div>
+              <p className="text-xs sm:text-sm text-titanium-200 leading-relaxed font-normal">
+                {product.problemStatement}
+              </p>
             </div>
 
-            {/* Description */}
-            <p className="text-sm text-light-subtext dark:text-gray-300 mb-4 flex-grow leading-relaxed">
-                {description}
-            </p>
+            <div className="p-4 rounded-xl bg-titanium-900 border border-white/5">
+              <div className="flex items-center gap-2 text-xs font-mono font-semibold text-citron mb-1.5">
+                <Lightbulb className="w-3.5 h-3.5" />
+                <span>ASTRIORB ARCHITECTURAL SOLUTION</span>
+              </div>
+              <p className="text-xs sm:text-sm text-titanium-200 leading-relaxed font-normal">
+                {product.solutionOverview}
+              </p>
+            </div>
+          </div>
 
-            {/* Action */}
-            {renderActionButton()}
-        </motion.div>
-    );
-};
+          {/* Key Capabilities */}
+          <div className="mb-6">
+            <h4 className="text-xs font-mono font-semibold text-white uppercase tracking-wider mb-3">
+              Core Capabilities & Highlights
+            </h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              {product.keyFeatures.map((feat, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-start gap-2 p-2.5 rounded-lg bg-titanium-900 border border-white/5 text-xs text-titanium-300"
+                >
+                  <CheckCircle2 className="w-3.5 h-3.5 text-citron shrink-0 mt-0.5" />
+                  <span>{feat}</span>
+                </div>
+              ))}
+            </div>
+          </div>
 
-const ProductShowcaseModal = ({ isOpen, onClose, categoryTitle }) => {
-    const closeButtonRef = useRef(null);
+          {/* Tech Stack */}
+          <div className="mb-6">
+            <h4 className="text-xs font-mono font-semibold text-white uppercase tracking-wider mb-2">
+              Engineering Stack
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {product.techStack.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-2.5 py-1 rounded-md bg-titanium-850 border border-white/10 text-xs font-mono text-citron"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
 
-    useEffect(() => {
-        if (isOpen) {
-            closeButtonRef.current?.focus();
+          {/* Roadmap / Status Note */}
+          <div className="p-3.5 rounded-xl bg-titanium-850 border border-citron/20 text-xs text-titanium-200 mb-6 flex items-start gap-2.5">
+            <Layers className="w-4 h-4 text-citron shrink-0 mt-0.5" />
+            <div>
+              <span className="font-semibold text-citron font-mono">Current Status:</span>{' '}
+              {product.roadmapNote}
+            </div>
+          </div>
 
-            const handleEscape = (e) => {
-                if (e.key === 'Escape') {
+          {/* Actions */}
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-white/10">
+            <div className="flex items-center gap-3">
+              {product.playStoreUrl && (
+                <a
+                  href={product.playStoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-500 text-obsidian shadow-md hover:bg-emerald-400 flex items-center gap-1.5 font-mono"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Play Store</span>
+                  <ExternalLink className="w-3 h-3 opacity-70" />
+                </a>
+              )}
+
+              {product.isFlagship && onOpenTastoryModal && (
+                <button
+                  type="button"
+                  onClick={() => {
                     onClose();
-                }
-            };
+                    onOpenTastoryModal();
+                  }}
+                  className="px-4 py-2 rounded-xl text-xs font-semibold bg-citron text-obsidian shadow-md hover:bg-citron-light flex items-center gap-1.5 font-mono cursor-pointer"
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Tastory Pitch</span>
+                </button>
+              )}
 
-            document.addEventListener('keydown', handleEscape);
-            return () => document.removeEventListener('keydown', handleEscape);
-        }
-    }, [isOpen, onClose]);
+              {product.privacyUrl && (
+                <Link
+                  to={product.privacyUrl}
+                  onClick={onClose}
+                  className="text-xs text-titanium-300 hover:text-citron transition-colors font-mono"
+                >
+                  Privacy Policy →
+                </Link>
+              )}
+            </div>
 
-    // Get products based on category
-    const getProducts = () => {
-        if (categoryTitle === 'Mobile Innovation') {
-            return mobileProducts;
-        }
-        return [];
-    };
-
-    const products = getProducts();
-
-    return (
-        <AnimatePresence>
-            {isOpen && (
-                <>
-                    {/* Backdrop */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        onClick={onClose}
-                        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
-                    />
-
-                    {/* Modal */}
-                    <motion.div
-                        initial={{ scale: 0.95, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0.95, opacity: 0 }}
-                        transition={{ type: "spring", duration: 0.3 }}
-                        className="fixed inset-0 flex items-center justify-center z-50 p-4"
-                    >
-                        <div className="glass-effect w-full max-w-3xl max-h-[85vh] overflow-y-auto custom-scrollbar p-6 md:p-8 rounded-2xl relative">
-                            {/* Close Button */}
-                            <button
-                                ref={closeButtonRef}
-                                onClick={onClose}
-                                className="absolute right-4 top-4 p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors z-10"
-                                aria-label="Close modal"
-                            >
-                                <CloseIcon className="w-6 h-6 text-light-text dark:text-white" />
-                            </button>
-
-                            {/* Header */}
-                            <div className="text-center mb-8 pr-8">
-                                <h3 className="text-2xl md:text-3xl font-bold text-light-text dark:text-white mb-2">
-                                    {categoryTitle}
-                                </h3>
-                                <p className="text-light-subtext dark:text-gray-300">
-                                    Explore our mobile applications
-                                </p>
-                            </div>
-
-                            {/* Products Grid */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                                {products.map((product, index) => (
-                                    <motion.div
-                                        key={product.id}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: index * 0.1 }}
-                                    >
-                                        <ProductCard product={product} />
-                                    </motion.div>
-                                ))}
-                            </div>
-
-                            {/* Footer note */}
-                            <p className="text-center text-xs text-gray-500 dark:text-gray-400 mt-6">
-                                More products coming soon. Stay tuned!
-                            </p>
-                        </div>
-                    </motion.div>
-                </>
-            )}
-        </AnimatePresence>
-    );
+            <Link
+              to="/contact"
+              onClick={onClose}
+              className="text-xs font-mono font-semibold text-citron hover:underline flex items-center gap-1"
+            >
+              <span>INQUIRE_ABOUT_PRODUCT</span>
+              <ArrowRight className="w-3 h-3" />
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+    </AnimatePresence>
+  );
 };
 
 export default ProductShowcaseModal;

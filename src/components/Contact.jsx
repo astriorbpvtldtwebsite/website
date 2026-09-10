@@ -1,18 +1,18 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, MapPin, Send, MessageSquare, Headphones } from 'lucide-react';
-import { staggerContainer, fadeInUp, fadeInLeft, fadeInRight } from '../utils/animations';
+import { Mail, Linkedin, MapPin, Send, MessageSquare, Headphones, Sparkles, CheckCircle2 } from 'lucide-react';
+import { staggerContainer, fadeInUp } from '../utils/animations';
 import { sanitizeFormData } from '../utils/sanitize';
 import { SUCCESS_MESSAGE_DURATION, EMAIL_CONFIG } from '../utils/constants';
 import emailjs from '@emailjs/browser';
+import CustomSelect from './CustomSelect';
 
-// Initialize EmailJS with public key from environment variables
-emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+// Initialize EmailJS with public key from environment variables if available
+if (import.meta.env.VITE_EMAILJS_PUBLIC_KEY) {
+  emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+}
 
 const Contact = () => {
-  const handleMouseEnter = () => document.dispatchEvent(new Event('cursor-enter'));
-  const handleMouseLeave = () => document.dispatchEvent(new Event('cursor-leave'));
-
   const [formData, setFormData] = useState({
     from_name: '',
     from_email: '',
@@ -31,8 +31,19 @@ const Contact = () => {
     setIsSubmitting(true);
     setError('');
 
-    // Sanitize form data before sending
     const sanitizedData = sanitizeFormData(formData);
+
+    if (!sanitizedData.from_email) {
+      setError('Please provide a valid email address.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!sanitizedData.inquiry_type) {
+      setError('Please select an area of inquiry.');
+      setIsSubmitting(false);
+      return;
+    }
 
     const templateParams = {
       to_name: `${EMAIL_CONFIG.companyName} Team`,
@@ -43,24 +54,29 @@ const Contact = () => {
       inquiry_type: sanitizedData.inquiry_type,
       message: sanitizedData.message,
       reply_to: sanitizedData.from_email,
-      // Additional parameters for styling
       website_url: 'https://astriorb.com',
-      company_logo: 'https://astriorb.com/logo.png', // Add your logo URL
+      company_logo: 'https://astriorb.com/logo.png',
       linkedin_url: 'https://linkedin.com/company/astriorb',
-      twitter_url: 'https://twitter.com/astriorb',
-      github_url: 'https://github.com/astriorb'
     };
 
     try {
-      const response = await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        templateParams
-      );
-      // Show success message
+      if (import.meta.env.VITE_EMAILJS_SERVICE_ID && import.meta.env.VITE_EMAILJS_TEMPLATE_ID) {
+        await emailjs.send(
+          import.meta.env.VITE_EMAILJS_SERVICE_ID,
+          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+          templateParams
+        );
+      } else {
+        const subject = encodeURIComponent(`[AstriOrb Inquiry] ${sanitizedData.inquiry_type} - ${sanitizedData.from_name}`);
+        const body = encodeURIComponent(
+          `From: ${sanitizedData.from_name} (${sanitizedData.from_email})\n` +
+          `Entity: ${sanitizedData.company || 'Not specified'}\n` +
+          `Inquiry: ${sanitizedData.inquiry_type}\n\n` +
+          `Message:\n${sanitizedData.message}`
+        );
+        window.location.href = `mailto:astriorbofficial@gmail.com?subject=${subject}&body=${body}`;
+      }
       setIsSubmitted(true);
-      
-      // Clear form data
       setFormData({
         from_name: '',
         from_email: '',
@@ -69,21 +85,12 @@ const Contact = () => {
         message: '',
       });
 
-      // Reset success message
       setTimeout(() => {
         setIsSubmitted(false);
       }, SUCCESS_MESSAGE_DURATION);
-    } catch (error) {
-      console.error('Failed to send email:', error);
-      let errorMessage = 'Failed to send message. ';
-      
-      if (error.text) {
-        errorMessage += error.text;
-      } else if (error.message) {
-        errorMessage += error.message;
-      }
-      
-      setError(errorMessage);
+    } catch (err) {
+      console.error('Failed to send message:', err);
+      setError(err?.text || err?.message || 'Failed to deliver message. Please email astriorbofficial@gmail.com directly.');
     } finally {
       setIsSubmitting(false);
     }
@@ -99,253 +106,228 @@ const Contact = () => {
   const contactInfo = [
     {
       Icon: Mail,
-      title: 'Business Inquiries',
-      info: 'business@astriorb.com',
+      title: 'Business & Investor Relations',
+      info: 'astriorbofficial@gmail.com',
       link: 'mailto:astriorbofficial@gmail.com',
-      gradient: 'from-blue-500 to-cyan-500',
+      sub: 'Tastory funding, partnerships & enterprise',
     },
     {
       Icon: Headphones,
-      title: 'Product Support',
-      info: 'support@astriorb.com',
-      link: 'mailto:astriorbofficial@gmail.com',
-      gradient: 'from-green-500 to-emerald-500',
+      title: 'FISCLOK Product Support',
+      info: 'officialfisclok@gmail.com',
+      link: 'mailto:officialfisclok@gmail.com',
+      sub: 'User feedback & Play Store assistance',
     },
     {
       Icon: Linkedin,
-      title: 'LinkedIn',
+      title: 'LinkedIn Network',
       info: '/company/astriorb',
       link: 'https://linkedin.com/company/astriorb',
-      gradient: 'from-purple-500 to-pink-500',
+      sub: 'Founder & company announcements',
     },
     {
       Icon: MapPin,
-      title: 'Headquarters',
-      info: 'Remote-First • Coming Soon',
-      link: '#',
-      gradient: 'from-orange-500 to-red-500',
+      title: 'Engineering Headquarters',
+      info: 'Kerala, India',
+      link: 'https://www.google.com/maps/place/Kerala,+India',
+      sub: 'Remote-first product lab',
     },
   ];
 
   const inquiryTypes = [
-    { value: 'general', label: 'General Inquiry' },
-    { value: 'partnership', label: 'Partnership Opportunity' },
-    { value: 'project', label: 'Project Proposal' },
-    { value: 'investment', label: 'Investment Interest' },
-    { value: 'product', label: 'Product Licensing' },
-    { value: 'support', label: 'Technical Support' },
-    { value: 'media', label: 'Media & Press' },
+    {
+      value: 'investor_tastory',
+      title: 'Investor Relations / Funding',
+      subtitle: 'Project Tastory • Seed Round Due Diligence',
+      badge: 'Tastory Seed',
+    },
+    {
+      value: 'client_docco',
+      title: 'Clinical / Healthcare Pilots',
+      subtitle: 'Project DocCo • Hospital & Clinical Trials',
+      badge: 'DocCo Clinical',
+    },
+    {
+      value: 'fisclok_support',
+      title: 'FISCLOK Product Support',
+      subtitle: 'Google Play Store • Privacy & MMKV Help',
+      badge: 'FISCLOK',
+    },
+    {
+      value: 'continuum_beta',
+      title: 'Continuum OS Early Access',
+      subtitle: 'Next-Gen Mobile OS Architecture • Developer Beta',
+      badge: 'OS Beta',
+    },
+    {
+      value: 'row_hardware',
+      title: 'Project ROW Hardware OEM',
+      subtitle: 'ESP32-S3 Microcontroller & BLE Prototyping',
+      badge: 'Project ROW',
+    },
+    {
+      value: 'general_partnership',
+      title: 'General Venture & Architecture',
+      subtitle: 'Founder Direct • Strategic Partnerships & Synergies',
+      badge: 'Founding Studio',
+    },
   ];
 
   return (
-    <div
-      className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div className="absolute inset-0 -bottom-8 md:-bottom-12 opacity-10 dark:opacity-10">
-        <motion.div
-          animate={{ 
-            backgroundPosition: ['0% 0%', '100% 100%'],
-          }}
-          transition={{ duration: 15, repeat: Infinity, repeatType: 'reverse' }}
-          className="w-full h-full bg-gradient-to-br from-cosmic-purple via-cosmic-blue to-cosmic-neon"
-          style={{ backgroundSize: '300% 300%' }}
-        />
-      </div>
+    <div id="contact" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Header */}
+      <motion.div variants={fadeInUp} className="text-center max-w-3xl mx-auto mb-16">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-blue/10 dark:bg-brand-cyan/10 border border-brand-blue/20 dark:border-brand-cyan/25 mb-4">
+          <MessageSquare className="w-3.5 h-3.5 text-brand-blue dark:text-brand-cyan" />
+          <span className="text-xs font-mono font-semibold text-brand-blue dark:text-brand-cyan uppercase tracking-wider">
+            Direct Communication
+          </span>
+        </div>
 
-      <motion.div 
-        variants={fadeInUp}
-        className="text-center mb-12 md:mb-16"
-      >
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-light-text dark:text-white mb-4 md:mb-6">
-          Let's Start the <span className="bg-gradient-neon bg-clip-text text-transparent">Conversation</span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-light-text dark:text-white tracking-tight mb-4">
+          Connect With AstriOrb
         </h2>
-        <p className="text-lg md:text-xl text-light-subtext dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          Whether you have a fully-formed project or just the spark of an idea, we're excited to hear from you. 
-          Tell us what's on your mind, and let's explore how we can build the future together.
+        <p className="text-base sm:text-lg text-light-subtext dark:text-tech-400 leading-relaxed">
+          Whether you are an investor looking at our flagship (Tastory), a medical partner discussing DocCo, or a user with product feedback—we look forward to hearing from you.
         </p>
       </motion.div>
 
-      <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
-        <motion.div 
-          variants={fadeInLeft}
-          className="glass-effect rounded-xl p-6 md:p-8 relative overflow-hidden"
-        >
-          <motion.div
-            animate={{ 
-              scale: [1, 1.1, 1],
-              opacity: [0.05, 0.1, 0.05],
-            }}
-            transition={{ duration: 8, repeat: Infinity }}
-            className="absolute inset-0 bg-gradient-to-br from-cosmic-purple to-cosmic-neon rounded-xl"
-          />
-          
-          <div className="relative z-10">
-            <h3 className="text-xl md:text-2xl font-semibold text-light-text dark:text-white mb-6 flex items-center">
-              <MessageSquare className="w-6 h-6 mr-3 text-cosmic-purple dark:text-cosmic-neon" />
-              Send us a message
-            </h3>
-            
-            <motion.form 
-              ref={form}
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.2 }}
-              onSubmit={handleSubmit} 
-              className="space-y-6"
-            >
-              <motion.input variants={fadeInUp} type="text" name="from_name" value={formData.from_name} onChange={handleChange} placeholder="Your Name" required className="w-full p-3 bg-white/50 dark:bg-space-800/50 text-light-text dark:text-white rounded-lg border border-black/10 dark:border-white/10 focus:ring-2 focus:ring-cosmic-purple dark:focus:ring-cosmic-neon focus:outline-none transition-all placeholder:text-light-subtext dark:placeholder:text-gray-500" />
-              <motion.input variants={fadeInUp} type="email" name="from_email" value={formData.from_email} onChange={handleChange} placeholder="Your Email" required className="w-full p-3 bg-white/50 dark:bg-space-800/50 text-light-text dark:text-white rounded-lg border border-black/10 dark:border-white/10 focus:ring-2 focus:ring-cosmic-purple dark:focus:ring-cosmic-neon focus:outline-none transition-all placeholder:text-light-subtext dark:placeholder:text-gray-500" />
-              <motion.input variants={fadeInUp} type="text" name="company" value={formData.company} onChange={handleChange} placeholder="Your Company (Optional)" className="w-full p-3 bg-white/50 dark:bg-space-800/50 text-light-text dark:text-white rounded-lg border border-black/10 dark:border-white/10 focus:ring-2 focus:ring-cosmic-purple dark:focus:ring-cosmic-neon focus:outline-none transition-all placeholder:text-light-subtext dark:placeholder:text-gray-500" />
-              <motion.select variants={fadeInUp} name="inquiry_type" value={formData.inquiry_type} onChange={handleChange} aria-label="Select Inquiry Type" required className="w-full p-3 bg-white/50 dark:bg-space-800/50 text-light-text dark:text-white rounded-lg border border-black/10 dark:border-white/10 focus:ring-2 focus:ring-cosmic-purple dark:focus:ring-cosmic-neon focus:outline-none transition-all appearance-none">
-                <option value="" disabled>Select Inquiry Type</option>
-                {inquiryTypes.map(type => <option key={type.value} value={type.value} className="bg-light-card dark:bg-space-800">{type.label}</option>)}
-              </motion.select>
-              <motion.textarea variants={fadeInUp} name="message" value={formData.message} onChange={handleChange} placeholder="Your Message" required rows="4" className="w-full p-3 bg-white/50 dark:bg-space-800/50 text-light-text dark:text-white rounded-lg border border-black/10 dark:border-white/10 focus:ring-2 focus:ring-cosmic-purple dark:focus:ring-cosmic-neon focus:outline-none transition-all placeholder:text-light-subtext dark:placeholder:text-gray-500"></motion.textarea>
-              
-              {error && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="text-red-500 dark:text-red-400 text-sm text-center"
-                >
-                  {error}
-                </motion.div>
-              )}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        {/* Left Column: Direct Info Cards */}
+        <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+          {contactInfo.map((item) => {
+            const ItemIcon = item.Icon;
+            return (
+              <a
+                key={item.title}
+                href={item.link}
+                target={item.link.startsWith('http') ? '_blank' : undefined}
+                rel={item.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="glass-card rounded-2xl p-5 flex items-start gap-4 group"
+              >
+                <div className="w-10 h-10 rounded-xl bg-brand-blue/10 dark:bg-brand-cyan/10 text-brand-blue dark:text-brand-cyan flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <ItemIcon size={20} />
+                </div>
+                <div>
+                  <h4 className="text-xs font-mono text-light-subtext dark:text-tech-400 uppercase tracking-wider">
+                    {item.title}
+                  </h4>
+                  <p className="text-sm font-semibold text-light-text dark:text-white group-hover:text-brand-cyan transition-colors mt-0.5">
+                    {item.info}
+                  </p>
+                  <p className="text-xs text-light-subtext dark:text-tech-500 mt-1">
+                    {item.sub}
+                  </p>
+                </div>
+              </a>
+            );
+          })}
+        </div>
 
-              <div className="relative">
-                {/* Send Message Button */}
-                <motion.button
-                  variants={fadeInUp}
-                  type="submit"
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                  disabled={isSubmitting}
-                  whileHover={{ 
-                    scale: 1.05, 
-                    boxShadow: '0 25px 50px rgba(99, 102, 241, 0.4)',
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`w-full bg-gradient-purple text-white py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg flex items-center justify-center space-x-2 hover:shadow-xl transition-all duration-300 disabled:opacity-50 ${isSubmitted ? 'invisible' : 'opacity-100'}`}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <motion.div
-                        animate={{ 
-                          rotate: 360,
-                          y: [0, -3, 0],
-                          x: [-50, 50, -50]
-                        }}
-                        transition={{ 
-                          rotate: { duration: 1, repeat: Infinity, ease: "linear" },
-                          y: { duration: 0.5, repeat: Infinity },
-                          x: { duration: 2, repeat: Infinity }
-                        }}
-                        className="flex items-center space-x-2"
-                      >
-                        <Send className="w-5 h-5" />
-                      </motion.div>
-                      <span>Sending Message...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5" />
-                      <span>Send Message</span>
-                    </>
-                  )}
-                </motion.button>
-
-                {/* Success Message Overlay */}
-                {isSubmitted && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ 
-                      opacity: 1, 
-                      scale: 1,
-                      y: [0, -10, 0]
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      y: {
-                        duration: 1,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }
-                    }}
-                    className="absolute inset-0 flex items-center justify-center text-cosmic-purple dark:text-cosmic-neon"
-                  >
-                    <div className="flex items-center space-x-2">
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ type: "spring", stiffness: 200, damping: 10 }}
-                      >
-                        ✓
-                      </motion.div>
-                      <span>Message Sent Successfully!</span>
-                    </div>
-                  </motion.div>
-                )}
-              </div>
-            </motion.form>
-          </div>
-        </motion.div>
-
-        <motion.div 
-          variants={fadeInRight}
-          className="space-y-6 md:space-y-8"
-        >
-          <div>
-            <h3 className="text-xl md:text-2xl font-semibold text-light-text dark:text-white mb-4 md:mb-6">Get in touch</h3>
-            <p className="text-light-subtext dark:text-gray-300 leading-relaxed mb-6 md:mb-8">
-              Whether you're interested in our products, looking for partnership opportunities, 
-              or considering investment, we're here to explore how we can work together to create the future.
-            </p>
-          </div>
-
-          <motion.div 
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-            className="space-y-4 md:space-y-6"
+        {/* Right Column: Contact Form */}
+        <motion.div variants={fadeInUp} className="lg:col-span-7">
+          <form
+            ref={form}
+            onSubmit={handleSubmit}
+            className="glass-card rounded-2xl p-6 sm:p-8 space-y-4"
           >
-            {contactInfo.map((contact) => {
-              const { Icon, title, info, link, gradient } = contact;
-              return (
-                <motion.a
-                  key={title}
-                  href={link}
-                  variants={fadeInUp}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                  whileHover={{ x: 10, scale: 1.02 }}
-                  className="flex items-center space-x-4 glass-effect rounded-lg p-4 md:p-6 hover:shadow-lg dark:hover:shadow-cosmic-purple/20 transition-all duration-300 group relative overflow-hidden"
-                >
-                  <motion.div
-                    className={`absolute inset-0 bg-gradient-to-r ${gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
-                    initial={false}
-                  />
-                  
-                  <div className="relative z-10 flex items-center space-x-4 w-full">
-                    <motion.div
-                      whileHover={{ scale: 1.2, rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                      className={`w-12 h-12 md:w-14 md:h-14 bg-gradient-to-r ${gradient} rounded-lg flex items-center justify-center group-hover:animate-glow flex-shrink-0`}
-                    >
-                      <Icon className="w-6 h-6 md:w-7 md:h-7 text-white" />
-                    </motion.div>
-                    <div className="min-w-0 flex-1">
-                      <h4 className="text-light-text dark:text-white font-medium text-sm md:text-base">{title}</h4>
-                      <p className="text-light-subtext dark:text-gray-300 text-sm md:text-base break-words">{info}</p>
-                    </div>
-                  </div>
-                </motion.a>
-              );
-            })}
-          </motion.div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-mono text-light-subtext dark:text-tech-400 mb-1.5 uppercase">
+                  Your Name *
+                </label>
+                <input
+                  type="text"
+                  name="from_name"
+                  value={formData.from_name}
+                  onChange={handleChange}
+                  required
+                  placeholder="e.g. John Doe"
+                  className="w-full px-4 py-3 rounded-xl bg-black/[0.02] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 text-light-text dark:text-white text-sm focus:outline-none focus:border-brand-cyan transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-mono text-light-subtext dark:text-tech-400 mb-1.5 uppercase">
+                  Email Address *
+                </label>
+                <input
+                  type="email"
+                  name="from_email"
+                  value={formData.from_email}
+                  onChange={handleChange}
+                  required
+                  placeholder="john@example.com"
+                  className="w-full px-4 py-3 rounded-xl bg-black/[0.02] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 text-light-text dark:text-white text-sm focus:outline-none focus:border-brand-cyan transition-colors"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-mono text-light-subtext dark:text-tech-400 mb-1.5 uppercase">
+                  Organization / Entity (Optional)
+                </label>
+                <input
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  placeholder="Firm, Fund, or Hospital"
+                  className="w-full px-4 py-3 rounded-xl bg-black/[0.02] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 text-light-text dark:text-white text-sm focus:outline-none focus:border-brand-cyan transition-colors"
+                />
+              </div>
+
+              <div>
+                <CustomSelect
+                  name="inquiry_type"
+                  label="Subject / Inquiry Type"
+                  required
+                  value={formData.inquiry_type}
+                  onChange={(val) => setFormData((p) => ({ ...p, inquiry_type: val }))}
+                  options={inquiryTypes}
+                  modalTitle="Select Inquiry Type"
+                  modalIcon={MessageSquare}
+                  placeholder="Select Area of Inquiry"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-mono text-light-subtext dark:text-tech-400 mb-1.5 uppercase">
+                Your Message *
+              </label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows={4}
+                placeholder="Tell us about your proposal, investment query, or product question..."
+                className="w-full px-4 py-3 rounded-xl bg-black/[0.02] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 text-light-text dark:text-white text-sm focus:outline-none focus:border-brand-cyan transition-colors custom-scrollbar"
+              />
+            </div>
+
+            {error && (
+              <p className="text-xs text-rose-500 font-mono text-center">{error}</p>
+            )}
+
+            {isSubmitted && (
+              <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-xs font-mono flex items-center justify-center gap-2">
+                <CheckCircle2 size={16} />
+                <span>Message received! Our team will respond shortly.</span>
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full py-3.5 rounded-xl font-mono font-semibold text-sm bg-citron text-obsidian shadow-lg shadow-citron/25 hover:bg-citron-light disabled:opacity-50 transition-all flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <Send size={16} />
+              <span>{isSubmitting ? 'TRANSMITTING MESSAGE...' : 'SEND INQUIRY'}</span>
+            </button>
+          </form>
         </motion.div>
       </div>
     </div>

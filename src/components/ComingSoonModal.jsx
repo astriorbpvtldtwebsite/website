@@ -26,23 +26,35 @@ const ComingSoonModal = ({ isOpen, onClose, categoryTitle }) => {
     }
   }, [isOpen, onClose]);
 
+  const [submitError, setSubmitError] = useState('');
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Store email for future notifications
-    // In production, you would send this to your backend or email service
+    setSubmitError('');
+
     try {
-      // Simulate API call - Replace with actual implementation when backend is ready
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // For now, just show success message
-      // TODO: Integrate with backend API or email service when available
-      console.warn('Email collection not yet integrated with backend:', email);
-      
-      setIsSubmitted(true);
-    } catch (error) {
-      console.error('Failed to submit email:', error);
+      const response = await fetch('https://formspree.io/f/xovqgjkb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          product: categoryTitle,
+          _subject: `Early Access Request — ${categoryTitle} | AstriOrb`,
+        }),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        const data = await response.json();
+        setSubmitError(data?.errors?.[0]?.message || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      setSubmitError('Network error. Please check your connection and try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -72,9 +84,10 @@ const ComingSoonModal = ({ isOpen, onClose, categoryTitle }) => {
             <div className="glass-effect w-full max-w-lg p-6 md:p-8 rounded-2xl relative overflow-hidden">
               {/* Close Button */}
               <button
+                type="button"
                 ref={closeButtonRef}
                 onClick={onClose}
-                className="absolute right-4 top-4 p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+                className="absolute right-4 top-4 p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors cursor-pointer"
                 aria-label="Close modal"
               >
                 <CloseIcon className="w-6 h-6 text-light-text dark:text-white" />
@@ -107,6 +120,7 @@ const ComingSoonModal = ({ isOpen, onClose, categoryTitle }) => {
                     />
                   </div>
                   <motion.button
+                    type="submit"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     disabled={isSubmitting}
@@ -121,6 +135,9 @@ const ComingSoonModal = ({ isOpen, onClose, categoryTitle }) => {
                       </>
                     )}
                   </motion.button>
+                  {submitError && (
+                    <p className="text-red-400 text-sm text-center mt-2">{submitError}</p>
+                  )}
                 </form>
               ) : (
                 <motion.div

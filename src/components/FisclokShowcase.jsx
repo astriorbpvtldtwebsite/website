@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Shield, PieChart, Wallet, Ban, Download, ExternalLink, Star } from 'lucide-react';
 import { staggerContainer, fadeInUp } from '../utils/animations';
@@ -16,8 +17,8 @@ const features = [
   },
   {
     Icon: Shield,
-    title: '100% Local Storage',
-    description: 'All data stays on your device with MMKV encryption. Nothing leaves your phone.',
+    title: 'Local-First Storage',
+    description: 'Your data lives on your device with MMKV encryption. Optional Google Drive backup keeps a copy in your own Drive — never on our servers.',
   },
   {
     Icon: Ban,
@@ -119,7 +120,7 @@ const FisclokShowcase = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-purple text-white px-6 py-3 rounded-full font-medium text-sm flex items-center gap-2 shadow-lg hover:shadow-xl hover:shadow-cosmic-purple/30 transition-all duration-300"
+              className="bg-citron hover:bg-citron-hover text-obsidian px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg hover:shadow-xl hover:shadow-citron/25 transition-all duration-300"
             >
               <Download className="w-4 h-4" />
               Download on Google Play
@@ -140,11 +141,11 @@ const FisclokShowcase = () => {
                 key={feature.title}
                 variants={fadeInUp}
                 whileHover={{ y: -4, scale: 1.02 }}
-                className="bg-white/5 dark:bg-white/5 bg-light-bg/50 backdrop-blur-sm rounded-xl p-5 border border-black/5 dark:border-white/10 group hover:border-cosmic-purple/30 dark:hover:border-cosmic-neon/30 transition-all duration-300"
+                className="bg-white/5 dark:bg-white/5 bg-light-bg/50 backdrop-blur-sm rounded-xl p-5 border border-black/5 dark:border-white/10 group hover:border-citron/40 transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-gradient-purple rounded-lg flex items-center justify-center shrink-0 group-hover:animate-glow">
-                    <feature.Icon className="w-5 h-5 text-white" />
+                  <div className="w-10 h-10 bg-emerald-500/15 border border-emerald-500/30 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-emerald-500/25 transition-colors">
+                    <feature.Icon className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-light-text dark:text-white mb-1 text-sm md:text-base">{feature.title}</h4>
@@ -158,15 +159,15 @@ const FisclokShowcase = () => {
 
         {/* Bottom: Legal Links */}
         <div className="relative z-10 flex items-center justify-center gap-4 mt-8 pt-6 border-t border-black/5 dark:border-white/10">
-          <a href="/fisclok/privacy-policy" className="text-xs text-light-subtext dark:text-gray-500 hover:text-cosmic-purple dark:hover:text-cosmic-neon transition-colors">
+          <Link to="/fisclok/privacy-policy" className="text-xs text-light-subtext dark:text-gray-400 hover:text-citron dark:hover:text-citron transition-colors">
             Privacy Policy
-          </a>
+          </Link>
           <span className="text-gray-300 dark:text-gray-700">•</span>
-          <a href="/fisclok/terms" className="text-xs text-light-subtext dark:text-gray-500 hover:text-cosmic-purple dark:hover:text-cosmic-neon transition-colors">
+          <Link to="/fisclok/terms" className="text-xs text-light-subtext dark:text-gray-400 hover:text-citron dark:hover:text-citron transition-colors">
             Terms of Service
-          </a>
+          </Link>
           <span className="text-gray-300 dark:text-gray-700">•</span>
-          <span className="text-xs text-light-subtext dark:text-gray-500">Built with React Native</span>
+          <span className="text-xs text-light-subtext dark:text-gray-400">Built with React Native</span>
         </div>
       </motion.div>
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Shield, Smartphone, Lock, Mail } from 'lucide-react';
+import { ArrowLeft, Shield, Lock, Mail, Cloud, AlertTriangle, Globe } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
@@ -9,9 +9,13 @@ import SEO from '../components/SEO';
 const FisclokPrivacyPolicy = () => {
     return (
         <>
-            <SEO title="FISCLOK Privacy Policy" description="Privacy Policy for FISCLOK, a privacy-first personal finance tracker by AstriOrb." url="/fisclok/privacy-policy" />
+            <SEO
+                title="Privacy Policy - Fisclok | AstriOrb"
+                description="Privacy Policy for Fisclok, a personal finance management app by AstriOrb Private Limited. Your data is stored on your device; optional Google Drive Backup writes a copy to your own Drive."
+                url="/fisclok/privacy-policy"
+            />
             <Navbar />
-            <main className="min-h-screen bg-light-bg dark:bg-gradient-cosmic pt-24 pb-16">
+            <main className="min-h-screen bg-sand dark:bg-obsidian pt-28 pb-20 text-sand-charcoal dark:text-titanium-100 transition-colors duration-300 relative">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Back Link */}
                     <motion.div
@@ -20,11 +24,11 @@ const FisclokPrivacyPolicy = () => {
                         className="mb-8"
                     >
                         <Link
-                            to="/"
-                            className="inline-flex items-center text-cosmic-purple dark:text-cosmic-neon hover:underline"
+                            to="/products"
+                            className="inline-flex items-center gap-2 text-xs font-mono font-medium text-sand-charcoal/70 dark:text-titanium-300 hover:text-citron dark:hover:text-citron transition-colors group"
                         >
-                            <ArrowLeft className="w-4 h-4 mr-2" />
-                            Back to Home
+                            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+                            Back to Products
                         </Link>
                     </motion.div>
 
@@ -37,18 +41,18 @@ const FisclokPrivacyPolicy = () => {
                         <div className="flex justify-center mb-4">
                             <img
                                 src="/fisclok_app_icon.png"
-                                alt="FISCLOK"
-                                className="w-20 h-20 rounded-2xl shadow-lg"
+                                alt="Fisclok"
+                                className="w-20 h-20 rounded-2xl shadow-xl ring-1 ring-black/10 dark:ring-white/10"
                             />
                         </div>
-                        <h1 className="text-3xl md:text-4xl font-bold text-light-text dark:text-white mb-2">
+                        <h1 className="text-3xl md:text-5xl font-bold text-sand-charcoal dark:text-white mb-2 tracking-tight">
                             Privacy Policy
                         </h1>
-                        <p className="text-lg text-cosmic-purple dark:text-cosmic-neon font-medium">
-                            FISCLOK
+                        <p className="text-xs font-mono uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-bold">
+                            Fisclok
                         </p>
-                        <p className="text-sm text-light-subtext dark:text-gray-400 mt-2">
-                            Last Updated: January 2026
+                        <p className="text-xs font-mono text-sand-charcoal/60 dark:text-titanium-400 mt-2">
+                            Last Updated: September 2026
                         </p>
                     </motion.div>
 
@@ -57,150 +61,131 @@ const FisclokPrivacyPolicy = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="glass-effect rounded-2xl p-6 md:p-10 space-y-8"
+                        className="bg-white/95 dark:bg-titanium-900/90 border border-sand-border dark:border-white/10 rounded-2xl p-6 md:p-10 shadow-xl backdrop-blur-xl space-y-8"
                     >
-                        {/* Key Privacy Highlight */}
-                        <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-4 flex items-start space-x-3">
-                            <Shield className="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" />
-                            <div>
-                                <p className="font-semibold text-green-500">Privacy First</p>
-                                <p className="text-sm text-light-subtext dark:text-gray-300">
-                                    All your financial data is stored locally on your device only. We do NOT collect, transmit, or store any of your personal or financial data on our servers.
-                                </p>
-                            </div>
-                        </div>
-
                         {/* Introduction */}
                         <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">Introduction</h2>
-                            <p className="text-light-subtext dark:text-gray-300 leading-relaxed">
-                                FISCLOK ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we handle your information when you use our mobile application.
+                            <h2 className="text-lg md:text-xl font-bold text-sand-charcoal dark:text-white mb-3 flex items-center gap-2.5">
+                                <Shield className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                                Introduction
+                            </h2>
+                            <p className="text-sand-charcoal/85 dark:text-titanium-200 leading-relaxed text-sm md:text-base">
+                                Fisclok is committed to protecting your privacy. This policy explains how we handle your information.
                             </p>
                         </section>
 
-                        {/* Data Collection */}
+                        {/* Data Collection and Storage */}
                         <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3 flex items-center">
-                                <Lock className="w-5 h-5 mr-2 text-cosmic-purple dark:text-cosmic-neon" />
+                            <h2 className="text-lg md:text-xl font-bold text-sand-charcoal dark:text-white mb-3 flex items-center gap-2.5">
+                                <Lock className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                                 Data Collection and Storage
                             </h2>
+                            <p className="text-sand-charcoal/85 dark:text-titanium-200 leading-relaxed text-sm md:text-base">
+                                Your transactions, loans, categories, budgets and settings are stored on your device in encrypted storage. Fisclok has no accounts and no backend. We do NOT collect, transmit, or store any of your personal or financial data on our servers, and we never see it.
+                            </p>
+                        </section>
 
-                            <h3 className="font-medium text-light-text dark:text-white mt-4 mb-2">Local Storage Only</h3>
-                            <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-2 ml-2">
-                                <li><strong>All your data is stored locally on your device only</strong></li>
-                                <li>We use <strong>MMKV encrypted storage</strong> for fast and secure data persistence</li>
-                                <li>We do NOT collect, transmit, or store any of your personal or financial data on our servers</li>
-                                <li>We do NOT have access to your transaction history, loan information, or any other data you enter in the app</li>
-                            </ul>
+                        {/* Google Drive Backup (optional) */}
+                        <section>
+                            <h2 className="text-lg md:text-xl font-bold text-sand-charcoal dark:text-white mb-3 flex items-center gap-2.5">
+                                <Cloud className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                                Google Drive Backup (optional)
+                            </h2>
+                            <p className="text-sand-charcoal/85 dark:text-titanium-200 leading-relaxed text-sm md:text-base">
+                                This feature is off by default and only runs if you connect your Google account. When enabled, Fisclok writes a single file named <code className="px-1.5 py-0.5 rounded bg-sand-border/50 dark:bg-titanium-950 text-emerald-700 dark:text-emerald-300 font-mono text-xs md:text-sm border border-sand-border dark:border-white/10">fisclok-backup.json</code> to your own Google Drive, containing your transactions, loans, custom categories, budget, recurring rules and preferences. It is uploaded directly from your device to Google over an encrypted connection and never passes through our servers.
+                            </p>
 
-                            <h3 className="font-medium text-light-text dark:text-white mt-4 mb-2">Data You Provide</h3>
-                            <p className="text-light-subtext dark:text-gray-300 mb-2">When using FISCLOK, you may enter:</p>
-                            <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-1 ml-2">
-                                <li>Transaction records (income and expenses)</li>
-                                <li>Loan information</li>
-                                <li>Budget data</li>
-                                <li>Category customizations</li>
-                                <li>Profile information (name, profile picture)</li>
-                            </ul>
-                            <p className="text-light-subtext dark:text-gray-300 mt-3 font-medium">
-                                Important: All this data remains on your device and is never transmitted to us or any third party.
+                            <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 flex items-start gap-3 mt-4 text-xs md:text-sm text-sand-charcoal/90 dark:text-titanium-200 leading-relaxed">
+                                <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
+                                <p>
+                                    The backup file is stored in your Google Drive under your own Google account and counts against your own Google storage quota. It is saved as a readable JSON file rather than being separately encrypted by Fisclok, so anyone with access to your Google account can open and read it. Treat access to your Google account as access to your financial history.
+                                </p>
+                            </div>
+
+                            <p className="text-sand-charcoal/85 dark:text-titanium-200 leading-relaxed text-sm md:text-base mt-4">
+                                Fisclok requests only the <code className="px-1.5 py-0.5 rounded bg-sand-border/50 dark:bg-titanium-950 text-emerald-700 dark:text-emerald-300 font-mono text-xs md:text-sm border border-sand-border dark:border-white/10">drive.file</code> permission, which limits its access to files Fisclok itself created. It cannot see, read or modify anything else in your Drive.
+                            </p>
+                            <p className="text-sand-charcoal/85 dark:text-titanium-200 leading-relaxed text-sm md:text-base mt-3">
+                                You can disconnect at any time in Settings, or revoke access at{' '}
+                                <a
+                                    href="https://myaccount.google.com/permissions"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-emerald-600 dark:text-emerald-400 hover:text-citron dark:hover:text-citron underline font-mono text-sm transition-colors"
+                                >
+                                    myaccount.google.com/permissions
+                                </a>
+                                . Disconnecting stops future backups; to delete the backup itself, delete the file from your Drive.
+                            </p>
+                        </section>
+
+                        {/* Announcements */}
+                        <section>
+                            <h2 className="text-lg md:text-xl font-bold text-sand-charcoal dark:text-white mb-3 flex items-center gap-2.5">
+                                <Globe className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                                Announcements
+                            </h2>
+                            <p className="text-sand-charcoal/85 dark:text-titanium-200 leading-relaxed text-sm md:text-base">
+                                The App periodically downloads a small public notice file so we can share important messages without shipping an update. This is a download only — no information about you or your device is sent with the request.
+                            </p>
+                        </section>
+
+                        {/* Feedback Data */}
+                        <section>
+                            <h2 className="text-lg md:text-xl font-bold text-sand-charcoal dark:text-white mb-3 flex items-center gap-2.5">
+                                <Mail className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                                Feedback Data
+                            </h2>
+                            <p className="text-sand-charcoal/85 dark:text-titanium-200 leading-relaxed text-sm md:text-base">
+                                If you choose to send feedback or report a bug, we use your device's email client. The email may include device information and app version. This data is only sent if you explicitly send the email.
                             </p>
                         </section>
 
                         {/* Permissions */}
                         <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3 flex items-center">
-                                <Smartphone className="w-5 h-5 mr-2 text-cosmic-purple dark:text-cosmic-neon" />
+                            <h2 className="text-lg md:text-xl font-bold text-sand-charcoal dark:text-white mb-3">
                                 Permissions
                             </h2>
-                            <div className="space-y-3">
-                                <div>
-                                    <h3 className="font-medium text-light-text dark:text-white">Camera Permission</h3>
-                                    <p className="text-light-subtext dark:text-gray-300 text-sm">Used only to take profile pictures. Photos are stored locally on your device.</p>
-                                </div>
-                                <div>
-                                    <h3 className="font-medium text-light-text dark:text-white">Photo Library Permission</h3>
-                                    <p className="text-light-subtext dark:text-gray-300 text-sm">Used only to select profile pictures from your gallery.</p>
-                                </div>
-                                <div>
-                                    <h3 className="font-medium text-light-text dark:text-white">Storage Permission</h3>
-                                    <p className="text-light-subtext dark:text-gray-300 text-sm">Used to save and export your financial data. All data remains under your control.</p>
-                                </div>
-                            </div>
-                        </section>
-
-                        {/* Third-Party Services */}
-                        <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">Third-Party Services</h2>
-                            <p className="text-light-subtext dark:text-gray-300 leading-relaxed">
-                                FISCLOK is 100% ad-free and does not display advertisements. We do NOT integrate Google AdMob or any other third-party advertising SDKs, nor do we use any analytics or tracking services. No advertising identifiers or tracking data are collected or processed.
-                            </p>
-                        </section>
-
-                        {/* Data Security */}
-                        <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">Data Security</h2>
-                            <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-2 ml-2">
-                                <li>Your data is stored securely on your device using <strong>MMKV encrypted storage</strong></li>
-                                <li>MMKV provides military-grade encryption for your financial data</li>
-                                <li>We recommend setting up device security (PIN, password, biometric) to protect your data</li>
-                                <li>Regular backups are your responsibility</li>
+                            <ul className="list-disc list-inside text-sand-charcoal/85 dark:text-titanium-200 space-y-2 text-sm md:text-base ml-2">
+                                <li><strong className="text-sand-charcoal dark:text-white">Internet</strong> — used for Google Drive Backup and announcements only.</li>
+                                <li><strong className="text-sand-charcoal dark:text-white">Notifications</strong> — used only for the daily reminder, if you enable it.</li>
+                                <li><strong className="text-sand-charcoal dark:text-white">Storage</strong> — used for exporting and importing your data files.</li>
                             </ul>
-                        </section>
-
-                        {/* Data Deletion */}
-                        <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">Data Deletion</h2>
-                            <p className="text-light-subtext dark:text-gray-300">
-                                To delete your data:
+                            <p className="text-sand-charcoal/70 dark:text-titanium-400 text-xs md:text-sm mt-3">
+                                Fisclok does not request camera or photo library access. Profile pictures are chosen from a set of built-in avatars.
                             </p>
-                            <ol className="list-decimal list-inside text-light-subtext dark:text-gray-300 mt-2 ml-2">
-                                <li>Uninstall the FISCLOK app from your device</li>
-                                <li>All locally stored data will be permanently removed</li>
-                            </ol>
                         </section>
 
                         {/* Children's Privacy */}
                         <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">Children's Privacy</h2>
-                            <p className="text-light-subtext dark:text-gray-300">
-                                FISCLOK does not knowingly collect information from children under 13. The app is intended for users who are at least 13 years old.
+                            <h2 className="text-lg md:text-xl font-bold text-sand-charcoal dark:text-white mb-3">
+                                Children's Privacy
+                            </h2>
+                            <p className="text-sand-charcoal/85 dark:text-titanium-200 leading-relaxed text-sm md:text-base">
+                                Fisclok is not directed at children under 13 and we do not knowingly collect information from them. As the App collects nothing, no such information reaches us.
                             </p>
                         </section>
 
-                        {/* Your Rights */}
+                        {/* Changes to This Policy */}
                         <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3">Your Rights</h2>
-                            <ul className="list-disc list-inside text-light-subtext dark:text-gray-300 space-y-2 ml-2">
-                                <li><strong>Access:</strong> All data is on your device</li>
-                                <li><strong>Delete:</strong> Uninstall the app to remove all data</li>
-                                <li><strong>Export:</strong> Use the in-app export feature</li>
-                            </ul>
+                            <h2 className="text-lg md:text-xl font-bold text-sand-charcoal dark:text-white mb-3">
+                                Changes to This Policy
+                            </h2>
+                            <p className="text-sand-charcoal/85 dark:text-titanium-200 leading-relaxed text-sm md:text-base">
+                                If this policy changes materially, the updated version will appear here and the date above will be revised.
+                            </p>
                         </section>
 
-                        {/* Contact */}
-                        <section>
-                            <h2 className="text-xl font-semibold text-light-text dark:text-white mb-3 flex items-center">
-                                <Mail className="w-5 h-5 mr-2 text-cosmic-purple dark:text-cosmic-neon" />
+                        {/* Contact Us */}
+                        <section className="border-t border-sand-border dark:border-white/10 pt-6">
+                            <h2 className="text-lg md:text-xl font-bold text-sand-charcoal dark:text-white mb-3 flex items-center gap-2.5">
+                                <Mail className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                                 Contact Us
                             </h2>
-                            <p className="text-light-subtext dark:text-gray-300">
-                                If you have questions about this Privacy Policy, please contact us at:
-                            </p>
-                            <ul className="text-light-subtext dark:text-gray-300 mt-2 ml-2">
-                                <li>Email: <a href="mailto:officialfisclok@gmail.com" className="text-cosmic-purple dark:text-cosmic-neon hover:underline">officialfisclok@gmail.com</a></li>
+                            <ul className="text-sand-charcoal/85 dark:text-titanium-200 space-y-1.5 ml-2 text-sm md:text-base">
+                                <li>Email: <a href="mailto:officialfisclok@gmail.com" className="text-emerald-600 dark:text-emerald-400 hover:text-citron dark:hover:text-citron underline font-mono text-sm transition-colors">officialfisclok@gmail.com</a></li>
                                 <li>Company: AstriOrb Private Limited</li>
                             </ul>
-                        </section>
-
-                        {/* Consent */}
-                        <section className="border-t border-gray-200 dark:border-gray-700 pt-6">
-                            <p className="text-light-subtext dark:text-gray-300 text-sm">
-                                By using FISCLOK, you consent to this Privacy Policy.
-                            </p>
-                            <p className="text-light-subtext dark:text-gray-400 text-sm mt-4">
-                                <strong>Summary:</strong> FISCLOK is a privacy-first app. All your financial data stays on your device. We don't collect, transmit, or store any of your personal information. The app is completely ad-free and contains no third-party trackers.
-                            </p>
                         </section>
                     </motion.div>
 
@@ -213,7 +198,7 @@ const FisclokPrivacyPolicy = () => {
                     >
                         <Link
                             to="/fisclok/terms"
-                            className="text-cosmic-purple dark:text-cosmic-neon hover:underline"
+                            className="text-emerald-600 dark:text-emerald-400 hover:text-citron dark:hover:text-citron font-mono text-sm inline-flex items-center gap-1.5 transition-colors"
                         >
                             View Terms of Service →
                         </Link>

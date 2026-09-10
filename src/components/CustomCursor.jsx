@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 const useMousePosition = () => {
@@ -58,19 +58,21 @@ const CustomCursor = React.memo(() => {
 
   const variants = {
     default: {
-      x: x - 8,
-      y: y - 8,
-      height: 16,
-      width: 16,
-      backgroundColor: '#00d4aa',
+      x: x - 6,
+      y: y - 6,
+      height: 12,
+      width: 12,
+      backgroundColor: '#EA9216',
+      boxShadow: '0 0 14px rgba(234, 146, 22, 0.85), 0 0 4px rgba(255, 110, 66, 0.9)',
       mixBlendMode: 'difference',
     },
     hover: {
-      x: x - 24,
-      y: y - 24,
-      height: 48,
-      width: 48,
+      x: x - 20,
+      y: y - 20,
+      height: 40,
+      width: 40,
       backgroundColor: '#ffffff',
+      boxShadow: '0 0 20px rgba(255, 255, 255, 0.6)',
       mixBlendMode: 'difference',
     },
   };

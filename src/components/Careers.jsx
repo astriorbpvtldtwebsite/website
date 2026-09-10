@@ -1,203 +1,133 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Globe, Clock, HeartPulse, TrendingUp, Code, Users } from 'lucide-react';
+import { ArrowRight, Globe, Clock, TrendingUp, Code, Briefcase } from 'lucide-react';
 import { staggerContainer, fadeInUp } from '../utils/animations';
+import SpotlightCard from './SpotlightCard';
 
 const Careers = () => {
-  const handleMouseEnter = () => document.dispatchEvent(new Event('cursor-enter'));
-  const handleMouseLeave = () => document.dispatchEvent(new Event('cursor-leave'));
-
   const jobOpenings = [
-  {
-    title: 'Senior Frontend Developer',
-    department: 'Engineering',
-    location: 'Remote (Kerala, India)',
-    type: 'Full-time / Contract',
-    description: 'Take ownership of building and refining our web and mobile app frontends using modern frameworks like React or Flutter. We welcome freshers who can demonstrate strong skills, creativity, and the confidence to deliver production-ready work in a fast-moving startup environment.',
-  },
-  {
-    title: 'Chief Financial Officer (CFO)',
-    department: 'Leadership',
-    location: 'Remote (Kerala, India)',
-    type: 'Part-time / Contract',
-    description: 'As an early-stage CFO, you will guide AstriOrb in financial planning, funding strategies, and budgeting. Perfect for finance professionals or skilled graduates looking to grow into a leadership role in a startup environment.',
-  },
-  {
-    title: 'Chief Marketing Officer (CMO)',
-    department: 'Leadership & Growth',
-    location: 'Remote (Kerala, India)',
-    type: 'Part-time / Contract',
-    description: 'Lead our brand growth and marketing efforts from the ground up. Ideal for creative marketers and freshers who can show confidence in digital campaigns, community building, and storytelling that helps AstriOrb stand out in the software industry.',
-  },
-  {
-    title: 'Data Collection Specialist',
-    department: 'Research & Development',
-    location: 'Remote (Kerala, India)',
-    type: 'Flexible',
-    description: 'Assist in gathering, organizing, and preparing datasets that fuel our product development and research. This role is open to freshers with analytical skills, attention to detail, and a willingness to learn in a fast-paced startup setting.',
-  },
+    {
+      title: 'Mobile & Fullstack Engineer',
+      department: 'Engineering',
+      location: 'Remote (Kerala, India)',
+      type: 'Full-time / Contract',
+      description:
+        'Help architect and scale frontends and backend services across our product portfolio using React Native, Flutter, and Node.js. Freshers with proven project delivery skills and deep technical curiosity are warmly encouraged.',
+      tag: 'React Native • Flutter • TypeScript',
+    },
+    {
+      title: 'Embedded Hardware & IoT Specialist',
+      department: 'R&D / Project ROW',
+      location: 'Hybrid / Remote (Kerala, India)',
+      type: 'Contract / Project-Based',
+      description:
+        'Work directly with our founder on Project ROW, prototyping custom navigation hardware, Bluetooth LE telemetry, and low-power microcontroller firmware.',
+      tag: 'C/C++ • BLE • PCB Prototyping',
+    },
+    {
+      title: 'Clinical Data & Domain Researcher',
+      department: 'HealthTech / DocCo',
+      location: 'Remote (Kerala, India)',
+      type: 'Flexible / Contract',
+      description:
+        'Collaborate on Project DocCo to synthesize clinical workflows, conduct healthcare practitioner interviews, and ensure medical data integrity.',
+      tag: 'Healthcare Workflow • Research',
+    },
+    {
+      title: 'Growth & Ecosystem Lead',
+      department: 'Growth & Strategy',
+      location: 'Remote (Kerala, India)',
+      type: 'Part-time / Contract',
+      description:
+        'Lead product adoption for FISCLOK on Google Play, drive creator outreach for Tastory, and build organic tech community presence across digital channels.',
+      tag: 'Product Marketing • Community',
+    },
   ];
 
   const perks = [
-    { Icon: Globe, title: 'Remote-First Culture', description: 'Work from anywhere in the world.' },
-    { Icon: Clock, title: 'Flexible Hours', description: 'We trust you to manage your own time.' },
-    { Icon: HeartPulse, title: 'Health & Wellness', description: 'Comprehensive benefits for you and your family.' },
-    { Icon: TrendingUp, title: 'Professional Growth', description: 'Generous budget for learning and development.' },
-    { Icon: Code, title: 'Cutting-Edge Tech', description: 'Work with the latest tools and frameworks.' },
-    { Icon: Users, title: 'Innovation Time', description: 'Dedicated time to explore your own ideas.' },
+    { Icon: Globe, title: 'Remote-First Culture', description: 'Work from anywhere with high agency and trust.' },
+    { Icon: Code, title: 'Multi-Product Stack', description: 'Gain real exposure across mobile apps, SaaS, and custom IoT hardware.' },
+    { Icon: Clock, title: 'Asynchronous Work', description: 'Results matter far more than rigid hours or endless meetings.' },
+    { Icon: TrendingUp, title: 'Direct Mentorship', description: 'Collaborate hands-on with the founder without corporate bureaucracy.' },
   ];
 
   return (
-    <div
-      className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div className="absolute inset-0 opacity-5 dark:opacity-5">
-        {[...Array(10)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-cosmic-neon rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              scale: [0, 1.5, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 3,
-              delay: Math.random() * 3,
-              repeat: Infinity,
-            }}
-          />
-        ))}
-      </div>
+    <div id="careers" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-white">
+      {/* Header */}
+      <motion.div variants={fadeInUp} className="text-center max-w-3xl mx-auto mb-16">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-titanium-800/80 border border-citron/30 mb-4">
+          <Briefcase className="w-3.5 h-3.5 text-citron" />
+          <span className="text-xs font-mono font-semibold text-citron uppercase tracking-wider">
+            TALENT & SQUAD INITIATION
+          </span>
+        </div>
 
-      <motion.div 
-        variants={fadeInUp}
-        className="text-center mb-12 md:mb-16"
-      >
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-light-text dark:text-white mb-4 md:mb-6">
-          Join Our <span className="bg-gradient-neon bg-clip-text text-transparent">Mission</span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
+          Build Real Products With Us
         </h2>
-        <p className="text-lg md:text-xl text-light-subtext dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          We're looking for passionate innovators, creative thinkers, and brilliant minds to help us build the future of technology.
+        <p className="text-base sm:text-lg text-titanium-300 leading-relaxed font-normal">
+          We are assembling a tight-knit, high-velocity engineering crew in Kerala. If you are passionate about building real, enduring products instead of grinding on agency outsourcing, you belong here.
         </p>
       </motion.div>
 
-      {/* Perks Section */}
+      {/* Perks Grid */}
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.1 }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
       >
         {perks.map((perk) => (
-          <motion.div
-            key={perk.title}
-            variants={fadeInUp}
-            className="glass-effect p-6 rounded-xl text-center group"
-          >
-            <motion.div
-              whileHover={{ scale: 1.1, rotate: 15 }}
-              className="w-16 h-16 bg-gradient-purple rounded-full flex items-center justify-center mx-auto mb-4 group-hover:animate-glow"
-            >
-              <perk.Icon className="w-8 h-8 text-white" />
-            </motion.div>
-            <h3 className="text-lg font-semibold text-light-text dark:text-white mb-2">{perk.title}</h3>
-            <p className="text-sm text-light-subtext dark:text-gray-300">{perk.description}</p>
+          <motion.div key={perk.title} variants={fadeInUp} whileHover={{ y: -4 }}>
+            <SpotlightCard className="p-6 text-center h-full flex flex-col items-center" withCorners>
+              <div className="w-12 h-12 rounded-xl bg-titanium-800 border border-white/10 text-citron flex items-center justify-center mb-4">
+                <perk.Icon size={24} />
+              </div>
+              <h3 className="text-base font-bold text-white mb-2 font-mono">{perk.title}</h3>
+              <p className="text-xs text-titanium-300 leading-relaxed font-normal">{perk.description}</p>
+            </SpotlightCard>
           </motion.div>
         ))}
       </motion.div>
 
-      {/* Job Openings */}
-      <motion.div
-        variants={fadeInUp}
-        className="mb-12 md:mb-16"
-      >
-        <h3 className="text-2xl md:text-3xl font-bold text-light-text dark:text-white text-center mb-8 md:mb-12">
-          Current Openings
-        </h3>
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.1 }}
-          className="space-y-6"
-        >
-          {jobOpenings.map((job) => (
-            <motion.div
-              key={job.title}
-              variants={fadeInUp}
-              whileHover={{ y: -5, scale: 1.01 }}
-              className="glass-effect rounded-xl p-6 md:p-8 group hover:shadow-xl dark:hover:shadow-cosmic-purple/20 transition-all duration-300 flex flex-col md:flex-row justify-between items-start md:items-center"
-            >
-              <div className="flex-grow mb-4 md:mb-0">
-                <div className="flex items-center space-x-4 mb-2">
-                  <h4 className="text-lg md:text-xl font-semibold text-light-text dark:text-white group-hover:text-cosmic-purple dark:group-hover:text-cosmic-neon transition-colors">
+      {/* Openings */}
+      <div className="space-y-4">
+        {jobOpenings.map((job) => (
+          <motion.div key={job.title} variants={fadeInUp}>
+            <SpotlightCard className="p-6 sm:p-7 flex flex-col md:flex-row justify-between items-start md:items-center gap-4" withCorners>
+              <div className="space-y-2 max-w-2xl">
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <h4 className="text-lg font-bold text-white font-mono">
                     {job.title}
                   </h4>
-                  <span className="bg-cosmic-purple/10 dark:bg-cosmic-neon/10 text-cosmic-purple dark:text-cosmic-neon px-2 py-1 rounded-full text-xs font-medium">
+                  <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-titanium-800 border border-white/10 text-citron">
                     {job.department}
                   </span>
+                  <span className="text-xs font-mono text-titanium-400">
+                    {job.location} • {job.type}
+                  </span>
                 </div>
-                <div className="flex items-center space-x-4 text-sm text-light-subtext dark:text-gray-400 mb-3">
-                  <span>{job.location}</span>
-                  <span>&bull;</span>
-                  <span>{job.type}</span>
-                </div>
-                <p className="text-light-subtext dark:text-gray-300 text-sm leading-relaxed max-w-2xl">
+                <p className="text-xs sm:text-sm text-titanium-200 leading-relaxed font-normal">
                   {job.description}
                 </p>
+                <div className="text-[11px] font-mono text-citron">
+                  {job.tag}
+                </div>
               </div>
-              <motion.a
-                href={`mailto:astriorbofficial@gmail.com?subject=Application for ${job.title}`}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                whileHover={{ scale: 1.05, x: 5 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex-shrink-0 bg-gradient-purple text-white px-6 py-2.5 rounded-full font-medium text-sm flex items-center space-x-2 hover:shadow-lg transition-all duration-300"
-              >
-                <span>Apply Now</span>
-                <ArrowRight className="w-4 h-4" />
-              </motion.a>
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.div>
 
-      <motion.div 
-        variants={fadeInUp}
-        className="glass-effect rounded-xl p-6 md:p-8 text-center relative overflow-hidden"
-      >
-        <motion.div
-          animate={{ 
-            backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-          }}
-          transition={{ duration: 10, repeat: Infinity }}
-          className="absolute inset-0 bg-gradient-to-r from-cosmic-purple/10 via-cosmic-neon/10 to-cosmic-purple/10 opacity-50"
-        />
-        
-        <div className="relative z-10">
-          <h3 className="text-2xl md:text-3xl font-semibold text-light-text dark:text-white mb-4">Don't See a Fit?</h3>
-          <p className="text-light-subtext dark:text-gray-300 mb-6 md:mb-8 max-w-2xl mx-auto">
-            We're always looking for talented individuals. If you believe you have what it takes to contribute to our mission, send us your resume.
-          </p>
-          <motion.a
-            href="mailto:astriorbofficial@gmail.com?subject=General Application"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-transparent border border-cosmic-purple dark:border-cosmic-neon text-cosmic-purple dark:text-cosmic-neon px-8 py-3 rounded-full font-medium hover:bg-cosmic-purple/10 dark:hover:bg-cosmic-neon/10 transition-all duration-200"
-          >
-            Submit General Application
-          </motion.a>
-        </div>
-      </motion.div>
+              <Link
+                to="/careers"
+                className="px-5 py-2.5 rounded-xl text-xs font-mono font-semibold bg-titanium-800 border border-white/10 hover:border-citron hover:text-citron text-white transition-colors shrink-0 flex items-center gap-1.5"
+              >
+                <span>APPLY / CONNECT</span>
+                <ArrowRight size={13} />
+              </Link>
+            </SpotlightCard>
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 };

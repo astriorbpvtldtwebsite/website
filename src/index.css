@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,24 +8,32 @@
 
 html {
   scroll-behavior: smooth;
-  /* Fix for mobile viewport height issues */
   height: 100%;
   overflow-x: hidden;
-  background-color: #0a0b1e; /* Match dark theme background */
+  background-color: #071616;
+}
+
+html.light {
+  background-color: #F1ECE6;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  transition: background-color 0.5s ease, color 0.5s ease;
-  /* Fix for mobile white bar at bottom */
+  transition: background-color 0.3s ease, color 0.3s ease;
   min-height: 100vh;
   min-height: -webkit-fill-available;
   min-height: calc(var(--vh, 1vh) * 100);
   position: relative;
-  background-color: #0a0b1e; /* Match dark theme background */
+  background-color: #071616;
+  color: #EEEEEE;
+}
+
+html.light body {
+  background-color: #F1ECE6;
+  color: #2E2E2E;
 }
 
 #root {
@@ -35,12 +42,28 @@ body {
   min-height: calc(var(--vh, 1vh) * 100);
 }
 
+::selection {
+  background: rgba(234, 146, 22, 0.35);
+  color: #F9F9F9;
+}
+
+html.light ::selection {
+  background: rgba(125, 64, 71, 0.3);
+  color: #2E2E2E;
+}
+
 /* Hide default cursor on desktop when custom cursor is active */
 .no-cursor {
   cursor: none;
 }
 
-/* Screen reader only - for accessibility */
+@media (pointer: coarse) {
+  .no-cursor {
+    cursor: auto !important;
+  }
+}
+
+/* Screen reader only - accessibility */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -53,74 +76,244 @@ body {
   border-width: 0;
 }
 
-/* Hide scrollbar — scroll progress bar at top replaces it */
+/* Hide main page scrollbars - clean experience */
 html {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 html::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
 }
 
-/* Styled scrollbar for modals and custom overflow containers */
+/* Universal sleek scrollbars for inner scrollable containers */
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(58, 71, 80, 0.6);
+  border-radius: 9999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #EA9216;
+}
+
+html.light *::-webkit-scrollbar-thumb {
+  background: rgba(221, 213, 205, 0.9);
+}
+
+html.light *::-webkit-scrollbar-thumb:hover {
+  background: #7D4047;
+}
+
+/* Tactical Engineering Matrix Backgrounds */
+.bg-tech-grid {
+  background-image: 
+    linear-gradient(to right, rgba(238, 238, 238, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(238, 238, 238, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.bg-tech-grid-dense {
+  background-image: 
+    linear-gradient(to right, rgba(238, 238, 238, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(238, 238, 238, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-tech-grid-light {
+  background-image: 
+    linear-gradient(to right, rgba(46, 46, 46, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(46, 46, 46, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.bg-dots-pattern {
+  background-image: radial-gradient(rgba(234, 146, 22, 0.2) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+html.light .bg-dots-pattern {
+  background-image: radial-gradient(rgba(125, 64, 71, 0.18) 1px, transparent 1px);
+}
+
+/* Interactive Spotlight Cards */
+.spotlight-card {
+  position: relative;
+  background-color: rgba(9, 54, 52, 0.55);
+  background-image: radial-gradient(
+    600px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+    rgba(234, 146, 22, 0.12),
+    transparent 45%
+  );
+  border: 1px solid rgba(58, 71, 80, 0.45);
+  transition: border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.spotlight-card:hover {
+  border-color: rgba(234, 146, 22, 0.45);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), 0 0 25px -5px rgba(234, 146, 22, 0.2);
+}
+
+html.light .spotlight-card {
+  background-color: rgba(255, 255, 255, 0.85);
+  background-image: radial-gradient(
+    600px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+    rgba(125, 64, 71, 0.08),
+    transparent 45%
+  );
+  border: 1px solid #DDD5CD;
+}
+
+html.light .spotlight-card:hover {
+  border-color: rgba(125, 64, 71, 0.5);
+  box-shadow: 0 10px 30px -10px rgba(46, 46, 46, 0.1), 0 0 20px -5px rgba(125, 64, 71, 0.15);
+}
+
+/* Hairline Industrial Panels */
+.glass-effect {
+  @apply bg-white/85 dark:bg-abyss-900/80 backdrop-blur-xl border border-sand-border dark:border-steel/40 shadow-sm dark:shadow-2xl;
+}
+
+.glass-card {
+  @apply bg-white/90 dark:bg-steel-dark/60 backdrop-blur-xl border border-sand-border dark:border-steel/40 hover:border-citron/50 transition-all duration-300;
+}
+
+.glass-panel {
+  @apply bg-white/95 dark:bg-abyss-900/90 backdrop-blur-2xl border border-sand-border dark:border-steel/50;
+}
+
+/* Styled scrollbar for modals */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(10, 11, 30, 0.3);
+  background: rgba(7, 22, 22, 0.85);
   border-radius: 9999px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #6366f1 0%, #a855f7 100%);
+  background: #EA9216;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #4f46e5 0%, #9333ea 100%);
+  background: #FF6E42;
 }
 
-/* Firefox styling support */
 .custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: #6366f1 rgba(10, 11, 30, 0.3);
+  scrollbar-color: #EA9216 rgba(7, 22, 22, 0.85);
 }
 
-
-
-/* Glowing effects */
-.glow-text {
-  text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+html.light .custom-scrollbar::-webkit-scrollbar-track {
+  background: #DDD5CD;
 }
 
-.glass-effect {
-  @apply bg-white/70 dark:bg-white/5 backdrop-blur-lg border border-black/5 dark:border-white/10;
+html.light .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #7D4047;
 }
 
-/* Performance optimization for animations */
-.will-change-transform {
-  will-change: transform;
+html.light .custom-scrollbar {
+  scrollbar-color: #7D4047 #DDD5CD;
 }
 
-.will-change-opacity {
-  will-change: opacity;
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
 }
 
-/* Animated background particles */
-.bg-particles {
+/* Sleek dark code editor scrollbar */
+.code-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.code-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.code-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(234, 146, 22, 0.4);
+  border-radius: 9999px;
+}
+.code-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(234, 146, 22, 0.75);
+}
+.code-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(234, 146, 22, 0.4) transparent;
+}
+
+html.light .code-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(125, 64, 71, 0.4);
+}
+html.light .code-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(125, 64, 71, 0.75);
+}
+html.light .code-scrollbar {
+  scrollbar-color: rgba(125, 64, 71, 0.4) transparent;
+}
+
+/* High-Voltage Flame & Ocean Glow Utilities */
+.citron-glow {
+  box-shadow: 0 0 25px rgba(234, 146, 22, 0.35);
+}
+
+.citron-glow-sm {
+  box-shadow: 0 0 12px rgba(234, 146, 22, 0.25);
+}
+
+.laser-glow-cyan {
+  box-shadow: 0 0 25px rgba(0, 78, 114, 0.35);
+}
+
+.coral-glow {
+  box-shadow: 0 0 25px rgba(255, 110, 66, 0.35);
+}
+
+/* Technical Corner Mark */
+.tech-corner {
+  position: relative;
+}
+
+.tech-corner::before,
+.tech-corner::after {
+  content: '';
   position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  width: 6px;
+  height: 6px;
+  border-color: rgba(234, 146, 22, 0.75);
   pointer-events: none;
 }
 
-.particle {
-  position: absolute;
-  background: rgba(99, 102, 241, 0.3);
-  border-radius: 50%;
-  animation: float 8s ease-in-out infinite;
+.tech-corner::before {
+  top: -1px;
+  left: -1px;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+
+.tech-corner::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+
+html.light .tech-corner::before,
+html.light .tech-corner::after {
+  border-color: rgba(125, 64, 71, 0.75);
 }

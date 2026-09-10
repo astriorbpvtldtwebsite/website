@@ -144,6 +144,10 @@ export const blogPosts = [
         content: [
             {
                 type: 'paragraph',
+                text: 'Update (September 2026): this post describes FISCLOK as it was at launch. Since v1.0.2 the app also offers an optional Google Drive backup, which is off by default and writes a copy of your data to your own Google Drive. Your data still never reaches our servers. See the Privacy Policy for the current details.',
+            },
+            {
+                type: 'paragraph',
                 text: '"Why locally?" — this is the most common question I heard when I decided to launch FISCLOK on the Play Store. Let me give you the real answer.',
             },
             {
@@ -274,7 +278,7 @@ export const blogPosts = [
             },
             {
                 type: 'paragraph',
-                text: 'Then came my internship at Annolive, an AI company in Bangalore, where I worked as a Flutter developer. That\'s where I got a little crazy about AI. I started researching it deeply — not just using AI tools, but understanding how they work, what they can do, and where they\'re heading.',
+                text: 'Then came my internship at Annolive, an AI company in Bangalore, where I worked as a Flutter developer. That\'s where I got a little crazy about AI. I started researching it deeply — not just using AI tools, but understanding how they work, what they can do, and where they\'re heading. Building Flutter apps in an AI environment gave me a rare cross-section of skills: clean cross-platform UI engineering paired with a deep curiosity for intelligent systems.',
             },
             {
                 type: 'heading',
@@ -286,7 +290,11 @@ export const blogPosts = [
             },
             {
                 type: 'paragraph',
-                text: 'All of these experiences — gaming, content creation, studio management, AI research, freelancing — they all converged into AstriOrb. It\'s not just a company; it\'s the sum of everything I\'ve learned and everyone I\'ve met along the way.',
+                text: 'Beyond AstriOrb, I also serve as the CTO of Cueroll — a premium video & content production platform based in Pattambi, Kerala, built around the philosophy of "Frame Your Story." Cueroll handles everything from cinematic highlight reels and event coverage to commercial shoots, all managed through a platform I architect and lead.',
+            },
+            {
+                type: 'paragraph',
+                text: 'All of these experiences — gaming, content creation, studio management, Flutter development, and leading two companies — they all converged into AstriOrb. It\'s not just a company; it\'s the sum of everything I\'ve learned and everyone I\'ve met along the way.',
             },
         ],
     },
@@ -333,7 +341,7 @@ export const blogPosts = [
             },
             {
                 type: 'paragraph',
-                text: 'I wanted to prove that you don\'t need to be in Bangalore or Silicon Valley to build something meaningful. With the right skills, experience, and connections, you can build a globally relevant product company from anywhere — even from Kerala. My experience at Custodian Games, my internship at Annolive in Bangalore, and my freelance work all gave me the confidence to take this step.',
+                text: 'I wanted to prove that you don\'t need to be in Bangalore or Silicon Valley to build something meaningful. With the right skills, experience, and connections, you can build a globally relevant product company from anywhere — even from Kerala. My experience at Custodian Games, my time as a Flutter developer at Annolive in Bangalore, my role as CTO at Cueroll, and my freelance work all gave me the confidence to take this step.',
             },
             {
                 type: 'paragraph',

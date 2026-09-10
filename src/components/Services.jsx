@@ -1,296 +1,348 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { Code2, Smartphone, Brain, Database, Cloud, Zap } from 'lucide-react';
+import React from 'react';
+import {
+  Smartphone,
+  Globe,
+  Shield,
+  Activity,
+  Cpu,
+  Database,
+  Code2,
+  Lock,
+  Radio,
+  Sparkles,
+  Compass,
+  CheckCircle2,
+  ShieldCheck,
+} from 'lucide-react';
 import { FaReact, FaNodeJs, FaPython } from 'react-icons/fa';
-import { SiFlutter, SiFirebase, SiSupabase } from 'react-icons/si';
-import { staggerContainer, fadeInUp } from '../utils/animations';
-import useMediaQuery from '../hooks/useMediaQuery';
-import ComingSoonModal from './ComingSoonModal';
-import ProductShowcaseModal from './ProductShowcaseModal';
-
-const TechIcon = ({ tech, mouseX, mouseY, containerWidth, containerHeight, isDesktop }) => {
-  const randomX = useRef(Math.random() * 2 - 1).current;
-  const randomY = useRef(Math.random() * 2 - 1).current;
-
-  const x = useTransform(mouseX, [0, containerWidth], [10 * randomX, -10 * randomX]);
-  const y = useTransform(mouseY, [0, containerHeight], [10 * randomY, -10 * randomY]);
-
-  const motionStyle = isDesktop ? { x, y } : {};
-  const IconComponent = tech.icon;
-
-  return (
-    <motion.div
-      style={motionStyle}
-      transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-      whileHover={{ scale: 1.15, y: isDesktop ? -8 : 0 }}
-      className="flex flex-col items-center justify-center space-y-2"
-    >
-      <IconComponent className={`text-4xl md:text-5xl ${tech.className || ''}`} aria-label={tech.name} />
-      <span className="text-xs md:text-sm text-light-subtext dark:text-gray-300 font-medium">{tech.name}</span>
-    </motion.div>
-  );
-};
-
-// Categories with actual products to showcase
-const PRODUCT_CATEGORIES = ['Mobile Innovation'];
+import {
+  SiFlutter,
+  SiSupabase,
+  SiTypescript,
+  SiCplusplus,
+  SiSqlite,
+  SiPostgresql,
+  SiDart,
+} from 'react-icons/si';
+import SpotlightCard from './SpotlightCard';
 
 const Services = () => {
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [isComingSoonOpen, setIsComingSoonOpen] = useState(false);
-  const [isProductShowcaseOpen, setIsProductShowcaseOpen] = useState(false);
-
-  const handleExploreClick = (category) => {
-    setSelectedCategory(category);
-    if (PRODUCT_CATEGORIES.includes(category)) {
-      setIsProductShowcaseOpen(true);
-    } else {
-      setIsComingSoonOpen(true);
-    }
-  };
-
-  const handleMouseEnter = () => document.dispatchEvent(new Event('cursor-enter'));
-  const handleMouseLeave = () => document.dispatchEvent(new Event('cursor-leave'));
-
-  const techContainerRef = useRef(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
-  const isDesktop = useMediaQuery('(min-width: 1024px)');
-
-  useEffect(() => {
-    const updateContainerSize = () => {
-      if (techContainerRef.current) {
-        setContainerSize({
-          width: techContainerRef.current.offsetWidth,
-          height: techContainerRef.current.offsetHeight,
-        });
-      }
-    };
-
-    updateContainerSize();
-    window.addEventListener('resize', updateContainerSize);
-
-    if (techContainerRef.current) {
-      mouseX.set(techContainerRef.current.offsetWidth / 2);
-      mouseY.set(techContainerRef.current.offsetHeight / 2);
-    }
-
-    return () => window.removeEventListener('resize', updateContainerSize);
-  }, [mouseX, mouseY]);
-
-  const handleMouseMove = (e) => {
-    if (!techContainerRef.current || !isDesktop) return;
-    const rect = techContainerRef.current.getBoundingClientRect();
-    mouseX.set(e.clientX - rect.left);
-    mouseY.set(e.clientY - rect.top);
-  };
-
-  const handleMouseLeaveContainer = () => {
-    if (!isDesktop) return;
-    mouseX.set(containerSize.width / 2);
-    mouseY.set(containerSize.height / 2);
-  };
-
-  const productCategories = [
-    {
-      Icon: Code2,
-      title: 'Web Applications',
-      description: 'Revolutionary web platforms that transform industries with cutting-edge user experiences and powerful functionality.',
-      products: ['SaaS Platforms', 'Progressive Web Apps', 'Enterprise Dashboards', 'E-commerce Solutions'],
-      gradient: 'from-blue-500 to-cyan-500',
-    },
+  const capabilities = [
     {
       Icon: Smartphone,
-      title: 'Mobile Innovation',
-      description: 'Next-generation mobile applications that leverage device capabilities to create unprecedented user experiences.',
-      products: ['Cross-Platform Apps', 'Native iOS/Android', 'AR/VR Mobile Apps', 'IoT Mobile Controls'],
-      gradient: 'from-purple-500 to-pink-500',
+      title: 'Mobile Architecture & 60fps Native State',
+      description:
+        'Architecting low-latency cross-platform mobile engines with Flutter and React Native. Designed for fluid 60fps local-first state, hardware acceleration, and zero bloat.',
+      products: 'Powering FISCLOK & Tastory',
+      tag: 'MOBILE_ENGINE',
     },
     {
-      Icon: Brain,
-      title: 'AI-Powered Products',
-      description: 'Intelligent applications that learn, adapt, and provide insights through advanced artificial intelligence and machine learning.',
-      products: ['Predictive Analytics Tools', 'NLP Applications', 'Computer Vision Products', 'AI Automation Platforms'],
-      gradient: 'from-green-500 to-emerald-500',
+      Icon: Shield,
+      title: 'Local-First Privacy Architecture',
+      description:
+        'Building software where data sovereignty belongs unconditionally to the user. Leveraging MMKV encrypted storage, zero-backend models, and isolated cloud backups.',
+      products: 'Core DNA of FISCLOK',
+      tag: 'SECURE_VAULT',
+    },
+    {
+      Icon: Activity,
+      title: 'HealthTech & Clinical Workflow Engines',
+      description:
+        'Engineering resilient healthcare applications with strict data confidentiality, intuitive clinical consultation flows, and structured diagnostic data recording.',
+      products: 'Powering Project DocCo',
+      tag: 'CLINICAL_PROTOCOL',
+    },
+    {
+      Icon: Globe,
+      title: 'Fullstack Systems & Cloud Infrastructure',
+      description:
+        'High-velocity web platforms engineered with React 19, TypeScript, and Node.js. Optimized for sub-millisecond query pipelines, SEO indexing, and enterprise reliability.',
+      products: 'Powering Continuum & Systems',
+      tag: 'DISTRIBUTED_CLOUD',
+    },
+    {
+      Icon: Cpu,
+      title: 'Smart Hardware & Embedded IoT Prototyping',
+      description:
+        'Bridging the physical and digital domains by designing custom smart hardware gadgets paired seamlessly with low-latency mobile telemetry via Bluetooth LE.',
+      products: 'Powering Project ROW',
+      tag: 'EMBEDDED_TELEMETRY',
     },
     {
       Icon: Database,
-      title: 'Data Solutions',
-      description: 'Comprehensive data management and analytics products that turn raw information into actionable business intelligence.',
-      products: ['Analytics Dashboards', 'Data Visualization Tools', 'Real-time Monitoring', 'Business Intelligence Suites'],
-      gradient: 'from-orange-500 to-red-500',
+      title: 'Graph Discovery & Recommendation Vectors',
+      description:
+        'Developing proprietary search indexing, real-time taste-matching algorithms, and social culinary graphs that scale across global user communities.',
+      products: 'Core Engine of Tastory',
+      tag: 'VECTOR_GRAPH',
     },
-    {
-      Icon: Cloud,
-      title: 'Cloud Platforms',
-      description: 'Scalable cloud-native applications designed for modern distributed architectures and global accessibility.',
-      products: ['Microservices Platforms', 'API Gateways', 'Serverless Applications', 'Container Orchestration'],
-      gradient: 'from-indigo-500 to-purple-500',
-    },
-    {
-      Icon: Zap,
-      title: 'Emerging Tech Lab',
-      description: 'Experimental products exploring frontier technologies like blockchain, quantum computing, and next-gen interfaces.',
-      products: ['Blockchain Applications', 'IoT Ecosystems', 'Voice Interfaces', 'Quantum Algorithms'],
-      gradient: 'from-yellow-500 to-orange-500',
-    },
-  ];
-
-  const techStack = [
-    { name: 'React', icon: FaReact, className: 'text-cyan-400' },
-    { name: 'Node.js', icon: FaNodeJs, className: 'text-green-500' },
-    { name: 'Python', icon: FaPython, className: 'text-blue-400' },
-    { name: 'Flutter', icon: SiFlutter, className: 'text-blue-500' },
-    { name: 'Firebase', icon: SiFirebase, className: 'text-yellow-500' },
-    { name: 'Supabase', icon: SiSupabase, className: 'text-emerald-500' },
   ];
 
   return (
-    <div
-      className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div className="absolute inset-0 opacity-10 dark:opacity-10">
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-cosmic-neon rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              scale: [0, 1, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 4,
-              delay: Math.random() * 4,
-              repeat: Infinity,
-            }}
-          />
-        ))}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 dark:text-white text-sand-charcoal transition-colors duration-300">
+      {/* Header */}
+      <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-titanium-800/80 bg-sand-border/70 border border-citron/40 mb-4 shadow-sm">
+          <Code2 className="w-3.5 h-3.5 text-citron" />
+          <span className="text-xs font-mono font-semibold text-citron uppercase tracking-wider">
+            TECHNICAL ARSENAL & DISCIPLINES
+          </span>
+        </div>
+
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold dark:text-white text-sand-charcoal tracking-tight mb-4">
+          Core Engineering Capabilities
+        </h2>
+        <p className="text-base sm:text-lg dark:text-titanium-300 text-sand-charcoal/80 leading-relaxed font-normal">
+          The technical foundation powering our 5 proprietary products. From low-level embedded hardware and BLE telemetry to high-throughput cloud networks and local encrypted storage.
+        </p>
       </div>
 
-      <motion.div
-        variants={fadeInUp}
-        className="text-center mb-12 md:mb-16"
-      >
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-light-text dark:text-white mb-4 md:mb-6">
-          What We <span className="bg-gradient-neon bg-clip-text text-transparent">Build</span>
-        </h2>
-        <p className="text-lg md:text-xl text-light-subtext dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          We develop our own innovative products across multiple categories, each designed to
-          push boundaries and create new market opportunities.
-        </p>
-      </motion.div>
-
-      <motion.div
-        ref={techContainerRef}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeaveContainer}
-        variants={fadeInUp}
-        className="glass-effect rounded-xl py-6 md:py-8 mb-12 md:mb-16 text-center"
-      >
-        <h3 className="text-xl md:text-2xl font-semibold text-light-text dark:text-white mb-6">Powered By Cutting-Edge Technology</h3>
-        <div className="flex justify-center items-center gap-8 md:gap-12 flex-wrap px-4">
-          {techStack.map((tech) => (
-            <TechIcon
-              key={tech.name}
-              tech={tech}
-              mouseX={mouseX}
-              mouseY={mouseY}
-              containerWidth={containerSize.width}
-              containerHeight={containerSize.height}
-              isDesktop={isDesktop}
-            />
-          ))}
-        </div>
-      </motion.div>
-
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-        className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8"
-      >
-        {productCategories.map((category) => {
-          const { Icon, title, description, products, gradient } = category;
+      {/* Capabilities Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        {capabilities.map((cap) => {
+          const { Icon, title, description, products, tag } = cap;
           return (
-            <motion.div
-              key={title}
-              variants={fadeInUp}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="glass-effect rounded-xl p-6 md:p-8 group hover:shadow-xl dark:hover:shadow-cosmic-purple/20 transition-all duration-300 relative overflow-hidden"
-            >
-              <motion.div
-                className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
-                initial={false}
-              />
+            <div key={title} className="h-full">
+              <SpotlightCard className="p-6 sm:p-7 flex flex-col justify-between h-full group" withCorners>
+                <div>
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-12 h-12 rounded-xl dark:bg-titanium-800 bg-sand-border/50 border dark:border-white/10 border-sand-border text-citron flex items-center justify-center group-hover:scale-105 transition-transform shadow-sm">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <span className="text-[9px] font-mono px-2 py-0.5 rounded dark:bg-titanium-800 bg-sand-border/60 border dark:border-white/10 border-sand-border text-citron font-semibold">
+                      {tag}
+                    </span>
+                  </div>
 
-              <div className="relative z-10">
-                <motion.div
-                  whileHover={{ rotate: 360, scale: 1.1 }}
-                  transition={{ duration: 0.6 }}
-                  className="w-14 h-14 md:w-16 md:h-16 bg-gradient-purple rounded-full flex items-center justify-center mb-4 md:mb-6 group-hover:animate-glow"
-                >
-                  <Icon className="w-7 h-7 md:w-8 md:h-8 text-white" />
-                </motion.div>
+                  <h3 className="text-lg font-bold dark:text-white text-sand-charcoal mb-2 font-mono group-hover:text-citron transition-colors">
+                    {title}
+                  </h3>
+                  <p className="text-xs sm:text-sm dark:text-titanium-300 text-sand-charcoal/80 leading-relaxed mb-4 font-normal">
+                    {description}
+                  </p>
+                </div>
 
-                <h3 className="text-lg md:text-xl font-semibold text-light-text dark:text-white mb-3 md:mb-4">{title}</h3>
-                <p className="text-sm md:text-base text-light-subtext dark:text-gray-300 mb-4 md:mb-6 leading-relaxed">{description}</p>
-
-                <ul className="space-y-2 mb-4 md:mb-6">
-                  {products.map((product) => (
-                    <li key={product} className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
-                      <motion.div
-                        animate={{ scale: [1, 1.2, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="w-1.5 h-1.5 bg-cosmic-neon rounded-full mr-3"
-                      />
-                      <span>{product}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <motion.button
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                  onClick={() => handleExploreClick(title)}
-                  whileHover={{ scale: 1.05, x: 5 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="text-cosmic-purple dark:text-cosmic-neon font-medium text-sm hover:text-light-text dark:hover:text-white transition-colors group-hover:underline flex items-center"
-                >
-                  Explore Products
-                  <motion.span
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="ml-2"
-                  >
-                    →
-                  </motion.span>
-                </motion.button>
-              </div>
-            </motion.div>
+                <div className="pt-4 border-t dark:border-white/10 border-sand-border text-xs font-mono text-citron flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-citron" />
+                  <span>{products}</span>
+                </div>
+              </SpotlightCard>
+            </div>
           );
         })}
-      </motion.div>
+      </div>
 
-      {/* Coming Soon Modal - for categories without products */}
-      <ComingSoonModal
-        isOpen={isComingSoonOpen}
-        onClose={() => setIsComingSoonOpen(false)}
-        categoryTitle={selectedCategory}
-      />
+      {/* Unified Technology Stack & Production-Grade Tooling Matrix */}
+      <div>
+        <SpotlightCard className="p-6 sm:p-8 lg:p-10" withCorners>
+          {/* Top Header */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b dark:border-white/10 border-sand-border mb-8">
+            <div>
+              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-citron mb-1 font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-citron animate-pulse" />
+                <span>SYSTEM ARSENAL // PRODUCTION-GRADE TOOLING</span>
+              </div>
+              <h4 className="text-xl sm:text-2xl font-bold dark:text-white text-sand-charcoal font-mono tracking-tight">
+                Battle-Tested Engineering Ecosystem
+              </h4>
+              <p className="text-xs sm:text-sm dark:text-titanium-300 text-sand-charcoal/80 mt-1 max-w-xl leading-relaxed">
+                Zero bloat. High-performance tooling powering embedded hardware firmware, offline-encrypted mobile vaults, and distributed cloud backends.
+              </p>
+            </div>
 
-      {/* Product Showcase Modal - for categories with products */}
-      <ProductShowcaseModal
-        isOpen={isProductShowcaseOpen}
-        onClose={() => setIsProductShowcaseOpen(false)}
-        categoryTitle={selectedCategory}
-      />
+            <div className="flex items-center gap-3 shrink-0">
+              <span className="px-3 py-1.5 rounded-full text-[11px] font-mono font-semibold dark:bg-titanium-800 bg-sand-border/80 text-citron border dark:border-white/10 border-sand-border shadow-sm">
+                100% IN-HOUSE IP
+              </span>
+            </div>
+          </div>
+
+          {/* 4 Architectural Columns / Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Column 1: Mobile & Client Architecture */}
+            <div className="p-4 sm:p-5 rounded-xl dark:bg-titanium-950/60 bg-sand-border/30 border dark:border-white/5 border-sand-border flex flex-col justify-between group/col hover:border-citron/40 transition-all">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[11px] font-mono text-cyan-400 font-bold uppercase tracking-wider">
+                    01 // Mobile Engines
+                  </span>
+                  <Smartphone className="w-4 h-4 text-cyan-400" />
+                </div>
+                <div className="text-xs font-bold dark:text-white text-sand-charcoal font-mono mb-1">
+                  60fps Native State
+                </div>
+                <p className="text-[11px] dark:text-titanium-300 text-sand-charcoal/70 leading-relaxed mb-4">
+                  Fluid, reactive cross-platform runtimes with zero startup lag.
+                </p>
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {[
+                    { name: 'Flutter', icon: SiFlutter, color: 'text-citron' },
+                    { name: 'Dart', icon: SiDart, color: 'text-cyan-400' },
+                    { name: 'React Native', icon: FaReact, color: 'text-cyan-300' },
+                    { name: 'TypeScript', icon: SiTypescript, color: 'text-blue-400' },
+                  ].map((t) => {
+                    const Icon = t.icon;
+                    return (
+                      <span
+                        key={t.name}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg dark:bg-titanium-800 bg-white border dark:border-white/10 border-sand-border text-[10px] font-mono dark:text-titanium-200 text-sand-charcoal shadow-sm"
+                      >
+                        <Icon className={`w-3 h-3 ${t.color}`} />
+                        <span>{t.name}</span>
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className="text-[10px] font-mono text-citron pt-2.5 border-t dark:border-white/5 border-sand-border/60">
+                → Powering FISCLOK & Tastory
+              </div>
+            </div>
+
+            {/* Column 2: Embedded IoT & Hardware */}
+            <div className="p-4 sm:p-5 rounded-xl dark:bg-titanium-950/60 bg-sand-border/30 border dark:border-white/5 border-sand-border flex flex-col justify-between group/col hover:border-cyan-400/40 transition-all">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[11px] font-mono text-cyan-300 font-bold uppercase tracking-wider">
+                    02 // Smart Hardware
+                  </span>
+                  <Cpu className="w-4 h-4 text-cyan-300" />
+                </div>
+                <div className="text-xs font-bold dark:text-white text-sand-charcoal font-mono mb-1">
+                  BLE 5.3 & IMU Telemetry
+                </div>
+                <p className="text-[11px] dark:text-titanium-300 text-sand-charcoal/70 leading-relaxed mb-4">
+                  Low-power embedded sensor fusion and real-time haptic feedback.
+                </p>
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {[
+                    { name: 'Embedded C++', icon: SiCplusplus, color: 'text-blue-400' },
+                    { name: 'BLE 5.3', icon: Radio, color: 'text-cyan-300' },
+                    { name: 'ESP32', icon: Cpu, color: 'text-emerald-400' },
+                    { name: 'Sensor Fusion', icon: Compass, color: 'text-citron' },
+                  ].map((t) => {
+                    const Icon = t.icon;
+                    return (
+                      <span
+                        key={t.name}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg dark:bg-titanium-800 bg-white border dark:border-white/10 border-sand-border text-[10px] font-mono dark:text-titanium-200 text-sand-charcoal shadow-sm"
+                      >
+                        <Icon className={`w-3 h-3 ${t.color}`} />
+                        <span>{t.name}</span>
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className="text-[10px] font-mono text-cyan-300 pt-2.5 border-t dark:border-white/5 border-sand-border/60">
+                → Powering Project ROW
+              </div>
+            </div>
+
+            {/* Column 3: Local-First Privacy & Encryption */}
+            <div className="p-4 sm:p-5 rounded-xl dark:bg-titanium-950/60 bg-sand-border/30 border dark:border-white/5 border-sand-border flex flex-col justify-between group/col hover:border-emerald-400/40 transition-all">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[11px] font-mono text-emerald-400 font-bold uppercase tracking-wider">
+                    03 // Local Encryption
+                  </span>
+                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                </div>
+                <div className="text-xs font-bold dark:text-white text-sand-charcoal font-mono mb-1">
+                  Zero-Knowledge Vaults
+                </div>
+                <p className="text-[11px] dark:text-titanium-300 text-sand-charcoal/70 leading-relaxed mb-4">
+                  Strict on-device encrypted storage with zero corporate telemetry.
+                </p>
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {[
+                    { name: 'MMKV Storage', icon: Lock, color: 'text-emerald-400' },
+                    { name: 'SQLite', icon: SiSqlite, color: 'text-cyan-300' },
+                    { name: 'Encrypted Keys', icon: Shield, color: 'text-coral' },
+                    { name: 'Google Drive Sync', icon: Database, color: 'text-citron' },
+                  ].map((t) => {
+                    const Icon = t.icon;
+                    return (
+                      <span
+                        key={t.name}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg dark:bg-titanium-800 bg-white border dark:border-white/10 border-sand-border text-[10px] font-mono dark:text-titanium-200 text-sand-charcoal shadow-sm"
+                      >
+                        <Icon className={`w-3 h-3 ${t.color}`} />
+                        <span>{t.name}</span>
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className="text-[10px] font-mono text-emerald-400 pt-2.5 border-t dark:border-white/5 border-sand-border/60">
+                → Core DNA of FISCLOK
+              </div>
+            </div>
+
+            {/* Column 4: AI Vectors & Cloud Infrastructure */}
+            <div className="p-4 sm:p-5 rounded-xl dark:bg-titanium-950/60 bg-sand-border/30 border dark:border-white/5 border-sand-border flex flex-col justify-between group/col hover:border-purple-400/40 transition-all">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[11px] font-mono text-purple-400 font-bold uppercase tracking-wider">
+                    04 // AI & Cloud Systems
+                  </span>
+                  <Sparkles className="w-4 h-4 text-purple-400" />
+                </div>
+                <div className="text-xs font-bold dark:text-white text-sand-charcoal font-mono mb-1">
+                  Vector Graphs & APIs
+                </div>
+                <p className="text-[11px] dark:text-titanium-300 text-sand-charcoal/70 leading-relaxed mb-4">
+                  High-throughput taste matching, clinical pipelines, and sync.
+                </p>
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {[
+                    { name: 'Python & FastAPI', icon: FaPython, color: 'text-yellow-400' },
+                    { name: 'Node.js', icon: FaNodeJs, color: 'text-emerald-400' },
+                    { name: 'Supabase', icon: SiSupabase, color: 'text-emerald-400' },
+                    { name: 'PostgreSQL', icon: SiPostgresql, color: 'text-blue-400' },
+                  ].map((t) => {
+                    const Icon = t.icon;
+                    return (
+                      <span
+                        key={t.name}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg dark:bg-titanium-800 bg-white border dark:border-white/10 border-sand-border text-[10px] font-mono dark:text-titanium-200 text-sand-charcoal shadow-sm"
+                      >
+                        <Icon className={`w-3 h-3 ${t.color}`} />
+                        <span>{t.name}</span>
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className="text-[10px] font-mono text-purple-400 pt-2.5 border-t dark:border-white/5 border-sand-border/60">
+                → Powering Tastory & DocCo
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Architectural Guarantee Strip */}
+          <div className="mt-8 pt-6 border-t dark:border-white/10 border-sand-border flex flex-wrap items-center justify-between gap-4 text-[11px] font-mono dark:text-titanium-400 text-sand-charcoal/70">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Zero Third-Party Trackers</span>
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-citron" />
+                <span>Offline-Capable Architecture</span>
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Native Hardware Acceleration</span>
+              </span>
+            </div>
+
+            <div className="text-citron font-semibold">
+              <span>ASTRIORB VERIFIED RUNTIME</span>
+            </div>
+          </div>
+        </SpotlightCard>
+      </div>
     </div>
   );
 };

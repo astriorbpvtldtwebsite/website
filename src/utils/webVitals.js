@@ -5,16 +5,27 @@
 
 export const reportWebVitals = (onPerfEntry) => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
-    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-      getCLS(onPerfEntry);
-      getFID(onPerfEntry);
-      getFCP(onPerfEntry);
-      getLCP(onPerfEntry);
-      getTTFB(onPerfEntry);
-    }).catch(() => {
-      // Silently fail if web-vitals is not available
-      console.warn('Web Vitals monitoring not available');
-    });
+    import('web-vitals')
+      .then((wv) => {
+        const { onCLS, onINP, onFCP, onLCP, onTTFB, getCLS, getFID, getFCP, getLCP, getTTFB } = wv;
+        if (typeof onCLS === 'function') onCLS(onPerfEntry);
+        else if (typeof getCLS === 'function') getCLS(onPerfEntry);
+
+        if (typeof onINP === 'function') onINP(onPerfEntry);
+        else if (typeof getFID === 'function') getFID(onPerfEntry);
+
+        if (typeof onFCP === 'function') onFCP(onPerfEntry);
+        else if (typeof getFCP === 'function') getFCP(onPerfEntry);
+
+        if (typeof onLCP === 'function') onLCP(onPerfEntry);
+        else if (typeof getLCP === 'function') getLCP(onPerfEntry);
+
+        if (typeof onTTFB === 'function') onTTFB(onPerfEntry);
+        else if (typeof getTTFB === 'function') getTTFB(onPerfEntry);
+      })
+      .catch(() => {
+        // Silently fail if web-vitals is not available in environment
+      });
   }
 };
 

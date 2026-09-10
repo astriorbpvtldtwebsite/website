@@ -1,258 +1,215 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Zap, Sun, Moon, Code2 } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
-import { useProjectModal } from '../contexts/ProjectModalContext';
+import AstriOrbLogo from './AstriOrbLogo';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
-  const { openProjectModal } = useProjectModal();
-
-  const handleMouseEnter = () => document.dispatchEvent(new Event('cursor-enter'));
-  const handleMouseLeave = () => document.dispatchEvent(new Event('cursor-leave'));
+  const location = useLocation();
+  const headerRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 30);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Handle outside click & Escape key to close mobile menu
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
+
+    const handleClickOutside = (e) => {
+      if (headerRef.current && !headerRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [isOpen]);
+
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#services' },
-    { name: 'Why Us', href: '#why-us' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Careers', href: '#careers' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', to: '/' },
+    { name: 'Products', to: '/products' },
+    { name: 'About', to: '/about' },
+    { name: 'Blog', to: '/blog' },
+    { name: 'Careers', to: '/careers' },
+    { name: 'Contact', to: '/contact' },
   ];
 
-  return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-        ? 'bg-light-bg/80 dark:bg-space-900/95 backdrop-blur-lg border-b border-black/10 dark:border-white/10 shadow-lg dark:shadow-cosmic-purple/10'
-        : 'bg-transparent'
-        }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 md:h-20">
-          {/* Logo */}
-          <motion.a
-            href="#home"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2"
-          >
-            <motion.div
-              animate={{ rotate: scrolled ? 360 : 0 }}
-              transition={{ duration: 0.6 }}
-              className="w-8 h-8 md:w-10 md:h-10 bg-gradient-neon rounded-lg flex items-center justify-center relative overflow-hidden p-1"
-            >
-              {/* Shimmer effect */}
-              <motion.div
-                animate={{
-                  x: ['-100%', '200%'],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatDelay: 1,
-                  ease: 'easeInOut'
-                }}
-                className="absolute inset-0 z-20 pointer-events-none"
-                style={{
-                  background: 'linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%)',
-                  width: '50%',
-                }}
-              />
-              {/* Background glow */}
-              <motion.div
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.5, 1, 0.5],
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="absolute inset-0 bg-gradient-to-r from-cosmic-purple to-cosmic-neon opacity-20"
-              />
-              <img
-                src="/logo.png"
-                alt="AstriOrb Logo"
-                className="w-full h-full object-contain relative z-10"
-              />
-            </motion.div>
-            <span className="text-xl md:text-2xl font-bold text-light-text dark:text-white">AstriOrb</span>
-          </motion.a>
+  const handleNavClick = (e, item) => {
+    setIsOpen(false);
+    if (item.to === '/' && location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-4">
-            {navItems.map((item, index) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{
-                  scale: 1.05,
-                  color: theme === 'dark' ? '#00d4aa' : '#6366f1',
-                }}
-                className="text-light-subtext dark:text-gray-300 hover:text-cosmic-purple dark:hover:text-cosmic-neon transition-all duration-200 font-medium relative group whitespace-nowrap px-2 py-1"
-              >
-                {item.name}
-                <motion.div
-                  layoutId={`underline-${item.name}`}
-                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-neon group-hover:w-full transition-all duration-200 ease-out"
-                />
-              </motion.a>
-            ))}
-            <motion.button
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              onClick={openProjectModal}
-              whileHover={{
-                scale: 1.05,
-                boxShadow: '0 10px 30px rgba(99, 102, 241, 0.3)',
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-purple text-white px-6 py-2.5 rounded-full font-medium hover:shadow-lg hover:shadow-cosmic-purple/25 transition-all duration-200 flex items-center space-x-2 whitespace-nowrap"
-            >
-              <Code2 className="w-4 h-4" />
-              <span>Project:Tastory</span>
-            </motion.button>
-            <motion.div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-              <button
-                onClick={toggleTheme}
-                aria-label="Toggle light/dark theme"
-                className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 dark:bg-space-800 text-light-text dark:text-white"
-              >
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.div
-                    key={theme}
-                    initial={{ y: -20, opacity: 0, rotate: -90 }}
-                    animate={{ y: 0, opacity: 1, rotate: 0 }}
-                    exit={{ y: 20, opacity: 0, rotate: 90 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-                  </motion.div>
-                </AnimatePresence>
-              </button>
-            </motion.div>
-          </div>
- 
-          {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center gap-2">
+  const handleBrandClick = (e) => {
+    setIsOpen(false);
+    if (location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-3 sm:px-6 lg:px-8 pt-3 sm:pt-4">
+      <div
+        className={`max-w-7xl mx-auto rounded-2xl border transition-all duration-300 ${
+          scrolled
+            ? 'dark:bg-obsidian/90 bg-sand/95 backdrop-blur-xl dark:border-white/10 border-sand-border shadow-xl dark:shadow-black/50 shadow-sand-charcoal/10 py-2.5 px-4 md:px-6'
+            : 'dark:bg-obsidian/40 bg-sand/80 backdrop-blur-md dark:border-white/5 border-sand-border/60 py-3.5 px-4 md:px-6'
+        }`}
+      >
+        <div className="flex items-center justify-between">
+          {/* Brand Logo & Name */}
+          <Link
+            to="/"
+            onClick={handleBrandClick}
+            className="flex items-center gap-3 group select-none"
+          >
+            <div className="relative w-9 h-9 rounded-xl dark:bg-titanium-800 bg-sand-border/80 border border-citron/40 p-0.5 shadow-md shadow-citron/15 group-hover:border-citron transition-all duration-300">
+              <div className="w-full h-full dark:bg-obsidian bg-white rounded-[10px] flex items-center justify-center p-1.5">
+                <AstriOrbLogo className="w-full h-full text-citron group-hover:text-citron-light transition-colors" />
+              </div>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-lg font-bold tracking-tight dark:text-white text-sand-charcoal group-hover:text-citron transition-colors font-mono">
+                AstriOrb
+              </span>
+              <span className="hidden sm:flex items-center gap-1 text-[10px] font-mono dark:text-titanium-400 text-sand-charcoal/60 uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-citron animate-pulse" />
+                MULTI-PRODUCT LAB
+              </span>
+            </div>
+          </Link>
+
+          {/* Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2">
+            {navItems.map((item) => {
+              const isActive =
+                item.to === '/'
+                  ? location.pathname === '/'
+                  : location.pathname.startsWith(item.to);
+
+              return (
+                <Link
+                  key={item.name}
+                  to={item.to}
+                  onClick={(e) => handleNavClick(e, item)}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium transition-all duration-200 ${
+                    isActive
+                      ? 'text-citron dark:bg-white/5 bg-sand-border/60 border border-citron/30 shadow-sm'
+                      : 'dark:text-titanium-300 text-sand-charcoal/80 dark:hover:text-white hover:text-sand-plum dark:hover:bg-white/[0.06] hover:bg-sand-border/30'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Desktop Right Actions (Theme Switcher) */}
+          <div className="hidden lg:flex items-center gap-3">
             <button
+              type="button"
               onClick={toggleTheme}
               aria-label="Toggle light/dark theme"
-              className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 dark:bg-space-800 text-light-text dark:text-white"
+              className="h-9 px-3 rounded-xl flex items-center gap-2 text-xs font-mono dark:text-titanium-300 text-sand-charcoal dark:bg-titanium-800 bg-sand-border/60 border dark:border-white/10 border-sand-border hover:border-citron/40 transition-colors select-none"
+              title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
             >
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={theme}
-                  initial={{ y: -20, opacity: 0, rotate: -90 }}
-                  animate={{ y: 0, opacity: 1, rotate: 0 }}
-                  exit={{ y: 20, opacity: 0, rotate: 90 }}
+                  initial={{ rotate: -90, opacity: 0, scale: 0.7 }}
+                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                  exit={{ rotate: 90, opacity: 0, scale: 0.7 }}
                   transition={{ duration: 0.2 }}
                 >
-                  {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                  {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
                 </motion.div>
               </AnimatePresence>
+              <span className="text-[11px] font-semibold">{theme === 'dark' ? 'LIGHT' : 'DARK'}</span>
             </button>
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label={isOpen ? "Close mobile menu" : "Open mobile menu"}
-              className="text-light-text dark:text-white p-2 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+          </div>
+
+          {/* Mobile Right Controls */}
+          <div className="lg:hidden flex items-center gap-2">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              className="w-9 h-9 rounded-xl flex items-center justify-center dark:text-titanium-300 text-sand-charcoal dark:bg-titanium-800 bg-sand-border/60 border dark:border-white/10 border-sand-border"
             >
-              <motion.div
-                animate={{ rotate: isOpen ? 180 : 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
-              </motion.div>
-            </motion.button>
+              {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
+            </button>
+            <button
+              type="button"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              className="w-9 h-9 rounded-xl flex items-center justify-center dark:text-white text-sand-charcoal dark:bg-titanium-800 bg-sand-border/60 border dark:border-white/10 border-sand-border"
+            >
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        <motion.div
-          initial={false}
-          animate={{
-            height: isOpen ? 'auto' : 0,
-            opacity: isOpen ? 1 : 0,
-          }}
-          transition={{ duration: 0.3 }}
-          className="lg:hidden overflow-hidden relative z-50"
-        >
-          <motion.div
-            initial={false}
-            animate={{ y: isOpen ? 0 : -20 }}
-            transition={{ duration: 0.3 }}
-            className="bg-light-card/95 dark:bg-space-800/95 backdrop-blur-lg rounded-lg mt-2 p-4 border border-black/10 dark:border-white/10 relative z-50"
-          >
-            {navItems.map((item, index) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{
-                  opacity: isOpen ? 1 : 0,
-                  x: isOpen ? 0 : -20,
-                }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                className="block py-3 text-light-subtext dark:text-gray-300 hover:text-cosmic-purple dark:hover:text-cosmic-neon transition-colors border-b border-black/5 dark:border-white/5 last:border-b-0"
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (item.href.startsWith('/')) {
-                    setIsOpen(false);
-                    window.location.href = item.href;
-                    return;
-                  }
-                  const targetId = item.href.replace('#', '');
-                  const targetElement = document.getElementById(targetId);
-
-                  if (targetElement) {
-                    setIsOpen(false);
-                    setTimeout(() => {
-                      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 300);
-                  }
-                }}
-              >
-                {item.name}
-              </motion.a>
-            ))}
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={{
-                opacity: isOpen ? 1 : 0,
-                y: isOpen ? 0 : 20,
-              }}
-              transition={{ duration: 0.3, delay: 0.4 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full mt-4 bg-gradient-purple text-white py-3 rounded-full font-medium flex items-center justify-center space-x-2"
-              onClick={() => {
-                setIsOpen(false);  // Close mobile menu
-                openProjectModal(); // Open project modal
-              }}
+        {/* Mobile Slide-down Drawer */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25 }}
+              className="lg:hidden overflow-hidden border-t dark:border-white/10 border-sand-border mt-3 pt-3"
             >
-              <Zap className="w-4 h-4" />
-              <span>Project:Tastory</span>
-            </motion.button>
-          </motion.div>
-        </motion.div>
+              <div className="flex flex-col space-y-1 pb-3">
+                {navItems.map((item) => {
+                  const isActive =
+                    item.to === '/'
+                      ? location.pathname === '/'
+                      : location.pathname.startsWith(item.to);
+
+                  return (
+                    <Link
+                      key={item.name}
+                      to={item.to}
+                      onClick={(e) => handleNavClick(e, item)}
+                      className={`px-3.5 py-2.5 rounded-lg text-xs font-mono font-medium transition-colors ${
+                        isActive
+                          ? 'text-citron dark:bg-white/5 bg-sand-border/60 border border-citron/30'
+                          : 'dark:text-titanium-300 text-sand-charcoal dark:hover:text-white hover:text-sand-plum dark:hover:bg-white/5 hover:bg-sand-border/30'
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </motion.nav>
+    </header>
   );
 };
 
