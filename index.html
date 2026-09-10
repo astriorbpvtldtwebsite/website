@@ -4,23 +4,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#071616" />
+  <meta name="theme-color" content="#F1ECE6" />
   <title data-rh="true">AstriOrb — Multi-Product Software &amp; Smart Hardware House</title>
 
-  <!-- Immediate Theme Initialization to prevent splash/page FOUT (Defaults to OS system theme) -->
+  <!-- Immediate Theme Initialization to prevent splash/page FOUT (Auto system theme with light fallback) -->
   <script type="text/javascript">
     (function () {
+      var theme = 'light';
       try {
         var savedTheme = localStorage.getItem('theme');
-        var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        var theme = (savedTheme === 'light' || savedTheme === 'dark')
-          ? savedTheme
-          : (systemDark ? 'dark' : 'light');
+        if (savedTheme === 'light' || savedTheme === 'dark') {
+          theme = savedTheme;
+        } else if (window.matchMedia) {
+          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            theme = 'dark';
+          } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+            theme = 'light';
+          }
+        }
+      } catch (e) {
+        theme = 'light';
+      }
+      try {
         document.documentElement.classList.remove('light', 'dark');
         document.documentElement.classList.add(theme);
         var metaThemeColor = document.querySelector('meta[name="theme-color"]');
         if (metaThemeColor) {
-          metaThemeColor.setAttribute('content', theme === 'light' ? '#F1ECE6' : '#071616');
+          metaThemeColor.setAttribute('content', theme === 'dark' ? '#071616' : '#F1ECE6');
         }
       } catch (e) {}
     })();
@@ -459,9 +469,14 @@
     ]
   </script>
 
-  <script type="module" crossorigin src="/assets/index.Bk1B0kjd.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/vendor-core.BtSwiHOo.js">
-  <link rel="modulepreload" crossorigin href="/assets/vendor-framer-motion.CjTBIAnc.js">
+  <script type="module" crossorigin src="/assets/index.IZ2QU7DD.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-misc.g1P0eTvl.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-react.UKMVIycI.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-helmet.GAHb9ckU.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-router.C81cIUut.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-framer-motion.BEm0GEwG.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-lucide.vphFKXbc.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-icons.DfatuOmd.js">
   <link rel="stylesheet" crossorigin href="/assets/index.yFMl8x7P.css">
 </head>
 
