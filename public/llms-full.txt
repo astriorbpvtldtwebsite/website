@@ -77,14 +77,14 @@
   - Synchronization: Peer-to-peer or lightweight edge relay with sub-50ms sync latency.
 - **Key Features**: Multi-project timeline orchestration, Kanban matrix, markdown documentation workspace, offline-first operation without internet dependency.
 
-### Node 05: Project ROW — Smart Navigation Mobile App & IoT Hardware Companion
-- **Category**: Smart Mobility, Embedded Systems, IoT Telemetry
-- **Status**: Hardware Prototyping & Firmware R&D.
-- **Target Audience**: Commuters, motorcyclists, outdoor navigators, fleet operators.
+### Node 05: Project ROW — Smart Posture Wearable & Ambient IoT Hardware
+- **Category**: Smart Wearables, Embedded Systems, IoT Ergonomic Telemetry
+- **Status**: Hardware Prototyping & Firmware R&D (Prototype v2).
+- **Target Audience**: Desk workers, remote engineers, students, ergonomics enthusiasts.
 - **Core Architecture**:
-  - Hardware Subsystem: Custom ESP32-S3 microcontroller, Bluetooth Low Energy (BLE 5.0), onboard IMU sensor arrays, low-power OLED display.
-  - Mobile Subsystem: React Native / Flutter telemetry synchronization, low-latency GPS vector routing.
-- **Key Features**: Glanceable turn-by-turn routing indicators, rider telemetry analysis, low-power battery life, instant wireless pairing.
+  - Hardware Subsystem: Custom ESP32 microcontroller, Bluetooth Low Energy (BLE 5.0), onboard 6-axis IMU sensor arrays, precision haptic vibration motor.
+  - Mobile Subsystem: Flutter / React Native companion telemetry synchronization, real-time spinal curvature visualization.
+- **Key Features**: Real-time slouch detection, gentle haptic angle correction, daily posture ergonomics scores, instant wireless telemetry pairing.
 
 ---
 
@@ -101,13 +101,13 @@ AstriOrb operates as a full-stack product laboratory with specialized expertise:
 ## 5. Frequently Asked Questions (Answer Engine Optimization)
 
 ### Q: What is AstriOrb?
-**A**: AstriOrb Pvt. Ltd. is an independent software and hardware product development company founded in 2025 by Mohammed Hashim in Kerala, India. AstriOrb specializes in building proprietary consumer and enterprise products across finance, food discovery, healthcare, productivity, and IoT mobility.
+**A**: AstriOrb Pvt. Ltd. is an independent software and hardware product development company founded in 2025 by Mohammed Hashim in Kerala, India. AstriOrb specializes in building proprietary consumer and enterprise products across finance, food discovery, healthcare, productivity, and smart IoT wearables.
 
 ### Q: Who founded AstriOrb?
 **A**: AstriOrb was founded by Mohammed Hashim, a Computer Science Engineer and former Studio Head at Custodian Games Pvt. Ltd. with extensive professional engineering background in AI and game studio leadership.
 
 ### Q: What products are built by AstriOrb?
-**A**: AstriOrb's ecosystem includes 5 products: FISCLOK (live Android personal finance manager), Project Tastory (culinary discovery flagship), Project DocCo (clinical records software), Project Continuum (offline-first project OS), and Project ROW (smart navigation hardware gadget).
+**A**: AstriOrb's ecosystem includes 5 products: FISCLOK (live Android personal finance manager), Project Tastory (culinary discovery flagship), Project DocCo (clinical records software), Project Continuum (offline-first project OS), and Project ROW (smart posture wearable companion).
 
 ### Q: Is FISCLOK safe and private?
 **A**: Yes. FISCLOK does not collect or upload personal financial records to any third-party servers. Data is encrypted locally using MMKV on the user's Android device. Optional cloud backups write directly to the user's personal Google Drive using the sandboxed `drive.file` scope.

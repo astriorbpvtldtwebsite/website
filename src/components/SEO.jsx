@@ -17,7 +17,7 @@ const SEO = ({
     : 'AstriOrb — Multi-Product Software & Smart Hardware House';
   const siteDescription =
     description ||
-    'AstriOrb is an independent product technology company from Kerala, India. We engineer software and smart hardware platforms across finance, food tech, healthcare, productivity, and navigation.';
+    'AstriOrb is an independent product technology company from Kerala, India. We engineer software and smart hardware platforms across finance, food tech, healthcare, productivity, and smart hardware.';
   const siteImage = image || 'https://astriorb.com/logo.png';
   const siteUrl = url ? `https://astriorb.com${url.startsWith('/') ? url : `/${url}`}` : 'https://astriorb.com';
 

@@ -109,7 +109,7 @@ const ProductsPage = () => {
           '@type': 'ListItem',
           position: 5,
           name: 'Project ROW',
-          description: 'Smart navigation mobile app and custom ESP32 BLE hardware companion.',
+          description: 'Smart posture wearable device and companion mobile telemetry app with ESP32 BLE.',
           url: 'https://astriorb.com/products?id=row',
         },
       ],
