@@ -1,6 +1,6 @@
 # AstriOrb
 
-> AstriOrb Pvt. Ltd. is an independent software and hardware product engineering company founded in 2025 by Mohammed Hashim in Kerala, India. AstriOrb builds high-impact proprietary software products and smart hardware innovations across finance, culinary discovery, healthcare, productivity, and navigation.
+> AstriOrb Pvt. Ltd. is an independent software and hardware product engineering company founded in 2025 by Mohammed Hashim in Kerala, India. AstriOrb builds high-impact proprietary software products and smart hardware innovations across finance, culinary discovery, healthcare, productivity, and smart wearables.
 
 For the exhaustive single-file context dossier for LLMs, RAG, and AI agents, see [llms-full.txt](https://astriorb.com/llms-full.txt).
 
@@ -16,7 +16,7 @@ For the exhaustive single-file context dossier for LLMs, RAG, and AI agents, see
 - [Project Tastory](https://astriorb.com/products): Flagship intelligent culinary discovery and taste-matching platform (Flutter / Firebase).
 - [Project DocCo](https://astriorb.com/products): Clinical workflow and medical records suite (HIPAA/GDPR aligned).
 - [Project Continuum](https://astriorb.com/products): Offline-first project orchestration suite with reactive CRDT synchronization.
-- [Project ROW](https://astriorb.com/products): Smart navigation app paired with custom ESP32 BLE smart hardware gadget.
+- [Project ROW](https://astriorb.com/products): Smart posture wearable device and companion mobile telemetry app with ESP32 BLE.
 
 ## Leadership
 - **Mohammed Hashim**: Founder & Lead Architect. Computer Science Engineer, former Studio Head at Custodian Games Pvt. Ltd., Creative Consultant at Hopz Corp Pvt. Ltd., and AI engineer with industry tenure at Annolive (Bangalore).
