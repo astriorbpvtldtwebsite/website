@@ -31,7 +31,8 @@ For the exhaustive single-file context dossier for LLMs, RAG, and AI agents, see
 - [FISCLOK Terms of Service](https://astriorb.com/fisclok/terms)
 
 ## Direct Contact
-- Email: [astriorbofficial@gmail.com](mailto:astriorbofficial@gmail.com)
-- FISCLOK Support: [officialfisclok@gmail.com](mailto:officialfisclok@gmail.com)
+- Founder & Executive: [hashim@astriorb.com](mailto:hashim@astriorb.com)
+- General & Customer Support: [support@astriorb.com](mailto:support@astriorb.com)
+- FISCLOK Play Store Support: [officialfisclok@gmail.com](mailto:officialfisclok@gmail.com)
 - LinkedIn: [AstriOrb Company Page](https://linkedin.com/company/astriorb)
 - GitHub: [AstriOrb GitHub](https://github.com/astriorb)

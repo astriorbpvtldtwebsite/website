@@ -99,7 +99,7 @@ const OfficeLocationCard = () => {
 
               <div className="space-y-2.5 sm:space-y-3">
                 <a
-                  href="mailto:astriorbofficial@gmail.com?subject=Direct%20Founder%20Inquiry%20-%20Mohammed%20Hashim"
+                  href="mailto:hashim@astriorb.com?subject=Direct%20Founder%20Inquiry%20-%20Mohammed%20Hashim"
                   className="p-3 sm:p-3.5 rounded-xl dark:bg-titanium-900 bg-sand-border/40 border dark:border-white/5 border-sand-border flex items-center justify-between group hover:border-citron/40 transition-colors"
                 >
                   <div className="flex items-center gap-2.5 sm:gap-3">
@@ -109,7 +109,7 @@ const OfficeLocationCard = () => {
                         Direct Founder Email
                       </div>
                       <div className="text-[10px] sm:text-[11px] font-mono dark:text-titanium-400 text-sand-charcoal/60">
-                        astriorbofficial@gmail.com
+                        hashim@astriorb.com
                       </div>
                     </div>
                   </div>

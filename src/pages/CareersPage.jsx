@@ -114,7 +114,7 @@ const CareersPage = () => {
                 </button>
 
                 <a
-                  href="mailto:astriorbofficial@gmail.com?subject=Spontaneous%20Application%20-%20AstriOrb"
+                  href="mailto:hashim@astriorb.com?subject=Spontaneous%20Application%20-%20AstriOrb"
                   className="w-full sm:w-auto px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl text-xs font-mono font-semibold dark:bg-titanium-800 bg-white border dark:border-white/10 border-sand-border dark:text-white text-sand-charcoal hover:border-citron hover:text-citron transition-colors text-center flex items-center justify-center"
                 >
                   EMAIL FOUNDER

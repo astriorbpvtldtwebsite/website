@@ -153,8 +153,8 @@ const TermsOfService = () => {
                             <p className="leading-relaxed text-sm md:text-base">
                                 For questions about these Terms of Service, contact us at:
                                 <br />
-                                <a href="mailto:astriorbofficial@gmail.com" className="text-citron hover:underline font-mono text-sm inline-block mt-2">
-                                    astriorbofficial@gmail.com
+                                <a href="mailto:support@astriorb.com" className="text-citron hover:underline font-mono text-sm inline-block mt-2">
+                                    support@astriorb.com
                                 </a>
                             </p>
                         </section>

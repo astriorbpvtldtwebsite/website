@@ -74,7 +74,7 @@ const Contact = () => {
           `Inquiry: ${sanitizedData.inquiry_type}\n\n` +
           `Message:\n${sanitizedData.message}`
         );
-        window.location.href = `mailto:astriorbofficial@gmail.com?subject=${subject}&body=${body}`;
+        window.location.href = `mailto:support@astriorb.com?subject=${subject}&body=${body}`;
       }
       setIsSubmitted(true);
       setFormData({
@@ -90,7 +90,7 @@ const Contact = () => {
       }, SUCCESS_MESSAGE_DURATION);
     } catch (err) {
       console.error('Failed to send message:', err);
-      setError(err?.text || err?.message || 'Failed to deliver message. Please email astriorbofficial@gmail.com directly.');
+      setError(err?.text || err?.message || 'Failed to deliver message. Please email support@astriorb.com directly.');
     } finally {
       setIsSubmitting(false);
     }
@@ -107,8 +107,8 @@ const Contact = () => {
     {
       Icon: Mail,
       title: 'Business & Investor Relations',
-      info: 'astriorbofficial@gmail.com',
-      link: 'mailto:astriorbofficial@gmail.com',
+      info: 'hashim@astriorb.com',
+      link: 'mailto:hashim@astriorb.com',
       sub: 'Tastory funding, partnerships & enterprise',
     },
     {

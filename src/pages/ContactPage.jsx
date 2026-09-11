@@ -28,13 +28,13 @@ const ContactPage = () => {
         {
           '@type': 'ContactPoint',
           contactType: 'Investor Relations',
-          email: 'astriorbofficial@gmail.com',
+          email: 'hashim@astriorb.com',
           availableLanguage: ['English', 'Malayalam', 'Hindi'],
         },
         {
           '@type': 'ContactPoint',
           contactType: 'Customer Support',
-          email: 'officialfisclok@gmail.com',
+          email: 'support@astriorb.com',
           availableLanguage: ['English'],
         },
       ],

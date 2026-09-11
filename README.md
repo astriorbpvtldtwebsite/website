@@ -105,9 +105,9 @@ npm run deploy
 ---
 
 ## 📞 Contact
-
-**Email:** astriorbofficial@gmail.com  
-**Website:** https://astriorb.com
+- **Founder & Leadership:** [hashim@astriorb.com](mailto:hashim@astriorb.com)  
+- **Customer Support & Inquiries:** [support@astriorb.com](mailto:support@astriorb.com)  
+- **Website:** https://astriorb.com
 
 ---
 

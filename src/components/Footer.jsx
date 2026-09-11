@@ -87,8 +87,8 @@ const Footer = () => {
   const socialLinks = [
     {
       Icon: Mail,
-      href: 'mailto:astriorbofficial@gmail.com',
-      label: 'Email',
+      href: 'mailto:support@astriorb.com',
+      label: 'Email Support',
       hoverColor: 'hover:text-citron hover:border-citron/50 hover:bg-citron/5',
     },
     {

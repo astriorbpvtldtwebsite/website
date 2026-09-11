@@ -58,7 +58,7 @@ const JobApplicationModal = ({ job, isOpen, onClose }) => {
       `Portfolio / GitHub: ${formData.portfolioUrl}\n\n` +
       `Pitch & Background:\n${formData.pitch}`
     );
-    window.location.href = `mailto:astriorbofficial@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:hashim@astriorb.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
   };
 
@@ -119,7 +119,7 @@ const JobApplicationModal = ({ job, isOpen, onClose }) => {
                 Application Email Prepared
               </h4>
               <p className="text-xs sm:text-sm dark:text-titanium-300 text-sand-charcoal/80 max-w-sm mx-auto leading-relaxed">
-                Your email client was prompted to send your dossier directly to <code className="text-citron">astriorbofficial@gmail.com</code>. We review every portfolio within 3 to 5 business days.
+                Your email client was prompted to send your dossier directly to <code className="text-citron">hashim@astriorb.com</code>. We review every portfolio within 3 to 5 business days.
               </p>
               <button
                 type="button"

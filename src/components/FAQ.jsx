@@ -42,7 +42,7 @@ const faqs = [
   {
     question: 'How can investors, partners, or healthcare clients get in touch?',
     answer:
-      'You can reach out directly via astriorbofficial@gmail.com, connect via LinkedIn at linkedin.com/company/astriorb, or use the categorized inquiry form in the Contact section below.',
+      'You can reach founder Mohammed Hashim directly at hashim@astriorb.com, our support desk at support@astriorb.com, connect via LinkedIn at linkedin.com/company/astriorb, or use the categorized inquiry console on the Contact page.',
   },
 ];
 

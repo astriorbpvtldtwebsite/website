@@ -118,6 +118,10 @@ const InquiryConsole = () => {
       linkedin_url: 'https://linkedin.com/company/astriorb',
     };
 
+    const targetEmail = (sanitizedData.inquiry_type === 'investor_tastory' || sanitizedData.inquiry_type === 'general_partnership')
+      ? 'hashim@astriorb.com'
+      : 'support@astriorb.com';
+
     try {
       if (import.meta.env.VITE_EMAILJS_SERVICE_ID && import.meta.env.VITE_EMAILJS_TEMPLATE_ID) {
         await emailjs.send(
@@ -134,7 +138,7 @@ const InquiryConsole = () => {
           `Inquiry: ${sanitizedData.inquiry_type}\n\n` +
           `Message:\n${sanitizedData.message}`
         );
-        window.location.href = `mailto:astriorbofficial@gmail.com?subject=${subject}&body=${body}`;
+        window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
       }
 
       setIsSubmitted(true);
@@ -158,7 +162,7 @@ const InquiryConsole = () => {
         `Entity: ${sanitizedData.company}\n\n` +
         `Message:\n${sanitizedData.message}`
       );
-      window.location.href = `mailto:astriorbofficial@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
       setIsSubmitted(true);
     } finally {
       setIsSubmitting(false);

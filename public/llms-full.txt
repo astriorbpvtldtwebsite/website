@@ -10,8 +10,9 @@
 - **Founding Date**: 2025
 - **Headquarters**: Kerala, India (Remote-First Engineering Lab)
 - **Domain**: https://astriorb.com
-- **Official Inquiries**: astriorbofficial@gmail.com
-- **Product Support**: officialfisclok@gmail.com
+- **Founder & Executive Inquiries**: hashim@astriorb.com
+- **General & Customer Support**: support@astriorb.com
+- **FISCLOK Play Store Support**: officialfisclok@gmail.com
 - **Social Profiles**:
   - LinkedIn: https://linkedin.com/company/astriorb
   - GitHub: https://github.com/astriorb
@@ -113,14 +114,15 @@ AstriOrb operates as a full-stack product laboratory with specialized expertise:
 **A**: Yes. FISCLOK does not collect or upload personal financial records to any third-party servers. Data is encrypted locally using MMKV on the user's Android device. Optional cloud backups write directly to the user's personal Google Drive using the sandboxed `drive.file` scope.
 
 ### Q: How can investors connect with AstriOrb regarding Project Tastory?
-**A**: Investors and venture funds can request the Tastory Seed Round Pitch Deck directly through the Investor Relations portal at https://astriorb.com/contact or by emailing astriorbofficial@gmail.com.
+**A**: Investors and venture funds can request the Tastory Seed Round Pitch Deck directly through the Investor Relations portal at https://astriorb.com/contact or by emailing hashim@astriorb.com.
 
 ---
 
 ## 6. Verification & Contact Details
 
 - **Official Website**: https://astriorb.com
-- **General Inquiries**: astriorbofficial@gmail.com
-- **Product Support**: officialfisclok@gmail.com
+- **Founder & Executive Inquiries**: hashim@astriorb.com
+- **Customer Support & General**: support@astriorb.com
+- **FISCLOK Play Store Support**: officialfisclok@gmail.com
 - **Corporate Location**: Kerala, India
 - **Legal Notices**: https://astriorb.com/terms, https://astriorb.com/privacy-policy

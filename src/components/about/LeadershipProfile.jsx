@@ -339,7 +339,7 @@ const LeadershipProfile = () => {
                 </p>
               </div>
               <a
-                href="mailto:astriorbofficial@gmail.com?subject=Co-Founder%20Inquiry%20%E2%80%94%20AstriOrb"
+                href="mailto:hashim@astriorb.com?subject=Co-Founder%20Inquiry%20%E2%80%94%20AstriOrb"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-mono font-bold text-xs sm:text-sm text-black bg-emerald-400 hover:bg-emerald-300 transition-colors duration-200 shadow-lg shadow-emerald-500/20"
               >
                 <span>Reach Out</span>
