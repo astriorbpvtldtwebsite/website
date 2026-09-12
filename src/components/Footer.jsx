@@ -174,11 +174,17 @@ const Footer = () => {
               </p>
 
               {/* Founder / IP Badge */}
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg dark:bg-titanium-900/60 bg-sand-border/35 border dark:border-white/5 border-sand-border text-[10px] sm:text-[11px] font-mono dark:text-titanium-300 text-sand-charcoal/80 whitespace-nowrap">
+              <a
+                href="https://hashim.astriorb.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg dark:bg-titanium-900/60 bg-sand-border/35 border dark:border-white/5 border-sand-border text-[10px] sm:text-[11px] font-mono dark:text-titanium-300 text-sand-charcoal/80 whitespace-nowrap hover:border-citron/40 hover:text-citron transition-colors group/founder"
+                title="Explore Mohammed Hashim's Personal Portfolio (hashim.astriorb.com)"
+              >
                 <ShieldCheck className="w-3.5 h-3.5 text-citron shrink-0" />
-                <span className="hidden sm:inline">Founder: Mohammed Hashim // 100% In-House IP</span>
-                <span className="sm:hidden">Mohammed Hashim // 100% In-House IP</span>
-              </div>
+                <span className="hidden sm:inline">Founder: Mohammed Hashim ↗ // 100% In-House IP</span>
+                <span className="sm:hidden">Mohammed Hashim ↗ // 100% In-House IP</span>
+              </a>
             </div>
 
             {/* Social Channels Row */}

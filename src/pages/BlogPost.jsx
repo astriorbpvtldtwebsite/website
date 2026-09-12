@@ -106,7 +106,11 @@ const BlogPost = () => {
       '@type': 'Person',
       name: post.author?.name || 'Mohammed Hashim',
       jobTitle: post.author?.role || 'Founder & Lead Architect',
-      url: 'https://astriorb.com/about',
+      url: 'https://hashim.astriorb.com',
+      sameAs: [
+        'https://hashim.astriorb.com',
+        'https://www.linkedin.com/in/mohammed-hashim-b9632b325/',
+      ],
     },
     publisher: {
       '@type': 'Organization',
@@ -297,10 +301,20 @@ const BlogPost = () => {
                   <p className="text-xs dark:text-titanium-300 text-sand-charcoal/80 leading-relaxed font-normal">
                     Computer Science Engineer and multi-domain software builder based in Kerala, India. Oversees all architecture across AstriOrb’s 5 proprietary software systems and embedded IoT hardware.
                   </p>
-                  <div className="flex items-center gap-3 pt-0.5 sm:pt-1 text-[11px] sm:text-xs font-mono">
+                  <div className="flex flex-wrap items-center gap-3 pt-0.5 sm:pt-1 text-[11px] sm:text-xs font-mono">
                     <Link to="/about" className="text-citron hover:underline">
                       About AstriOrb & Leadership →
                     </Link>
+                    <span className="dark:text-white/20 text-sand-charcoal/20">•</span>
+                    <a
+                      href="https://hashim.astriorb.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-laser-cyan hover:underline flex items-center gap-1"
+                    >
+                      <span>Founder Portfolio</span>
+                      <span aria-hidden="true">↗</span>
+                    </a>
                   </div>
                 </div>
               </div>

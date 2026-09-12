@@ -20,6 +20,7 @@ For the exhaustive single-file context dossier for LLMs, RAG, and AI agents, see
 
 ## Leadership
 - **Mohammed Hashim**: Founder & Lead Architect. Computer Science Engineer, former Studio Head at Custodian Games Pvt. Ltd., Creative Consultant at Hopz Corp Pvt. Ltd., and AI engineer with industry tenure at Annolive (Bangalore).
+- [Founder Portfolio](https://hashim.astriorb.com)
 - [LinkedIn Profile](https://www.linkedin.com/in/mohammed-hashim-b9632b325/)
 
 ## Legal & Compliance
@@ -31,6 +32,7 @@ For the exhaustive single-file context dossier for LLMs, RAG, and AI agents, see
 - [FISCLOK Terms of Service](https://astriorb.com/fisclok/terms)
 
 ## Direct Contact
+- Founder Portfolio: [https://hashim.astriorb.com](https://hashim.astriorb.com)
 - Founder & Executive: [hashim@astriorb.com](mailto:hashim@astriorb.com)
 - General & Customer Support: [support@astriorb.com](mailto:support@astriorb.com)
 - FISCLOK Play Store Support: [officialfisclok@gmail.com](mailto:officialfisclok@gmail.com)

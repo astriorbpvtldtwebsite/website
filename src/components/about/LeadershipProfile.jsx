@@ -12,6 +12,7 @@ import {
   Quote,
   Zap,
   Award,
+  Globe,
 } from 'lucide-react';
 import SpotlightCard from '../SpotlightCard';
 
@@ -171,6 +172,16 @@ const LeadershipProfile = () => {
                       <Award size={10} />
                       CTO · Cueroll
                     </span>
+                    <a
+                      href="https://hashim.astriorb.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg dark:bg-cyan-400/10 bg-cyan-400/15 border border-cyan-400/30 text-[10px] sm:text-[11px] font-mono font-bold text-cyan-400 hover:bg-cyan-400 hover:text-black transition-colors"
+                      title="Visit Mohammed Hashim's Personal Portfolio"
+                    >
+                      <Globe size={10} />
+                      <span>hashim.astriorb.com ↗</span>
+                    </a>
                   </div>
                 </div>
 

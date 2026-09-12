@@ -206,6 +206,9 @@ const AboutInteractiveTerminal = () => {
                     <p className="text-laser-cyan font-bold">
                       {'>'} ARCHITECTURAL GOVERNANCE: 100% of AstriOrb software and hardware designs are engineered under direct founder oversight.
                     </p>
+                    <p className="text-citron">
+                      {'>'} FOUNDER PORTFOLIO: <a href="https://hashim.astriorb.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors">https://hashim.astriorb.com</a>
+                    </p>
                   </div>
                 )}
 

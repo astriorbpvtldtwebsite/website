@@ -117,6 +117,26 @@ const OfficeLocationCard = () => {
                 </a>
 
                 <a
+                  href="https://hashim.astriorb.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 sm:p-3.5 rounded-xl dark:bg-titanium-900 bg-sand-border/40 border dark:border-white/5 border-sand-border flex items-center justify-between group hover:border-citron/40 transition-colors"
+                >
+                  <div className="flex items-center gap-2.5 sm:gap-3">
+                    <Globe size={16} className="text-cyan-400 shrink-0" />
+                    <div>
+                      <div className="text-xs font-bold font-mono dark:text-white text-sand-charcoal group-hover:text-citron transition-colors">
+                        Founder Portfolio
+                      </div>
+                      <div className="text-[10px] sm:text-[11px] font-mono dark:text-titanium-400 text-sand-charcoal/60">
+                        hashim.astriorb.com
+                      </div>
+                    </div>
+                  </div>
+                  <ArrowRight size={13} className="dark:text-titanium-400 text-sand-charcoal/60 group-hover:text-citron group-hover:translate-x-1 transition-all shrink-0" />
+                </a>
+
+                <a
                   href="https://linkedin.com/company/astriorb"
                   target="_blank"
                   rel="noopener noreferrer"

@@ -105,7 +105,7 @@ npm run deploy
 ---
 
 ## 📞 Contact
-- **Founder & Leadership:** [hashim@astriorb.com](mailto:hashim@astriorb.com)  
+- **Founder & Leadership:** [hashim@astriorb.com](mailto:hashim@astriorb.com) | [hashim.astriorb.com](https://hashim.astriorb.com)  
 - **Customer Support & Inquiries:** [support@astriorb.com](mailto:support@astriorb.com)  
 - **Website:** https://astriorb.com
 

@@ -30,7 +30,11 @@ const AboutPage = () => {
         '@type': 'Person',
         name: 'Mohammed Hashim',
         jobTitle: 'Founder & Lead Architect',
-        sameAs: ['https://www.linkedin.com/in/mohammed-hashim-b9632b325/'],
+        url: 'https://hashim.astriorb.com',
+        sameAs: [
+          'https://hashim.astriorb.com',
+          'https://www.linkedin.com/in/mohammed-hashim-b9632b325/',
+        ],
       },
     },
   };

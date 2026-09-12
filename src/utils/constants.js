@@ -38,10 +38,11 @@ export const VIEWPORT_CONFIG = {
   amount: 0.2,
 };
 
-// Email configuration
+// Email & Founder configuration
 export const EMAIL_CONFIG = {
   companyName: 'AstriOrb',
   companyEmail: 'support@astriorb.com',
   supportEmail: 'support@astriorb.com',
   founderEmail: 'hashim@astriorb.com',
+  founderPortfolio: 'https://hashim.astriorb.com',
 };
