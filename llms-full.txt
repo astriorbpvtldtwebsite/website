@@ -10,6 +10,7 @@
 - **Founding Date**: 2025
 - **Headquarters**: Kerala, India (Remote-First Engineering Lab)
 - **Domain**: https://astriorb.com
+- **Founder Portfolio**: https://hashim.astriorb.com
 - **Founder & Executive Inquiries**: hashim@astriorb.com
 - **General & Customer Support**: support@astriorb.com
 - **FISCLOK Play Store Support**: officialfisclok@gmail.com
@@ -31,6 +32,7 @@
   - Former Creative Consultant at Hopz Corp Pvt. Ltd. (brand strategy, UI/UX architecture, product roadmapping).
   - Former AI Engineer with industry tenure at Annolive (Bangalore), engineering deep learning and neural network pipelines.
 - **Leadership Model**: Active hands-on builder. All AstriOrb software architectures, database models, cryptographic vault structures, and hardware pinouts are authored or directly audited under his technical leadership.
+- **Founder Portfolio**: https://hashim.astriorb.com
 - **LinkedIn**: https://www.linkedin.com/in/mohammed-hashim-b9632b325/
 
 ---
@@ -105,7 +107,7 @@ AstriOrb operates as a full-stack product laboratory with specialized expertise:
 **A**: AstriOrb Pvt. Ltd. is an independent software and hardware product development company founded in 2025 by Mohammed Hashim in Kerala, India. AstriOrb specializes in building proprietary consumer and enterprise products across finance, food discovery, healthcare, productivity, and smart IoT wearables.
 
 ### Q: Who founded AstriOrb?
-**A**: AstriOrb was founded by Mohammed Hashim, a Computer Science Engineer and former Studio Head at Custodian Games Pvt. Ltd. with extensive professional engineering background in AI and game studio leadership.
+**A**: AstriOrb was founded by Mohammed Hashim (portfolio: https://hashim.astriorb.com), a Computer Science Engineer and former Studio Head at Custodian Games Pvt. Ltd. with extensive professional engineering background in AI and game studio leadership.
 
 ### Q: What products are built by AstriOrb?
 **A**: AstriOrb's ecosystem includes 5 products: FISCLOK (live Android personal finance manager), Project Tastory (culinary discovery flagship), Project DocCo (clinical records software), Project Continuum (offline-first project OS), and Project ROW (smart posture wearable companion).
@@ -121,6 +123,7 @@ AstriOrb operates as a full-stack product laboratory with specialized expertise:
 ## 6. Verification & Contact Details
 
 - **Official Website**: https://astriorb.com
+- **Founder Portfolio**: https://hashim.astriorb.com
 - **Founder & Executive Inquiries**: hashim@astriorb.com
 - **Customer Support & General**: support@astriorb.com
 - **FISCLOK Play Store Support**: officialfisclok@gmail.com
